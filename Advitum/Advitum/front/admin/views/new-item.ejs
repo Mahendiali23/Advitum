@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Inventory Item | Admin Panel</title>
+    <link rel="icon" type="image/png" href="/logo.png?v=10">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font-Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex items-center justify-center p-4 sm:p-8 relative overflow-x-hidden">
+
+    <!-- Creative Light Background Accents -->
+    <div class="fixed top-0 right-1/4 w-[500px] h-[500px] bg-indigo-100/60 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-0 left-1/4 w-[500px] h-[500px] bg-emerald-100/60 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Card Wrapper -->
+    <div class="w-full max-w-3xl bg-white/90 backdrop-blur-xl border border-slate-200/80 rounded-3xl shadow-xl shadow-slate-200/50 overflow-hidden relative z-10">
+        
+        <!-- Header -->
+        <div class="px-6 py-6 sm:px-8 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+            <div class="space-y-1">
+                <div class="flex items-center gap-2 text-[11px] font-bold text-indigo-600 uppercase tracking-widest">
+                    <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                    Catalog Management
+                </div>
+                <h2 class="font-heading text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Create Inventory Item</h2>
+                <p class="text-xs text-slate-500 font-medium">Add pharma products with detailed specifications & gallery images</p>
+            </div>
+            <a href="/admin/dashboard" class="w-10 h-10 rounded-xl bg-white hover:bg-slate-100 border border-slate-200/80 flex items-center justify-center text-slate-400 hover:text-slate-700 transition-all shadow-sm">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </a>
+        </div>
+
+        <!-- Form (Multer Support Enabled via multipart/form-data) -->
+        <form action="/admin/items" method="POST" enctype="multipart/form-data" class="p-6 sm:p-8 space-y-8">
+            
+            <!-- SECTION 1: CORE IDENTIFICATION -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <div class="w-6 h-6 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-bold border border-indigo-100">1</div>
+                    <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wider">Core Identification</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-1.5">
+                        <label for="name" class="block text-xs font-semibold text-slate-700">Product Brand Name <span class="text-rose-500">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="e.g. Shifamox Capsules" required
+                            class="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all font-medium">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="marketName" class="block text-xs font-semibold text-slate-700">Market Name / Generic Composition</label>
+                        <input type="text" id="marketName" name="marketName" placeholder="e.g. Amoxicillin Trihydrate"
+                            class="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all font-medium">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="category" class="block text-xs font-semibold text-slate-700">Category Partition <span class="text-rose-500">*</span></label>
+                        <div class="relative">
+                            <select id="category" name="category" required
+                                class="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white rounded-xl pl-4 pr-10 py-2.5 text-sm text-slate-800 appearance-none focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all font-medium cursor-pointer">
+                                <option value="" class="text-slate-400">-- Choose Category --</option>
+                                <% categories.forEach(cat => { %>
+                                    <option value="<%= cat._id %>" class="text-slate-800"><%= cat.name %></option>
+                                <% }) %>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-4 top-3.5 text-xs text-slate-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="space-y-1.5">
+                            <label for="price" class="block text-xs font-semibold text-slate-700">Price (INR) <span class="text-[10px] text-slate-400 font-normal">(Optional)</span></label>
+                            <div class="relative">
+                                <span class="absolute left-3.5 top-2.5 text-slate-400 font-semibold text-xs">₹</span>
+                                <input type="number" id="price" name="price" step="0.01" min="0" value="0" placeholder="0.00"
+                                    class="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white rounded-xl pl-8 pr-3 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all font-mono">
+                            </div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <label for="stock" class="block text-xs font-semibold text-slate-700">Stock Qty <span class="text-[10px] text-slate-400 font-normal">(Optional)</span></label>
+                            <input type="number" id="stock" name="stock" min="0" value="0" placeholder="0"
+                                class="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all font-mono">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: PHARMACEUTICAL SPECIFICATIONS -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <div class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold border border-emerald-100">2</div>
+                    <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wider">Pharmaceutical Specifications</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="space-y-1.5">
+                        <label for="dosage" class="block text-xs font-semibold text-slate-700">Dosage Strength</label>
+                        <input type="text" id="dosage" name="dosage" placeholder="e.g. 500 mg"
+                            class="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all font-medium">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="dosageForm" class="block text-xs font-semibold text-slate-700">Dosage Form</label>
+                        <input type="text" id="dosageForm" name="dosageForm" placeholder="e.g. Capsule, Injection"
+                            class="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all font-medium">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="therapeuticClass" class="block text-xs font-semibold text-slate-700">Therapeutic Class</label>
+                        <input type="text" id="therapeuticClass" name="therapeuticClass" placeholder="e.g. Antibiotic"
+                            class="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all font-medium">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: IMAGE UPLOADER WITH PREVIEW -->
+            <div class="space-y-4">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-xs font-bold border border-sky-100">3</div>
+                        <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wider">Product Gallery Images</h3>
+                    </div>
+                    <span class="text-[11px] font-medium text-slate-400">Max 3 images (PNG, JPG, WEBP)</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- Image Slot 1 (Primary) -->
+                    <div class="relative group">
+                        <input type="file" name="images" id="imgInput1" accept="image/*" class="hidden" onchange="previewImage(this, 'preview1', 'placeholder1')">
+                        <label for="imgInput1" class="flex flex-col items-center justify-center h-36 w-full border-2 border-dashed border-slate-200 group-hover:border-indigo-500 bg-slate-50/50 group-hover:bg-slate-50 rounded-2xl cursor-pointer transition-all overflow-hidden relative">
+                            <div id="placeholder1" class="text-center p-3 space-y-1">
+                                <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center mx-auto text-indigo-600 shadow-sm">
+                                    <i class="fa-solid fa-cloud-arrow-up text-xs"></i>
+                                </div>
+                                <p class="text-[11px] font-semibold text-slate-700">Main Photo</p>
+                                <p class="text-[10px] text-slate-400">Click to Browse</p>
+                            </div>
+                            <img id="preview1" class="absolute inset-0 w-full h-full object-cover hidden" alt="Main Preview">
+                        </label>
+                    </div>
+
+                    <!-- Image Slot 2 -->
+                    <div class="relative group">
+                        <input type="file" name="images" id="imgInput2" accept="image/*" class="hidden" onchange="previewImage(this, 'preview2', 'placeholder2')">
+                        <label for="imgInput2" class="flex flex-col items-center justify-center h-36 w-full border-2 border-dashed border-slate-200 group-hover:border-indigo-500 bg-slate-50/50 group-hover:bg-slate-50 rounded-2xl cursor-pointer transition-all overflow-hidden relative">
+                            <div id="placeholder2" class="text-center p-3 space-y-1">
+                                <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center mx-auto text-slate-400 shadow-sm">
+                                    <i class="fa-solid fa-plus text-xs"></i>
+                                </div>
+                                <p class="text-[11px] font-semibold text-slate-600">Image 2</p>
+                                <p class="text-[10px] text-slate-400">Optional</p>
+                            </div>
+                            <img id="preview2" class="absolute inset-0 w-full h-full object-cover hidden" alt="Preview 2">
+                        </label>
+                    </div>
+
+                    <!-- Image Slot 3 -->
+                    <div class="relative group">
+                        <input type="file" name="images" id="imgInput3" accept="image/*" class="hidden" onchange="previewImage(this, 'preview3', 'placeholder3')">
+                        <label for="imgInput3" class="flex flex-col items-center justify-center h-36 w-full border-2 border-dashed border-slate-200 group-hover:border-indigo-500 bg-slate-50/50 group-hover:bg-slate-50 rounded-2xl cursor-pointer transition-all overflow-hidden relative">
+                            <div id="placeholder3" class="text-center p-3 space-y-1">
+                                <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center mx-auto text-slate-400 shadow-sm">
+                                    <i class="fa-solid fa-plus text-xs"></i>
+                                </div>
+                                <p class="text-[11px] font-semibold text-slate-600">Image 3</p>
+                                <p class="text-[10px] text-slate-400">Optional</p>
+                            </div>
+                            <img id="preview3" class="absolute inset-0 w-full h-full object-cover hidden" alt="Preview 3">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: DESCRIPTION -->
+            <div class="space-y-1.5">
+                <label for="description" class="block text-xs font-semibold text-slate-700">Detailed Product Description</label>
+                <textarea id="description" name="description" rows="3" placeholder="Clinical composition, usage instructions, storage notes..."
+                    class="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white rounded-xl p-3.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all resize-none font-medium"></textarea>
+            </div>
+
+            <!-- FOOTER ACTIONS -->
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
+                <a href="/admin/dashboard" class="text-xs font-bold text-slate-500 hover:text-slate-800 uppercase tracking-wider transition-colors">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Return
+                </a>
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 active:scale-[0.98] text-white font-bold text-xs px-7 py-3.5 rounded-xl shadow-lg shadow-indigo-600/20 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Save & Publish Item
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Client-side Image Preview Script -->
+    <script>
+        function previewImage(input, previewId, placeholderId) {
+            const preview = document.getElementById(previewId);
+            const placeholder = document.getElementById(placeholderId);
+            
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                    placeholder.classList.add('opacity-0');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>

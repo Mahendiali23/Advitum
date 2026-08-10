@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdVitum Healthcare</title>
+       <link rel="icon" type="image/png" href="/logo.png?v=10">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+        1. DESIGN SYSTEM VARIABLES & RESET
+        ========================================================================== */
+        :root {
+            --primary: #044E4A;
+            --primary-light: #0B6B65;
+            --primary-dark: #033E3B;
+            --accent: #10B981;
+            --accent-light: #D1FAE5;
+            --dark: #1E293B;
+            --text: #475569;
+            --text-muted: #94A3B8;
+            --bg-light: #F8FAFC;
+            --bg-tint: #F4FAF9;
+            --white: #FFFFFF;
+            --border: #E2E8F0;
+            
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-heading: 'Poppins', sans-serif;
+            --shadow-sm: 0 2px 4px rgba(4, 78, 74, 0.05);
+            --shadow-md: 0 10px 25px rgba(4, 78, 74, 0.08);
+            --shadow-lg: 0 20px 40px rgba(4, 78, 74, 0.12);
+            --radius-pill: 50px;
+            --radius-lg: 24px;
+            --radius-sm: 10px;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        body { 
+            font-family: var(--font-main); 
+            color: var(--text); 
+            background-color: var(--white); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            color: var(--dark); 
+        }
+        
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            display: block; 
+        }
+        
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+            transition: var(--transition); 
+        }
+
+        /* Global Layout Components */
+        .wrapper { 
+            max-width: 1240px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+            width: 100%; 
+        }
+        
+        .section-space { 
+            padding: 100px 0; 
+        }
+        
+        .section-space-alt { 
+            padding: 100px 0; 
+            background-color: var(--bg-tint); 
+        }
+
+        .section-badge { 
+            display: inline-block; 
+            padding: 6px 16px; 
+            background-color: var(--accent-light); 
+            color: var(--primary-dark); 
+            border-radius: var(--radius-pill); 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            margin-bottom: 16px; 
+            letter-spacing: 0.5px; 
+        }
+
+        /* Buttons */
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: var(--radius-pill);
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(4, 78, 74, 0.2);
+        }
+
+ /* ==========================================================================
+   2. HEADER & NAVIGATION ARCHITECTURE
+   ========================================================================== */
+:root {
+    /* Safe fallback tokens if your global css template variables are not parsed */
+    --white: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.nav-anchor {
+    position: fixed;
+    top: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 48px);
+    max-width: 1500px;
+    height: 100px;
+    z-index: 1000;
+    background-color: white; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px; 
+    padding: 0 36px;
+    box-shadow: 0 12px 30px rgba(4, 78, 74, 0.15);
+    transition: var(--transition);
+    backdrop-filter: blur(8px);
+    border: .5px solid #e2e8f0; 
+    border-left: 7px solid var(--primary, #0f615d); 
+    border-right: 7px solid var(--primary, #0f615d);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* Default Inverted Colors (Resting State) */
+.nav-anchor .brand-logo h2 { color: #044E4A;}
+.nav-anchor .brand-logo span { color: #64748B; }
+.nav-anchor .nav-link-item { color: #0F172A; }
+.nav-anchor .mobile-hamburger { color: #0F172A; }
+
+
+/* Typography & Brand Identity */
+.brand-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.brand-logo h2 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.brand-logo span {
+    font-size: 0.5rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    display: block;
+    margin-top: 5px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+/* Nav Linksets */
+.nav-linkset {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link-item {
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-anchor .nav-link-item:hover, 
+.nav-anchor .nav-link-item.active-node {
+     color: #044E4A !important;
+    background-color: rgba(4, 78, 74, 0.08);
+}
+
+.badge-new {
+    background: #ef4444;
+    color: white;
+    font-size: 0.5rem;
+    padding: 1px 5px;
+    border-radius: 4px;
+    margin-left: 6px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.mobile-hamburger {
+    display: none;
+    font-size: 1.35rem; 
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 6px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   HIGH-PERFORMANCE SCROLLED STATE (Desktop & Mobile Base)
+   ========================================================================== */
+.nav-anchor.scrolled {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+    max-width: 100%;
+    height: 80px;
+
+    border-radius: 0;
+    background: rgba(255,255,255,0.9);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+    box-shadow: 0 4px 20px rgba(15,23,42,0.06);
+    border-bottom-left-radius:12px ;
+    border-bottom-right-radius:12px ;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+/* Color Realignment for Scrolled Layout */
+.nav-anchor.scrolled .brand-logo h2 { color: #044E4A; } 
+.nav-anchor.scrolled .brand-logo span { color: #64748B; } 
+.nav-anchor.scrolled .nav-link-item { color: #0F172A; }   
+.nav-anchor.scrolled .mobile-hamburger { color: #0F172A; }
+
+.nav-anchor.scrolled .nav-link-item:hover, 
+.nav-anchor.scrolled .nav-link-item.active-node {
+    color: #044E4A !important;
+    background-color: rgba(4, 78, 74, 0.08);
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE RE-ENGINEERING (Flawless Axis Alignment)
+   ========================================================================== */
+@media (max-width: 991px) {
+    .nav-anchor {
+        height: 80px; /* Give mobile a consistent clean baseline height from the start */
+        padding: 0 24px;
+        width: calc(100% - 32px);
+        top: 16px;
+    }
+
+    .nav-anchor.scrolled {
+        top: 0;
+        width: 100%;
+        height: 70px; /* Crisp line when scrolling */
+    }
+
+    .mobile-hamburger {
+        display: flex; /* Enforces horizontal structural center alignment for icons */
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Fixed alignment hack: Keep cross and bar center-aligned inside the bounding box */
+    .mobile-hamburger i {
+        display: block;
+        line-height: 1;
+        width: auto;
+        height: auto;
+    }
+
+    /* Full screen mobile drawer */
+    .nav-linkset {
+        position: fixed;
+        left: 0;
+        width: 100%;
+        height: 0; 
+        background-color: #044E4A;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 0;
+        gap: 8px;
+        overflow-y: auto;
+        transition: var(--transition);
+        z-index: 999;
+    }
+
+    /* Dropdown placement matching navigation heights perfectly */
+    .nav-anchor { top: 16px; }
+    .nav-anchor .nav-linkset { top: 96px; } /* 80px (nav height) + 16px (top offset) */
+    .nav-anchor.scrolled .nav-linkset { top: 70px; }
+
+    /* Open State Configuration */
+    .nav-anchor.open-viewport .nav-linkset {
+        height: calc(100vh - 96px);
+        padding: 32px 0;
+    }
+    
+    .nav-anchor.scrolled.open-viewport .nav-linkset {
+        height: calc(100vh - 70px);
+    }
+
+    .nav-link-item {
+        width: 88%;
+        justify-content: center;
+        font-size: 15px;
+        padding: 16px 0;
+        color: rgba(255, 255, 255, 0.9) !important;
+        border-radius: 12px;
+        background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .nav-link-item:hover,
+    .nav-link-item.active-node {
+        background-color: rgba(230, 226, 226, 0.1) !important;
+        color: var(--white) !important;
+    }
+
+    /* Force background preservation when mobile menu layout is active */
+    .nav-anchor.open-viewport,
+    .nav-anchor.scrolled.open-viewport {
+        background-color: #044E4A !important;
+        border-radius: 16px !important; /* Keep a nice matching frame style when active open */
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .nav-anchor.scrolled.open-viewport {
+        top: 0 !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-top: none !important;
+    }
+
+    .nav-anchor.open-viewport .brand-logo h2,
+    .nav-anchor.scrolled.open-viewport .brand-logo h2 { color: var(--white) !important; }
+    
+    .nav-anchor.open-viewport .brand-logo span,
+    .nav-anchor.scrolled.open-viewport .brand-logo span { color: rgba(255, 255, 255, 0.6) !important; }
+    
+    .nav-anchor.open-viewport .mobile-hamburger,
+    .nav-anchor.scrolled.open-viewport .mobile-hamburger { color: var(--white) !important; }
+}
+
+
+/*  footer start below  */
+
+ /* ==========================================================================
+        10. ENTERPRISE FOOTER ARCHITECTURE
+        ========================================================================== */
+        .footer-architecture {
+            background-color: #051413;
+            color: #94A3B8;
+            padding: 80px 0 30px;
+            font-size: 0.95rem;
+            border-top: 4px solid var(--primary);
+        }
+
+        .footer-matrix-pipeline {
+            display: grid;
+            grid-template-columns: 1.3fr 0.8fr 0.8fr 1.1fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+
+        .footer-anchor-identity h3 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .footer-anchor-identity p {
+            line-height: 1.5;
+        }
+
+        .footer-social-channels {
+            display: flex;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .footer-social-channels a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .footer-social-channels a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-link-group h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .footer-link-group h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-link-group ul {
+            list-style: none;
+        }
+
+        .footer-link-group ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-link-group ul li a {
+            color: #94A3B8;
+        }
+
+        .footer-link-group ul li a:hover {
+            color: var(--white);
+            padding-left: 6px;
+        }
+
+        .footer-address-nodes li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            line-height: 1.5;
+            margin-bottom: 16px !important;
+        }
+
+        .footer-address-nodes li i {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .footer-signature-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.85rem;
+        }
+/*  fotter starts here  */
+
+  /* ==========================================================================
+        11. MEDIA QUERIES (COMPREHENSIVE RESPONSIVENESS)
+        ========================================================================== */
+        @media (max-width: 1024px) {
+            
+
+            .hero-split-grid, .about-split-view, .split-card-architecture, .inquiry-split-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .about-collage-panel::after {
+                display: none;
+            }
+
+            .image-bounding-frame img, .about-collage-panel img {
+                height: 400px;
+            }
+
+            .footer-matrix-pipeline {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-space, .section-space-alt {
+                padding: 70px 0;
+            }
+
+            .hero-content-deck h1 {
+                font-size: 2.6rem;
+            }
+
+            .section-header-block h2 {
+                font-size: 2rem;
+            }
+
+            .form-row-dual {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .footer-matrix-pipeline {
+                grid-template-columns: 1fr;
+            }
+
+            .forms-pill-matrix {
+                grid-template-columns: 1fr;
+            }
+
+            .slider-arrow {
+                display: none;
+            }
+            
+            .arrow-prev { left: 10px; }
+            .arrow-next { right: 10px; }
+        }
+
+/*  fotter ennd here  */
+
+/* --- ADVITUM EXPORT SERVICES STYLE --- */
+.adv-export-container {
+    font-family: var(--font-main);
+    color: var(--text);
+    line-height: 1.6;
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+.adv-export-container h1,
+.adv-export-container h2,
+.adv-export-container h3,
+.adv-export-container h4 {
+    font-family: var(--font-heading);
+    color: var(--dark);
+    font-weight: 600;
+    margin-top: 0;
+}
+
+/* Hero Template */
+.adv-exp-hero {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: var(--white);
+    padding: 6rem 1.5rem;
+    text-align: center;
+    position: relative;
+}
+.adv-exp-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent);
+}
+.adv-exp-hero-inner {
+    max-width: 850px;
+    margin: 0 auto;
+}
+.adv-exp-hero h1 {
+    color: var(--white);
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+}
+.adv-exp-hero .adv-sub {
+    font-size: 1.25rem;
+    color: var(--accent-light);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.adv-exp-hero .adv-desc {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Section Configurations */
+.adv-exp-section {
+    padding: 5.5rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.adv-exp-section.alt-bg {
+    background-color: var(--bg-tint);
+    max-width: 100%;
+}
+.adv-exp-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.adv-exp-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+}
+.adv-exp-header h2 {
+    font-size: 2.25rem;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+}
+.adv-exp-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Two-Column Matrix Layout splits */
+.adv-exp-split {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4.5rem;
+    align-items: center;
+}
+.adv-exp-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+/* Floating Clean Cards */
+.adv-exp-panel {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
+}
+.adv-exp-panel h3 {
+    color: var(--primary-light);
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--bg-light);
+    padding-bottom: 0.75rem;
+}
+
+/* Interactive Check System */
+.adv-exp-checks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.adv-exp-checks li {
+    position: relative;
+    padding-left: 2rem;
+    font-weight: 500;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+}
+.adv-exp-checks li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    background-color: var(--accent-light);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Services Grid Core Matrix */
+.adv-exp-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+.adv-exp-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+.adv-exp-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
+}
+.adv-exp-card h3 {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin-bottom: 0.85rem;
+}
+.adv-exp-card p {
+    color: var(--text);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Focus Badges */
+.adv-exp-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+.adv-exp-badges li {
+    background: var(--bg-tint);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    padding: 0.85rem 2.25rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 1.05rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+.adv-exp-badges li:hover {
+    background-color: var(--primary-light);
+    color: var(--white);
+    border-color: var(--primary-light);
+}
+
+/* Responsive Overrides */
+@media (max-width: 992px) {
+    .adv-exp-split {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+}
+@media (max-width: 576px) {
+    .adv-exp-hero { padding: 4.5rem 1rem; }
+    .adv-exp-hero h1 { font-size: 2.15rem; }
+    .adv-exp-section { padding: 4rem 1rem; }
+    .adv-exp-header { margin-bottom: 3rem; }
+    .adv-exp-header h2 { font-size: 1.75rem; }
+    .adv-exp-panel { padding: 1.75rem; }
+}
+   
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="nav-anchor" id="mainHeader">
+        <div class="nav-container">
+            <div class="brand-logo">
+                <a href="#home">
+                    <h2>AdVitum Healthcare</h2>
+                    <span>Nutraceuticals & Wellness</span>
+                </a>
+            </div>
+            <div class="mobile-hamburger" id="menuToggle">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
+             <nav class="nav-linkset" id="navLinkset">
+                <a href="/home" class="nav-link-item ">Home</a>
+                <a href="/about" class="nav-link-item">About Us</a>
+                <a href="/product" class="nav-link-item">Nutraceutical Products</a>
+                <a href="/label" class="nav-link-item">Private Label</a>
+                <a href="/exportservices" class="nav-link-item active-node">Export Services</a>
+                <a href="/certifications" class="nav-link-item">Certifications</a>
+                <a href="/blog" class="btn-pill btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">BLOG</a>
+            </nav>
+        </div>
+    </header>
+
+<div class="adv-export-container">
+
+  <!-- HERO SECTION -->
+  <section class="adv-exp-hero">
+    <div class="adv-exp-hero-inner">
+      <h1 style="margin-top: 50px;">International Nutraceutical Export Solutions</h1>
+      <p class="adv-sub">Professional export support, documentation assistance, and reliable global supply solutions for nutraceutical and wellness products.</p>
+      <p class="adv-desc">AdVitum Healthcare supports international buyers and healthcare businesses with export-focused nutraceutical supply solutions designed for smooth global trade operations.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT EXPORT SERVICES -->
+  <section class="adv-exp-section">
+    <div class="adv-exp-split">
+      <div class="adv-exp-text">
+        <h2>Global Healthcare Export Support</h2>
+        <p>We focus on supporting international nutraceutical exports through professional coordination, export-oriented packaging, and reliable documentation assistance.</p>
+        <p>Our operations are tailored carefully to manage the complexities of cross-border trade, lowering transit friction and optimizing supply continuity for our international networks.</p>
+        <p style="color: var(--primary-light); font-weight: 500; margin-top: 1rem;">We aim to simplify international sourcing and export coordination for our global business partners.</p>
+      </div>
+      <div class="adv-exp-panel">
+        <h3>Our Services are Designed for:</h3>
+        <ul class="adv-exp-checks" style="grid-template-columns: 1fr; gap: 1rem;">
+          <li>Importers</li>
+          <li>Distributors</li>
+          <li>Wholesalers</li>
+          <li>Retail Chains</li>
+          <li>Healthcare Companies</li>
+          <li>Private Label Brands</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR EXPORT SERVICES MATRIX -->
+  <section class="adv-exp-section alt-bg">
+    <div class="adv-exp-wrap">
+      <div class="adv-exp-header">
+        <h2>Our Export Services</h2>
+        <p>End-to-end management built to align with global sourcing benchmarks</p>
+      </div>
+      <div class="adv-exp-matrix">
+        <div class="adv-exp-card">
+          <h3>Bulk Supply Solutions</h3>
+          <p>Reliable large-volume nutraceutical export support.</p>
+        </div>
+        <div class="adv-exp-card">
+          <h3>Export Documentation</h3>
+          <p>Professional export documentation coordination.</p>
+        </div>
+        <div class="adv-exp-card">
+          <h3>International Shipping Support</h3>
+          <p>Air and sea shipment coordination assistance.</p>
+        </div>
+        <div class="adv-exp-card">
+          <h3>Packaging Solutions</h3>
+          <p>Export-oriented packaging support for international transportation.</p>
+        </div>
+        <div class="adv-exp-card">
+          <h3>Regulatory Coordination</h3>
+          <p>Basic export compliance and documentation guidance.</p>
+        </div>
+        <div class="adv-exp-card">
+          <h3>Distributor Support</h3>
+          <p>Business support for international distributors and importers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPORT DOCUMENTATION & GLOBAL SHIPPING SUPPORT -->
+  <section class="adv-exp-section">
+    <div class="adv-exp-split" style="grid-template-columns: 0.95fr 1.05fr;">
+      <div class="adv-exp-panel" style="background-color: var(--bg-tint);">
+        <h3 style="border-bottom-color: var(--white); color: var(--primary-dark);">Export Documentation Support</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">We may assist with export-related documentation such as:</p>
+        <ul class="adv-exp-checks" style="grid-template-columns: 1fr; gap: 1rem;">
+          <li>Certificate of Analysis (COA)</li>
+          <li>Certificate of Origin</li>
+          <li>Free Sale Certificate</li>
+          <li>Packing List</li>
+          <li>Commercial Invoice</li>
+          <li>Product Specifications</li>
+          <li>Shipping Documents</li>
+        </ul>
+      </div>
+      <div class="adv-exp-text" style="padding-left: 0.5rem;">
+        <h2>Global Shipping Support</h2>
+        <p>We aim to support smooth export logistics and shipment handling through professional coordination across diverse international freight pathways.</p>
+        
+        <h4 style="color: var(--primary); font-size: 1.2rem; margin: 2rem 0 1rem 0;">Supported Shipping Modes:</h4>
+        <ul class="adv-exp-checks" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem;">
+          <li>Air Freight</li>
+          <li>Sea Freight</li>
+          <li>Courier Shipments</li>
+          <li>Bulk Container Shipments</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGING & LABELING SUPPORT -->
+  <section class="adv-exp-section alt-bg">
+    <div class="adv-exp-wrap">
+      <div class="adv-exp-split">
+        <div class="adv-exp-text">
+          <h2>Packaging & Labeling Support</h2>
+          <p>Our configurations prioritize safe structural presentation, meeting regional distribution criteria while maintaining absolute product shelf stability over long distances.</p>
+          
+          <h4 style="color: var(--primary); font-size: 1.2rem; margin: 1.5rem 0 1rem 0;">Export Packaging Features:</h4>
+          <ul class="adv-exp-checks" style="grid-template-columns: 1fr; gap: 1rem;">
+            <li>International transportation support</li>
+            <li>Secure packaging</li>
+            <li>Professional labeling</li>
+            <li>Retail-ready presentation</li>
+          </ul>
+        </div>
+        <div class="adv-exp-panel">
+          <h3>Available Packaging Options:</h3>
+          <ul class="adv-exp-checks" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem;">
+            <li>Bottles</li>
+            <li>Jars</li>
+            <li>Sachets</li>
+            <li>Tubes</li>
+            <li>Pouches</li>
+            <li>Blister Packs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERNATIONAL MARKET FOCUS -->
+  <section class="adv-exp-section">
+    <div class="adv-exp-wrap" style="text-align: center;">
+      <div class="adv-exp-header">
+        <h2>International Market Focus</h2>
+        <p>Connecting global business operations with reliable sourcing channels</p>
+      </div>
+      
+      <h3 style="color: var(--primary-light); font-size: 1.25rem; margin-bottom: 2.5rem; font-weight: 500;">Our Focus Markets</h3>
+      <ul class="adv-exp-badges">
+        <li>Central Asia</li>
+        <li>CIS Countries</li>
+        <li>Southeast Asia</li>
+        <li>Africa</li>
+        <li>Middle East</li>
+      </ul>
+      <p style="margin-top: 4.5rem; color: var(--text-muted); font-style: italic; font-size: 0.95rem;">We continuously explore new opportunities to expand our international business presence.</p>
+    </div>
+  </section>
+
+</div>
+
+     <footer class="footer-architecture" >
+        <div class="wrapper">
+            <div class="footer-matrix-pipeline">
+                <div class="footer-anchor-identity">
+                    <h3>AdVitum Healthcare</h3>
+                    <p style="margin-bottom: 16px;">AdVitum Healthcare is an India-based export company specializing in nutraceutical, wellness, and future pharmaceutical export solutions for international healthcare markets.</p>
+                    <div class="footer-social-channels">
+                        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp Trade Channel"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a  aria-label="Global Support"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Nutraceutical Products</a></li>
+                        <li><a href="#private-label">Private Label</a></li>
+                        <li><a href="#export-services">Export Services</a></li>
+                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#pharmaceutical">Pharmaceutical Division</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#inquiry">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Product Categories</h4>
+                    <ul>
+                        <li><a href="#products">Multivitamins</a></li>
+                        <li><a href="#products">Herbal Supplements</a></li>
+                        <li><a href="#products">Sports Nutrition</a></li>
+                        <li><a href="#products">Gummies</a></li>
+                        <li><a href="#products">Effervescent Tablets</a></li>
+                        <li><a href="#products">Women's Health</a></li>
+                        <li><a href="#products">Men's Health</a></li>
+                        <li><a href="#products">Protein Supplements</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Contact Information</h4>
+                    <ul class="footer-address-nodes">
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong style="color: white; display:block;">Email Address</strong>
+                                <a >info@advitumhealthcare.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div>
+                                <strong style="color: white; display:block;">WhatsApp Number</strong>
+                                <a href="https://wa.me/919898265440" target="_blank">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <div>
+                                <strong style="color: white; display:block;">Phone Number</strong>
+                                <a>+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong style="color: white; display:block;">Business Address</strong>
+                                <span>Siddhi Vinayak Business Park, Makarba, S.G. Road, Ahmedabad(380051), Gujarat, India</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-signature-row">
+                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
+                <div style="display: flex; gap: 20px; background-color: var(--primary-light); color: var(--accent); border-radius: 10px ; padding: 6px ; font-weight: 500;">
+                    
+                    <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" >Powered by Haidarali</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const mainNavbar = document.querySelector('.nav-anchor');
+    const menuToggle = document.querySelector('.mobile-hamburger');
+    const navLinks = document.querySelectorAll('.nav-link-item');
+
+    // 1. Core Scroll Watcher Engine
+    const syncScrollState = () => {
+        if (window.scrollY > 20) {
+            mainNavbar.classList.add('scrolled');
+        } else {
+            mainNavbar.classList.remove('scrolled');
+        }
+    };
+
+    syncScrollState();
+    window.addEventListener('scroll', syncScrollState, { passive: true });
+
+    // 2. Mobile Drawer Event Management
+    if (menuToggle && mainNavbar) {
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            mainNavbar.classList.toggle('open-viewport');
+            
+            if (mainNavbar.classList.contains('open-viewport')) {
+                document.body.style.overflow = 'hidden'; // Protect background from dragging
+                menuToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>'; // Sets close icon cleanly
+            } else {
+                document.body.style.overflow = '';
+                menuToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>'; // Restores hamburger bars
+            }
+        });
+
+        // Auto-collapse when user selects an internal destination anchor target
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNavbar.classList.contains('open-viewport')) {
+                    mainNavbar.classList.remove('open-viewport');
+                    document.body.style.overflow = '';
+                    menuToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+                }
+            });
+        });
+    }
+});
+
+    </script>
+</body>
+</html>

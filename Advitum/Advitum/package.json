@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "start": "node back/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "init": "^0.1.2",
+    "mongoose": "^9.7.0",
+    "multer": "^2.2.0",
+    "twilio": "^6.0.2"
+  }
+}

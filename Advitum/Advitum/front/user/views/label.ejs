@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdVitum Healthcare | Global Nutraceuticals</title>
+    <link rel="icon" type="image/png" href="/logo.png?v=10">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+        1. ENTERPRISE DESIGN SYSTEM VARIABLES
+        ========================================================================== */
+        :root {
+            --primary: #044E4A;
+            --primary-light: #0B6B65;
+            --primary-dark: #022F2D;
+            --accent: #10B981;
+            --accent-light: #E6FDF5;
+            --dark: #0F172A;
+            --text: #334155;
+            --text-muted: #64748B;
+            --bg-light: #F8FAFC;
+            --bg-glass: rgba(255, 255, 255, 0.85);
+            --white: #FFFFFF;
+            --border: rgba(226, 232, 240, 0.8);
+            
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-heading: 'Poppins', sans-serif;
+            
+            --shadow-sm: 0 4px 6px -1px rgba(4, 78, 74, 0.03);
+            --shadow-md: 0 16px 36px -4px rgba(4, 78, 74, 0.06);
+            --shadow-lg: 0 24px 60px -12px rgba(4, 78, 74, 0.12);
+            
+            --radius-pill: 100px;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Core Reset & Semantics */
+        *, *::before, *::after { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+            height: 100%;
+        }
+        
+        body { 
+            font-family: var(--font-main); 
+            color: var(--text); 
+            background-color: var(--bg-light); 
+            line-height: 1.5; 
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+        
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            color: var(--dark); 
+            letter-spacing: -0.015em;
+        }
+        
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+            transition: var(--transition); 
+        }
+
+        /* Main content grows to push footer down smoothly */
+        main {
+            flex: 1 0 auto;
+            padding-top: 120px; /* Safety clearance for fixed navigation */
+        }
+
+        .wrapper { 
+            max-width: 1280px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+            width: 100%; 
+        }
+
+        /* Creative Buttons */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 22px;
+            font-weight: 600;
+            border-radius: var(--radius-pill);
+            font-size: 0.82rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            gap: 6px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-action.primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(4, 78, 74, 0.15);
+        }
+
+        .btn-action.primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary));
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .btn-action.primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-action.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(4, 78, 74, 0.25);
+        }
+
+        /* ==========================================================================
+        2. BRAND ARCHITECTURE LOGO
+        ========================================================================== */
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .creative-logo {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .brand-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .brand-meta h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .brand-meta span {
+            font-size: 0.58rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ==========================================================================
+        3. FLOATING GLASSMORPHIC NAVIGATION ARCHITECTURE
+        ========================================================================== */
+   .nav-anchor {
+    position: fixed;
+    top: 16px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 48px);
+    max-width: 1500px;
+    height: 64px; /* Reduced from 100px for a significantly sleeker look */
+    z-index: 1000;
+    box-sizing: border-box;
+    
+    /* Unified Glass Styling */
+    background-color: rgba(255, 255, 255, 0.75); /* Added subtle alpha transparency for true glassmorphism */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    
+    border: .5px solid var(--border); 
+    border-left: 4px solid var(--primary, #021715); 
+    border-right: 4px solid var(--primary, #021715);
+    border-radius: var(--radius-pill); 
+    
+    padding: 0 28px;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+}
+
+/* --- Container & Core Layout --- */
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-linkset {
+    display: flex;
+    align-items: center;
+    gap: 2px; /* Tightened gap for compact typography */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+/* --- Navigation Links --- */
+.nav-link-item {
+    font-size: 0.60rem; /* Shrunk from 0.86rem for a premium micro-text style */
+    font-weight: 600;
+    text-transform: uppercase; /* Looks sharp and clean at smaller font sizes */
+    letter-spacing: 1px; /* Ensures great readability across micro-text */
+    color: var(--text);
+    padding: 8px 14px; /* Balanced tight padding */
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-link-item i {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+}
+
+/* Hover & Active States */
+.nav-link-item:hover,
+.nav-item:hover .nav-link-item,
+.nav-link-item.active,
+.nav-item.active .nav-link-item {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.05); /* Clean tint over glass */
+}
+
+.nav-item:hover .nav-link-item i {
+    transform: rotate(180deg);
+    color: var(--primary);
+}
+
+/* --- Glassmorphic Dropdown Card --- */
+.dropdown-card {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px); /* Tighter offset to match smaller height */
+    
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+    min-width: 220px; /* Shrunk slightly to match compact links */
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: var(--transition);
+    list-style: none;
+    margin: 0;
+    z-index: 1010;
+}
+
+/* Micro-triangle arrow (Matches the dropdown card tint) */
+.dropdown-card::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: var(--bg-glass);
+    border-left: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+}
+
+.nav-item:hover .dropdown-card {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+}
+
+/* --- Dropdown Interactive Nodes --- */
+.dropdown-node a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px; /* Proportional spacing update */
+    font-size: 0.78rem; /* Shrunk to match the hierarchy */
+    font-weight: 500;
+    color: var(--text);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.dropdown-node a i {
+    font-size: 0.7rem;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: var(--transition);
+}
+
+.dropdown-node a:hover {
+    background-color: var(--accent-light);
+    color: var(--primary-dark);
+    padding-left: 16px;
+}
+
+.dropdown-node a:hover i {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent);
+}
+
+/* --- Mobile Components Placeholder --- */
+.mobile-hamburger {
+    display: none;
+    font-size: 1.2rem; 
+    cursor: pointer;
+    color: var(--primary);
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+/* --- Glassmorphic Sticky Scrolled State --- */
+.nav-anchor.scrolled {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 100%;
+    height: 56px; /* Reduced from 80px for a tight, high-end fixed header profile */
+    border-radius: 0;
+    
+    background: white; /* Clean crisp blur layer */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+    border: none;
+  
+    box-shadow: 0 4px 30px rgba(4, 78, 74, 0.04);
+    padding: 0 40px;
+    
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+        /* ==========================================================================
+        4. PREMIUM MODERN FOOTER ARCHITECTURE
+        ========================================================================== */
+        .footer-architecture {
+            background-color: #020C0B;
+            color: #8A9AAD;
+            padding: 80px 0 40px;
+            font-size: 0.86rem;
+            border-top: 4px solid var(--primary);
+            position: relative;
+            flex-shrink: 0; /* Ensures the footer stays at bottom */
+        }
+
+        .footer-architecture::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 8%; width: 84%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.2), transparent);
+        }
+
+        .footer-matrix-pipeline {
+            display: grid;
+            grid-template-columns: 1.3fr 0.8fr 0.8fr 1.1fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+
+        .footer-anchor-identity h3 {
+            color: var(--white);
+            font-size: 1.45rem;
+            margin-bottom: 18px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-anchor-identity p {
+            line-height: 1.6;
+            color: #9494A1;
+            font-size: 0.86rem;
+        }
+
+        .footer-social-channels {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .footer-social-channels a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9494A1;
+            font-size: 1.05rem;
+        }
+
+        .footer-social-channels a:hover {
+            background-color: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .footer-link-group h4 {
+            color: var(--white);
+            font-size: 0.92rem;
+            margin-bottom: 24px;
+            font-weight: 700;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .footer-link-group h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 20px;
+            height: 2px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .footer-link-group ul {
+            list-style: none;
+        }
+
+        .footer-link-group ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-link-group ul li a {
+            color: #8A9AAD;
+            display: inline-block;
+            font-size: 0.86rem;
+        }
+
+        .footer-link-group ul li a:hover {
+            color: var(--white);
+            transform: translateX(4px);
+        }
+
+        .footer-address-nodes li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            margin-bottom: 18px !important;
+        }
+
+        .footer-address-nodes li i {
+            color: var(--accent);
+            font-size: 0.95rem;
+            background: rgba(16, 185, 129, 0.08);
+            padding: 8px;
+            border-radius: var(--radius-md);
+            margin-top: 2px;
+        }
+
+        .footer-address-nodes div strong {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--white);
+            margin-bottom: 3px;
+        }
+
+        .footer-address-nodes div span, 
+        .footer-address-nodes div a {
+            color: #9494A1;
+            font-size: 0.84rem;
+            line-height: 1.45;
+        }
+
+        .footer-signature-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.82rem;
+            color: #61616A;
+        }
+
+        .designer-tag-container {
+            display: flex;
+            align-items: center;
+            background-color: rgba(4, 78, 74, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            border-radius: var(--radius-pill);
+            padding: 6px 16px;
+        }
+
+        .designer-tag-container a {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .designer-tag-container a:hover {
+            color: var(--white);
+        }
+
+        /* ==========================================================================
+        5. RESPONSIVE MEDIA ENGAGEMENT SYSTEM
+        ========================================================================== */
+        @media (max-width: 1200px) {
+            .nav-anchor {
+                padding: 0 20px;
+                width: calc(100% - 32px);
+            }
+            .nav-link-item {
+                padding: 8px 12px;
+                font-size: 0.82rem;
+            }
+            .footer-matrix-pipeline {
+                grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+                gap: 28px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            main {
+                padding-top: 100px;
+            }
+
+            .mobile-hamburger {
+                display: block;
+            }
+
+            .nav-anchor {
+                height: 68px;
+                top: 16px;
+                width: calc(100% - 32px);
+                border-radius: var(--radius-lg);
+                padding: 0 24px;
+            }
+
+            .nav-anchor.scrolled {
+                top: 0;
+                width: 100%;
+                border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            }
+
+            /* Responsive Drawer UI */
+            .nav-linkset {
+                position: fixed;
+                top: 84px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 84px);
+                background: linear-gradient(180deg, #021715 0%, #043835 100%);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 32px 24px;
+                gap: 12px;
+                overflow-y: auto;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: var(--transition);
+                z-index: 999;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-linkset::before {
+                content: 'DISTRIBUTION DIRECTORY';
+                display: block;
+                font-size: 0.68rem;
+                letter-spacing: 2px;
+                color: rgba(16, 185, 129, 0.6);
+                font-weight: 700;
+                margin-bottom: 8px;
+                padding-left: 8px;
+            }
+
+            .nav-anchor.scrolled .nav-linkset {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+
+            .nav-anchor.open-viewport .nav-linkset {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .nav-link-item {
+                width: 100%;
+                color: rgba(255, 255, 255, 0.85);
+                padding: 14px 20px;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: var(--radius-md);
+                justify-content: space-between;
+                font-size: 0.92rem;
+            }
+
+                    /* Hover & Active States */
+.nav-link-item:hover,
+.nav-item:hover .nav-link-item,
+.nav-link-item.active,
+.nav-item.active .nav-link-item {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.05);
+}
+
+            .nav-link-item i {
+                color: rgba(255, 255, 255, 0.4);
+            }
+
+            /* Custom Mobile Accordion */
+            .dropdown-card {
+                position: static;
+                transform: none !important;
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                background: rgba(0, 0, 0, 0.2);
+                box-shadow: none;
+                border: none;
+                margin-top: 8px;
+                padding: 6px;
+                display: none;
+                border-left: 3px solid var(--accent);
+                border-radius: var(--radius-md);
+            }
+
+            .dropdown-card::before { display: none; }
+
+            .nav-item.mobile-active .dropdown-card {
+                display: block;
+            }
+
+            .dropdown-node a {
+                color: rgba(255, 255, 255, 0.7);
+                padding: 12px 16px;
+                font-size: 0.86rem;
+            }
+
+            .dropdown-node a i {
+                opacity: 0.5;
+                transform: none;
+            }
+
+            .dropdown-node a:hover {
+                background: transparent;
+                color: var(--white);
+            }
+
+            .nav-anchor.open-viewport {
+                background-color: #021715 !important;
+                border-color: #021715;
+            }
+            .nav-anchor.open-viewport .brand-meta h2,
+            .nav-anchor.open-viewport .mobile-hamburger { color: var(--white); }
+            
+            .btn-blog-container {
+                padding: 4px 0;
+            }
+            .btn-blog-container .btn-action {
+                width: 100%;
+                padding: 14px;
+            }
+
+            .footer-matrix-pipeline {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-matrix-pipeline {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+            .footer-anchor-identity h3 {
+                font-size: 1.35rem;
+            }
+            .footer-signature-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+        }
+
+        /* ==========================================================================
+   1. Component Token Scope Settings
+   ========================================================================== */
+.catalog-master-component-scope {
+    --primary: #044E4A;
+    --primary-light: #0B6B65;
+    --primary-dark: #022F2D;
+    --accent: #10B981;
+    --accent-light: #E6FDF5;
+    --dark: #0F172A;
+    --text: #334155;
+    --text-muted: #64748B;
+    --bg-light: #F8FAFC;
+    --white: #FFFFFF;
+    --border: rgba(226, 232, 240, 0.8);
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    --shadow-sm: 0 4px 6px -1px rgba(4, 78, 74, 0.03);
+    --shadow-md: 0 16px 36px -4px rgba(4, 78, 74, 0.06);
+    --shadow-lg: 0 24px 60px -12px rgba(4, 78, 74, 0.12);
+    --radius-pill: 100px;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-master-component-scope {
+    font-family: var(--font-main);
+    color: var(--text);
+    background-color: var(--bg-light);
+    padding-bottom: 80px;
+}
+
+.catalog-master-component-scope *,
+.catalog-master-component-scope *::before,
+.catalog-master-component-scope *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   2. Search Hero Dock Layout
+   ========================================================================== */
+.search-hero-dock {
+    background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary) 100%);
+    padding: 60px 24px;
+    text-align: center;
+    position: relative;
+}
+
+.search-bar-pipeline {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.search-bar-pipeline input {
+    width: 100%;
+    padding: 18px 28px 18px 60px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-pill);
+    font-size: 1rem;
+    color: var(--white);
+    font-family: var(--font-main);
+    transition: var(--transition);
+}
+
+.search-bar-pipeline input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-bar-pipeline input:focus {
+    outline: none;
+    background: var(--white);
+    color: var(--dark);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-lg);
+}
+
+.search-bar-pipeline i {
+    position: absolute;
+    left: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.15rem;
+    transition: var(--transition);
+}
+
+.search-bar-pipeline input:focus + i {
+    color: var(--primary);
+}
+
+/* ==========================================================================
+   3. Fixed Sidebar Layout Engine (Viewport Boundary Containment)
+   ========================================================================== */
+.catalog-main-wrapper {
+    max-width: 1400px;
+    margin: -30px auto 0;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.catalog-layout-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Sidebar sticky lock configuration rules */
+.filter-sidebar {
+    position: sticky;
+    top: 30px; 
+    max-height: calc(100vh - 60px); 
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-sticky-wrapper {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+.sidebar-section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+    color: var(--primary-dark);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+/* Smooth tracking native customized scrollbars for inside nodes */
+.category-nodes-list {
+    overflow-y: auto;
+    padding-right: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.category-nodes-list::-webkit-scrollbar {
+    width: 5px;
+}
+.category-nodes-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+.category-nodes-list::-webkit-scrollbar-thumb {
+    background: rgba(226, 232, 240, 1);
+    border-radius: var(--radius-pill);
+}
+
+.category-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: left;
+    transition: var(--transition);
+}
+
+.category-item span:first-child {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 12px;
+}
+
+.category-count {
+    background: var(--bg-light);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+    min-width: 28px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.category-item:hover {
+    background: var(--bg-light);
+    border-color: var(--border);
+}
+
+.category-item.active-filter {
+    background: var(--accent-light);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.category-item.active-filter span:first-child {
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+.category-item.active-filter .category-count {
+    background: var(--accent);
+    color: var(--white);
+}
+
+/* ==========================================================================
+   4. Products Content Panel & Header Actions
+   ========================================================================== */
+.catalog-content {
+    min-width: 0;
+}
+
+.catalog-results-header {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
+}
+
+.results-counter {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.results-counter span {
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+.sort-select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sort-select-wrapper label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.sort-select-wrapper select {
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-light);
+    border-radius: var(--radius-md);
+    font-size: 0.88rem;
+    color: var(--dark);
+    font-family: var(--font-main);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.sort-select-wrapper select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: var(--white);
+}
+
+/* ==========================================================================
+   5. Premium Catalog Display Responsive Grid Cards
+   ========================================================================== */
+.products-grid-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 30px;
+}
+
+.product-catalog-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.card-media-canvas {
+    position: relative;
+    padding-top: 75%; /* Premium 4:3 Responsive Visual Anchor Box */
+    background: #F1F5F9;
+    overflow: hidden;
+}
+
+.card-media-canvas img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-factor-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 3;
+    background: var(--primary-dark);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 12px rgba(2, 47, 45, 0.2);
+}
+
+.card-meta-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-category-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.card-meta-body h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--dark);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-price-tag {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+}
+
+.card-meta-body p.truncate-text {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 24px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.btn-action-link {
+    width: 100%;
+    margin-top: auto;
+    padding: 14px;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+/* Interactive States */
+.product-catalog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(4, 78, 74, 0.15);
+}
+
+.product-catalog-card:hover .card-media-canvas img {
+    transform: scale(1.06);
+}
+
+.product-catalog-card:hover .btn-action-link {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+    box-shadow: 0 8px 20px -6px rgba(4, 78, 74, 0.3);
+}
+
+/* ==========================================================================
+   6. Zero States View Configuration Elements
+   ========================================================================== */
+.zero-state-container {
+    display: none;
+    text-align: center;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 80px 40px;
+    box-shadow: var(--shadow-sm);
+}
+
+.zero-state-container i {
+    font-size: 3.5rem;
+    color: rgba(226, 232, 240, 1);
+    margin-bottom: 24px;
+}
+
+.zero-state-container h4 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.zero-state-container p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 460px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+}
+
+.btn-reset-filters {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 14px 32px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 24px -6px rgba(4, 78, 74, 0.3);
+    transition: var(--transition);
+}
+
+.btn-reset-filters:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   7. Detailing Overlay Box Modal Layout (Hardware Accelerated)
+   ========================================================================== */
+.catalog-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity;
+}
+
+.catalog-modal-overlay.modal-visible {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.catalog-modal-window {
+    background: var(--white);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 960px;
+    position: relative;
+    box-shadow: 0 32px 80px -16px rgba(15, 23, 42, 0.3);
+    overflow: hidden;
+    transform: scale(0.94) translate3d(0, 20px, 0);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.catalog-modal-overlay.modal-visible .catalog-modal-window {
+    transform: scale(1) translate3d(0, 0, 0);
+}
+
+/* High-End Absolute Position Floating Close Trigger */
+.catalog-modal-close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--dark);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.catalog-modal-close-btn:hover {
+    background: var(--bg-light);
+    color: var(--primary-dark);
+    transform: rotate(90deg);
+}
+
+/* Layout Engine Splits Inside Card window Viewport */
+.catalog-modal-blueprint {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    min-height: 540px;
+}
+
+.modal-blueprint-media {
+    position: relative;
+    background: #F1F5F9;
+}
+
+.modal-blueprint-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-factor-badge {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+}
+
+.modal-blueprint-meta {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid var(--border);
+}
+
+.modal-category-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.modal-blueprint-meta h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--primary-dark);
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 16px;
+}
+
+.modal-price-tag {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 24px;
+}
+
+.modal-description-scroll {
+    max-height: 180px;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 36px;
+}
+
+.modal-description-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+.modal-description-scroll::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: var(--radius-pill);
+}
+
+.modal-description-scroll p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text);
+}
+
+.modal-action-cta {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border: none;
+    color: var(--white);
+    font-size: 0.98rem;
+    font-weight: 700;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 12px 30px -8px rgba(4, 78, 74, 0.4);
+    transition: var(--transition);
+}
+
+.modal-action-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px -8px rgba(4, 78, 74, 0.5);
+}
+
+/* ==========================================================================
+   8. Adaptive Layout Media Query Overrides
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .catalog-layout-container { grid-template-columns: 240px 1fr; gap: 24px; }
+    .catalog-modal-window { max-width: 760px; }
+    .modal-blueprint-meta { padding: 32px; }
+}
+
+@media (max-width: 840px) {
+    .catalog-layout-container { grid-template-columns: 1fr; }
+    .filter-sidebar { position: relative; top: 0; max-height: none; }
+    .sidebar-sticky-wrapper { max-height: 280px; }
+    .catalog-modal-blueprint { grid-template-columns: 1fr; }
+    .modal-blueprint-media { height: 260px; }
+    .catalog-modal-window { max-width: 480px; }
+    .modal-blueprint-meta { border-left: none; border-top: 1px solid var(--border); padding: 28px; }
+}
+
+@media (max-width: 480px) {
+    .search-hero-dock { padding: 40px 16px; }
+    .catalog-results-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .sort-select-wrapper { width: 100%; justify-content: space-between; }
+    .catalog-modal-window { border-radius: 16px; }
+}
+    </style>
+</head>
+<body>
+
+   <header class="nav-anchor" id="mainHeader">
+        <div class="nav-container">
+            <div class="brand-wrapper" onclick="window.location.href='/home'">
+                <div class="creative-logo">
+                    <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" class="brand-logo-img">
+                </div>
+                <div class="brand-meta">
+                    <h2>AdVitum</h2>
+                    <span>Healthcare</span>
+                </div>
+            </div>
+            
+            <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            
+            <nav class="nav-linkset" id="navLinkset">
+                <div class="nav-item">
+                    <a href="/home" class="nav-link-item active">Home</a>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item">Company <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item">Services <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item">Products <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/product">Nutraceuticals <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/product">Pharmaceuticals <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="/certifications" class="nav-link-item ">Certifications</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="/division" class="nav-link-item ">Pharma Division</a>
+                </div>
+                
+                <div class="nav-item btn-blog-container">
+                    <a href="/blog" class="btn-action primary">Blog</a>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="/contact" class="nav-link-item" style="color: var(--accent); font-weight: 700;">Contact Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+            </div>
+    </main>
+
+<div class="catalog-master-component-scope">
+
+    <section class="search-hero-dock" id="catalogSearchDock">
+        <div class="search-bar-pipeline">
+            <input type="text" id="catalogSearchInput" placeholder="Search across current collections, dynamic specifications, and parts...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </section>
+
+    <main class="catalog-main-wrapper">
+        <div class="catalog-layout-container">
+            
+            <aside class="filter-sidebar">
+                <div class="sidebar-sticky-wrapper">
+                    <div class="sidebar-section-title">
+                        <i class="fa-solid fa-tags"></i>
+                        <span>Product Categories</span>
+                    </div>
+                    <div class="category-nodes-list" id="categorySelectionWrapper">
+                        
+                        <button class="category-item active-filter" data-category-id="all">
+                            <span>All Collections</span>
+                            <span class="category-count" id="badge-count-all">0</span>
+                        </button>
+
+                        <% if (typeof categories !== 'undefined' && categories && categories.length > 0) { %>
+                            <% categories.forEach(function(cat) { %>
+                                <button class="category-item" data-category-id="<%= cat._id %>">
+                                    <span><%= cat.name %></span>
+                                    <span class="category-count" id="badge-count-<%= cat._id %>">0</span>
+                                </button>
+                            <% }); %>
+                        <% } %>
+
+                    </div>
+                </div>
+            </aside>
+
+            <section class="catalog-content">
+                
+                <div class="catalog-results-header">
+                    <div class="results-counter">
+                        Displaying <span id="visibleCardsCount">0</span> of <span id="totalCardsCount">0</span> matched dynamic records
+                    </div>
+                    <div class="sort-select-wrapper">
+                        <label for="catalogSortSelect">Sort Layout Matrix</label>
+                        <select id="catalogSortSelect">
+                            <option value="default">Alpha Collection: A-Z</option>
+                            <option value="price-asc">Price Metric: Low to High</option>
+                            <option value="price-desc">Price Metric: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="products-grid-matrix" id="productsCatalogGridMatrix">
+                    
+                    <% if (typeof items !== 'undefined' && items && items.length > 0) { %>
+                        <% items.forEach(function(item) { %>
+                            
+                            <article class="product-catalog-card" 
+                                     data-item-name="<%= item.name ? item.name.toLowerCase() : '' %>"
+                                     data-item-category="<%= (item.category && item.category._id) ? item.category._id : '' %>"
+                                     data-item-price="<%= item.price ? item.price : 0 %>"
+                                     data-item-raw-name="<%= item.name ? item.name : '' %>"
+                                     data-item-raw-category="<%= (item.category && item.category.name) ? item.category.name : 'Unassigned' %>"
+                                     data-item-image="<%= (typeof item.image !== 'undefined' && item.image) ? item.image : 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80' %>"
+                                     data-item-badge="<%= typeof item.badge !== 'undefined' && item.badge ? item.badge : 'In Stock' %>"
+                                     data-item-raw-price="<%= (typeof item.price === 'number') ? item.price.toFixed(2) : item.price %>"
+                                     data-item-description="<%= item.description ? item.description : 'No comprehensive description file provided for this dynamic product classification.' %>">
+                                
+                                <div class="card-media-canvas">
+                                    <span class="form-factor-badge">
+                                        <%= typeof item.badge !== 'undefined' && item.badge ? item.badge : 'In Stock' %>
+                                    </span>
+                                    <img src="<%= (typeof item.image !== 'undefined' && item.image) ? item.image : 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80' %>" 
+                                         alt="<%= item.name %>" 
+                                         loading="lazy">
+                                </div>
+
+                                <div class="card-meta-body">
+                                    <span class="product-category-label">
+                                        <%= (item.category && item.category.name) ? item.category.name : 'Unassigned' %>
+                                    </span>
+                                    <h3><%= item.name %></h3>
+                                    <div class="product-price-tag">
+                                        $<%= (typeof item.price === 'number') ? item.price.toFixed(2) : item.price %>
+                                    </div>
+                                    <p class="truncate-text"><%= item.description ? item.description : 'No comprehensive description file provided for this dynamic product classification.' %></p>
+                                    <button class="btn-action-link">
+                                        <i class="fa-solid fa-eye"></i>
+                                        <span>View Details</span>
+                                    </button>
+                                </div>
+                            </article>
+
+                        <% }); %>
+                    <% } %>
+
+                </div>
+
+                <div class="zero-state-container" id="zeroStateContainer">
+                    <i class="fa-solid fa-boxes-packing"></i>
+                    <h4>No Dynamic Matches Found</h4>
+                    <p>The system parameters cannot locate item cards running matches with your active search input strings or category filter conditions.</p>
+                    <button class="btn-reset-filters" id="btnResetFilters">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                        <span>Reinitialize Filters</span>
+                    </button>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <div class="catalog-modal-overlay" id="catalogDetailsModal">
+        <div class="catalog-modal-window">
+            <button class="catalog-modal-close-btn" id="closeCatalogModalBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="catalog-modal-blueprint">
+                <div class="modal-blueprint-media">
+                    <span class="modal-factor-badge" id="modalBadge">In Stock</span>
+                    <img src="" id="modalImage" alt="Target Product View">
+                </div>
+                <div class="modal-blueprint-meta">
+                    <span class="modal-category-label" id="modalCategory">Category</span>
+                    <h2 id="modalTitle">Product Title Reference</h2>
+                    <div class="modal-price-tag" id="modalPrice">$0.00</div>
+                    <div class="modal-description-scroll">
+                        <p id="modalDescription">Detailed text content specifications writeups fallbacks live here.</p>
+                    </div>
+                    <button class="modal-action-cta">
+                        <i class="fa-solid fa-cart-flatbed-suitcases"></i>
+                        <span>Initialize Order Channel</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+    <footer class="footer-architecture">
+        <div class="wrapper">
+            <div class="footer-matrix-pipeline">
+                <div class="footer-anchor-identity">
+                    <h3>AdVitum Healthcare</h3>
+                    <p style="margin-bottom: 12px;">An institutional-grade healthcare export framework operating from India, provisioning bespoke nutraceutical manufacturing and future pharmaceutical products across international domains.</p>
+                    <div class="footer-social-channels">
+                        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Global Web"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Corporate Matrix</h4>
+                    <ul>
+                        <li><a href="/home">Home Gateway</a></li>
+                        <li><a href="/about">About Architecture</a></li>
+                        <li><a href="/product">Nutraceutical Formulations</a></li>
+                        <li><a href="/label">Private Label Setup</a></li>
+                        <li><a href="/exportservices">Export Operations</a></li>
+                        <li><a href="/certifications">Global Regulatory Profiles</a></li>
+                        <li><a href="/blog">Corporate Insights</a></li>
+                        <li><a href="/contact">Initiate Trade Desk</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Formulation Arrays</h4>
+                    <ul>
+                        <li><a href="/product#multivitamins">Advanced Multivitamins</a></li>
+                        <li><a href="/product#herbal">Standardized Bio-Extracts</a></li>
+                        <li><a href="/product#sports">Kinetic Sports Nutrition</a></li>
+                        <li><a href="/product#gummies">Pectin Functional Gummies</a></li>
+                        <li><a href="/product#effervescent">Effervescent Technology</a></li>
+                        <li><a href="/product#womens-health">Targeted Women's Health</a></li>
+                        <li><a href="/product#mens-health">Andrological Optimization</a></li>
+                        <li><a href="/product#protein">Isolated Protein Arrays</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Global Nodes</h4>
+                    <ul class="footer-address-nodes">
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong>Communications</strong>
+                                <a href="mailto:info@advitumhealthcare.com">info@advitumhealthcare.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp Trade Gateway</strong>
+                                <a href="https://wa.me/919898265440" target="_blank">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <div>
+                                <strong>Voice Trunk Desk</strong>
+                                <a href="tel:+919898265440">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>Corporate Headquarters</strong>
+                                <span>Siddhi Vinayak Business Park, Makarba, S.G. Road, Ahmedabad (380051), Gujarat, India</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-signature-row">
+                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
+                <div class="designer-tag-container">
+                    <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank">Powered by Haidarali</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mainNavbar = document.querySelector('.nav-anchor');
+            const menuToggle = document.querySelector('#menuToggle');
+            const navLinkItems = document.querySelectorAll('.nav-link-item');
+
+            // 1. Scroll State Matrix Watcher
+            const syncScrollState = () => {
+                if (window.scrollY > 20) {
+                    mainNavbar.classList.add('scrolled');
+                } else {
+                    mainNavbar.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', syncScrollState, { passive: true });
+            syncScrollState();
+
+            // 2. Mobile Dashboard Drawer Viewport Control
+            if (menuToggle && mainNavbar) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mainNavbar.classList.toggle('open-viewport');
+                    
+                    if (mainNavbar.classList.contains('open-viewport')) {
+                        document.body.style.overflow = 'hidden';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                    } else {
+                        document.body.style.overflow = '';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+                    }
+                });
+            }
+
+            // 3. Mobile Sub-link Accordion Engine
+            navLinkItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 991) {
+                        const hasDropdown = item.parentElement.querySelector('.dropdown-card');
+                        if (hasDropdown) {
+                            e.preventDefault();
+                            const activeNode = item.parentElement;
+                            
+                            document.querySelectorAll('.nav-item').forEach(node => {
+                                if(node !== activeNode) node.classList.remove('mobile-active');
+                            });
+
+                            activeNode.classList.toggle('mobile-active');
+                        }
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const catalogModal = document.getElementById('catalogDetailsModal');
+    const closeModalBtn = document.getElementById('closeCatalogModalBtn');
+    
+    // Select Elements Inside the Modal Layout Blueprint
+    const mImg = document.getElementById('modalImage');
+    const mBadge = document.getElementById('modalBadge');
+    const mCategory = document.getElementById('modalCategory');
+    const mTitle = document.getElementById('modalTitle');
+    const mPrice = document.getElementById('modalPrice');
+    const mDesc = document.getElementById('modalDescription');
+
+    // Attach Click Event Listeners to all item cards natively
+    document.getElementById('productsCatalogGridMatrix').addEventListener('click', (e) => {
+        const cardNode = e.target.closest('.product-catalog-card');
+        if (!cardNode) return;
+
+        // Fetch RAW un-mutated details out of target element attributes
+        const title = cardNode.getAttribute('data-item-raw-name');
+        const category = cardNode.getAttribute('data-item-raw-category');
+        const price = cardNode.getAttribute('data-item-raw-price');
+        const imgUrl = cardNode.getAttribute('data-item-image');
+        const badge = cardNode.getAttribute('data-item-badge');
+        const description = cardNode.getAttribute('data-item-description');
+
+        // Render fields out inside corresponding structural nodes
+        mImg.src = imgUrl;
+        mImg.alt = title;
+        mBadge.textContent = badge;
+        mCategory.textContent = category;
+        mTitle.textContent = title;
+        mPrice.textContent = `$${price}`;
+        mDesc.textContent = description;
+
+        // Animate visibility smoothly
+        catalogModal.classList.add('modal-visible');
+        document.body.style.overflow = 'hidden'; // Lock background scrolling
+    });
+
+    // Close Modal Callback Handlers
+    const closeCatalogModalView = () => {
+        catalogModal.classList.remove('modal-visible');
+        document.body.style.overflow = '';
+    };
+
+    closeModalBtn.addEventListener('click', closeCatalogModalView);
+    
+    // Close on clicking outside the modal window boundary
+    catalogModal.addEventListener('click', (e) => {
+        if (e.target === catalogModal) closeCatalogModalView();
+    });
+
+    // Close on hitting Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && catalogModal.classList.contains('modal-visible')) {
+            closeCatalogModalView();
+        }
+    });
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdVitum Healthcare | Global Nutraceuticals</title>
+    <link rel="icon" type="image/png" href="/logo.png?v=10">
+    <style>
+        body {
+            background-color: #0b0e14;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .formdesign {
+            background-color: #161b22;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #008c9e; /* Advitum Teal matching image_c5ff1b.png */
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            color: white;
+            border-radius: 6px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        input:focus {
+            border: 1px solid #008c9e;
+        }
+
+        input[type="button"] {
+            background-color: #008c9e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input[type="button"]:hover {
+            background-color: #00a8be;
+        }
+    </style>
+</head>
+<body>
+
+    <form class="formdesign" id="loginForm">
+        <h2>Admin Login</h2>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="button" value="Authenticate" onclick="validateLogin()">
+    </form>
+
+    <script>
+
+        function validateLogin() 
+        {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if (user === "admin" && pass === "786000") {
+                window.location.href = "/admin/dashboard";
+            } else {
+                alert("Invalid credentials. Access Denied.");
+            }
+        }
+        
+    </script>
+</body>
+</html>

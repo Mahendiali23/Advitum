@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdVitum Healthcare | Global Nutraceuticals</title>
+    <link rel="icon" type="image/png" href="/logo.png?v=10">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+    /* ==========================================================================
+   1. ENTERPRISE DESIGN SYSTEM VARIABLES & CORE RESET
+   ========================================================================== */
+:root {
+    --primary: #044E4A;
+    --primary-light: #0B6B65;
+    --primary-dark: #022F2D;
+    --accent: #10B981;
+    --accent-light: #E6FDF5;
+    --dark: #0F172A;
+    --text: #334155;
+    --text-muted: #64748B;
+    --bg-light: #F8FAFC;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --white: #FFFFFF;
+    --border: rgba(226, 232, 240, 0.8);
+    
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(4, 78, 74, 0.03);
+    --shadow-md: 0 16px 36px -4px rgba(4, 78, 74, 0.06);
+    --shadow-lg: 0 24px 60px -12px rgba(4, 78, 74, 0.12);
+    
+    --radius-pill: 100px;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+    height: 100%;
+}
+
+body { 
+    font-family: var(--font-main); 
+    color: var(--text); 
+    background-color: var(--bg-light); 
+    line-height: 1.6; 
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 { 
+    font-family: var(--font-heading); 
+    color: var(--dark); 
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: var(--transition); 
+}
+
+main {
+    flex: 1 0 auto;
+    padding-top: 80px; /* Synchronized with new structural desktop navbar height */
+}
+
+.wrapper { 
+    max-width: 1280px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
+    width: 100%; 
+}
+
+/* --- Premium Action Controls --- */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    letter-spacing: 0.3px;
+}
+
+.btn-action.primary {
+    background-color: var(--primary);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(4, 78, 74, 0.18);
+}
+
+.btn-action.primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.btn-action.primary:hover::before {
+    opacity: 1;
+}
+
+.btn-action.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(4, 78, 74, 0.28);
+}
+
+/* ==========================================================================
+   2. BRAND ARCHITECTURE LOGO (OPTIMIZED FOR EXACT ALIGNMENT)
+   ========================================================================== */
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.creative-logo {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.brand-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.brand-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-meta h2 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.brand-meta span {
+    font-size: 0.58rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   3. FLOATING NAVIGATION ARCHITECTURE (DESKTOP REFACTOR)
+   ========================================================================== */
+.nav-anchor {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 80px; 
+    z-index: 1000;
+    padding: 0 32px;
+    background-color: white;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: height 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-anchor.scrolled {
+    height: 68px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow-md);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px; 
+    margin: 0 auto;
+}
+
+.nav-linkset {
+    display: flex;
+    align-items: center;
+    gap: 4px; 
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link-item {
+    font-size: 0.86rem; 
+    font-weight: 600;   
+    color: var(--text-muted);      
+    padding: 8px 16px; 
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    position: relative;
+    letter-spacing: -0.01em;
+}
+
+.nav-link-item i {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* --- State Anchoring System --- */
+
+/* Normal Layer Reset (Handled by base color definitions) */
+
+/* Hover Layer State */
+.nav-link-item:hover {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.04);
+}
+
+.nav-link-item:hover i {
+    color: var(--primary);
+}
+
+/* Active State Layer Anchor */
+.nav-link-item.active {
+    color: var(--primary);
+    background-color: var(--accent-light);
+    font-weight: 700;
+}
+
+.nav-link-item.active i {
+    color: var(--primary);
+}
+
+.nav-item:hover .nav-link-item i {
+    transform: rotate(180deg);
+}
+
+.nav-actions-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lang-switcher {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+}
+
+.lang-switcher:hover {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.04);
+}
+
+.btn-contact {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--primary); 
+    padding: 10px 20px;
+    border-radius: var(--radius-pill); 
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(4, 78, 74, 0.12);
+}
+
+.btn-contact:hover {
+    background-color: var(--primary-light); 
+    box-shadow: 0 6px 18px rgba(4, 78, 74, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Premium Desktop Hover Dropdowns */
+.dropdown-card {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px); 
+    min-width: 240px; 
+    border-radius: var(--radius-lg);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(16px);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+    z-index: 1010;
+}
+
+.nav-item:hover .dropdown-card {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.dropdown-node a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px; 
+    font-size: 0.84rem; 
+    font-weight: 500;
+    color: var(--text);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.dropdown-node a:hover {
+    background-color: var(--accent-light);
+    color: var(--primary-light);
+    padding-left: 18px;
+}
+
+.mobile-hamburger {
+    display: none;
+    font-size: 1.4rem; 
+    cursor: pointer;
+    color: var(--dark);
+    background: transparent;
+    border: none;
+    padding: 4px;
+    transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   4. MODERN FOOTER PIPELINE
+   ========================================================================== */
+.footer-architecture {
+    background-color: #020C0B;
+    color: #8A9AAD;
+    padding: 100px 0 40px;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(16, 185, 129, 0.15);
+    position: relative;
+    flex-shrink: 0; 
+}
+
+.footer-matrix-pipeline {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+}
+
+.footer-anchor-identity h3 {
+    color: var(--white);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.footer-anchor-identity p {
+    line-height: 1.7;
+    color: #9494A1;
+}
+
+.footer-social-channels {
+    display: flex;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.footer-social-channels a {
+    width: 42px;
+    height: 42px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9494A1;
+    font-size: 1.1rem;
+}
+
+.footer-social-channels a:hover {
+    background-color: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+}
+
+.footer-link-group h4 {
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    font-weight: 700;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-link-group h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 24px;
+    height: 2px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.footer-link-group ul {
+    list-style: none;
+}
+
+.footer-link-group ul li {
+    margin-bottom: 14px;
+}
+
+.footer-link-group ul li a {
+    color: #8A9AAD;
+    display: inline-block;
+}
+
+.footer-link-group ul li a:hover {
+    color: var(--white);
+    transform: translateX(4px);
+}
+
+.footer-address-nodes li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 20px !important;
+}
+
+.footer-address-nodes li i {
+    color: var(--accent);
+    font-size: 1rem;
+    background: rgba(16, 185, 129, 0.06);
+    padding: 10px;
+    border-radius: var(--radius-md);
+}
+
+.footer-address-nodes div strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.footer-address-nodes div span, 
+.footer-address-nodes div a {
+    color: #9494A1;
+    line-height: 1.5;
+}
+
+.footer-signature-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: #61616A;
+}
+
+.designer-tag-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(4, 78, 74, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.08);
+    border-radius: var(--radius-pill);
+    padding: 8px 20px;
+}
+
+.designer-tag-container a {
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.designer-tag-container a:hover {
+    color: var(--white);
+}
+
+/* ==========================================================================
+   5. BREAKPOINT RESPONSIVE GRID MATRIX & COMPRESSION FIXES
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .nav-anchor {
+        padding: 0 24px;
+    }
+    .footer-matrix-pipeline {
+        grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+        gap: 32px;
+    }
+}
+
+/* --- Tablet / Large Mobile Viewports --- */
+@media (max-width: 991px) {
+    main {
+        padding-top: 72px; /* Aligns smoothly with new structural responsive height bounds */
+    }
+
+    .mobile-hamburger {
+        display: block;
+    }
+
+    /* Fixed Layout Footprint Preservation */
+    .brand-wrapper {
+        min-width: 0;
+        max-width: 75%;
+    }
+
+    .creative-logo {
+        width: 38px !important;    
+        height: 38px !important;   
+        flex-shrink: 0 !important; 
+    }
+
+    .brand-logo-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important; 
+    }
+
+    .brand-meta h2 {
+        font-size: 1.1rem;
+    }
+
+    .nav-anchor {
+        height: 72px;
+        padding: 0 24px;
+    }
+
+    /* Sliding Navigation Drawer Structure */
+    .nav-linkset {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 72px);
+        background: #021715; 
+        flex-direction: column;
+        align-items: stretch;
+        padding: 32px 24px;
+        gap: 12px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+        z-index: 999;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .nav-linkset::before {
+        content: 'DISTRIBUTION DIRECTORY';
+        display: block;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+        color: rgba(16, 185, 129, 0.6);
+        font-weight: 700;
+        margin-bottom: 4px;
+        padding-left: 12px;
+    }
+
+    /* Drawer Visibility Modifier State */
+    .nav-anchor.open-viewport .nav-linkset {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-actions-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .lang-switcher {
+        color: rgba(255, 255, 255, 0.8);
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .btn-contact {
+        width: 100%;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    /* Drawer Item Typography Real Estate Overrides */
+    .nav-link-item {
+        width: 100%;
+        color: rgba(255, 255, 255, 0.75);
+        padding: 12px 18px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--radius-md);
+        justify-content: space-between;
+        font-size: 0.9rem;
+    }
+
+    .nav-link-item:hover,
+    .nav-link-item.active,
+    .nav-item.mobile-active .nav-link-item {
+        color: var(--white);
+        background-color: rgba(16, 185, 129, 0.15);
+        border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .nav-link-item i {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .nav-item.mobile-active .nav-link-item i {
+        transform: rotate(180deg);
+        color: var(--accent);
+    }
+
+    /* Mobile Accordion Dropdowns */
+    .dropdown-card {
+        position: static;
+        transform: none !important;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        background: rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        border: none;
+        padding: 4px;
+        display: none;
+        border-left: 2px solid var(--accent);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        width: 100%;
+        margin-top: -4px;
+    }
+
+    .nav-item.mobile-active .dropdown-card {
+        display: block;
+    }
+
+    .dropdown-node a {
+        color: rgba(255, 255, 255, 0.65);
+        padding: 10px 16px;
+        font-size: 0.84rem;
+    }
+
+    .dropdown-node a:hover {
+        background: transparent;
+        color: var(--white);
+        padding-left: 20px;
+    }
+
+    /* Open Navigation Header Override Theme */
+    .nav-anchor.open-viewport {
+        background-color: #021715 !important;
+        border-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .nav-anchor.open-viewport .brand-meta h2,
+    .nav-anchor.open-viewport .mobile-hamburger { 
+        color: var(--white); 
+    }
+    
+    .btn-blog-container {
+        width: 100%;
+    }
+    
+    .btn-blog-container .btn-action {
+        width: 100%;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .footer-matrix-pipeline {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+    }
+}
+
+/* --- Mobile Viewports (600px Breakpoint) --- */
+@media (max-width: 600px) {
+    .footer-matrix-pipeline {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footer-anchor-identity h3 {
+        font-size: 1.45rem;
+    }
+    .footer-signature-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+    }
+    .designer-tag-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
+/* ==========================================================================
+   1. DESIGN TOKENS & SYSTEM VARIABLES
+   ========================================================================== */
+:root {
+    /* Color Palette */
+    --primary: #044E4A;
+    --primary-light: #0d6e69;
+    --primary-dark: #022F2D;
+    --accent: #10B981;
+    --accent-glow: rgba(16, 185, 129, 0.15);
+    --dark: #0B132B;
+    --text: #4A5568;
+    --text-muted: #718096;
+    --white: #ffffff;
+    --bg-light: #F8FAFC;
+    --bg-glass: rgba(255, 255, 255, 0.75);
+    --border: #E2E8F0;
+    --border-perf: rgba(12, 91, 143, 0.08);
+
+    /* Typography */
+    --font-heading: 'Poppins', sans-serif;
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+
+    /* Layout & Component Tokens */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-pill: 50px;
+    
+    /* Animation Framework */
+    --transition: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.2s ease;
+}
+
+/* Base resets & scannability architecture */
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+/* Typography Defaults */
+.section-tagline {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-family: var(--font-main);
+}
+
+.section-title {
+    font-size: 2.25rem;
+    color: var(--dark);
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-family: var(--font-heading);
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+    font-family: var(--font-main);
+}
+
+.section-header-center {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 52px;
+}
+
+/* Global Buttons UI */
+.btn-action.primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+.btn-action.primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.center-action-row { text-align: center; }
+
+
+/* ==========================================================================
+   2. HERO BANNER SLIDER SYSTEM
+   ========================================================================== */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 100%; 
+    max-height: 750px;
+    overflow: hidden;
+    font-family: var(--font-main);
+}
+
+.hero-slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: var(--transition-smooth);
+}
+
+.hero-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+}
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.3));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+/* Slider Navigation Controls (Arrows) */
+.slide-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background: var(--bg-glass);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: var(--transition-smooth);
+}
+.slide-arrow:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.prev-arrow { left: 30px; }
+.next-arrow { right: 30px; }
+
+/* Navigation Dots */
+.slide-dots {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.2);
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    backdrop-filter: blur(4px);
+}
+.dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+.dot.active {
+    background: var(--accent);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+
+/* ==========================================================================
+   3. ULTRA-COMPACT FLOATING ACTION GROUP
+   ========================================================================== */
+.floating-action-group {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.floating-action-group > a {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-fast);
+}
+
+.whatsapp-btn {
+    gap: 6px;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--white);
+    background-color: #25D366;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.whatsapp-btn .whatsapp-icon {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+.whatsapp-btn:hover { background-color: #20ba59; }
+
+.explore-btn {
+    padding: 10px 24px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--white);
+    background-color: #111;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.explore-btn:hover { background-color: var(--primary-light); }
+
+.whatsapp-btn:hover, .explore-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+.whatsapp-btn:active, .explore-btn:active { transform: translateY(0); }
+
+
+/* ==========================================================================
+   4. MARQUEE TRUST ENGINE SECTION (FIXED POSITIONING)
+   ========================================================================== */
+.trust-bar {
+    position: relative;
+    background-color: #fafbfc;
+    padding: 60px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.nav-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 70px; /* Increased padding to make room for buttons */
+}
+
+.trust-track {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 10px;
+    width: 100%;
+    overflow-x: auto;
+    cursor: grab;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.trust-track::-webkit-scrollbar { display: none; }
+
+/* Navigation Buttons - Positioned Safely */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+}
+
+.nav-btn.prev { left: 1px; } /* Pushed further out */
+.nav-btn.next { right: 1px; }
+
+.nav-btn:hover { 
+    background: var(--accent); 
+    color: #fff; 
+    transform: translateY(-50%) scale(1.1); 
+}
+
+/* Trust Nodes */
+.trust-node {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1A202C;
+    padding: 16px 28px;
+    border-radius: 16px;
+    flex-shrink: 0;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid var(--accent);
+    box-shadow: 0 4px 6px rgba(12, 91, 143, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    user-select: none;
+}
+
+/* Proper Hover Effect */
+.trust-node:hover {
+    transform: translateY(-5px);
+    border-color: transparent;
+    box-shadow: 0 10px 20px rgba(12, 91, 143, 0.15);
+}
+
+.trust-node i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #f8fafc;
+    color: var(--accent);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.trust-node:hover i {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+/* Responsive Hide for Buttons */
+@media (max-width: 768px) {
+    .nav-btn { display: none; }
+    .nav-wrapper { padding: 0 20px; }
+}
+
+/* ==========================================================================
+   5. CONTENT COMPONENTS BLOCK SYSTEM
+   ========================================================================== */
+.about-section, .categories-section, .solutions-section, .private-label-section {
+    padding: 100px 0;
+}
+
+.about-section { background-color: var(--white); }
+.categories-section { background-color: var(--bg-light); }
+.solutions-section { background-color: var(--white); }
+.private-label-section { background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%); }
+.certifications-section { padding: 40px 0; background: var(--white); }
+.presence-section { padding: 80px 0; background-color: var(--white); }
+
+/* --- About Grid Mechanics --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+}
+.about-paragraph {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.65;
+    font-family: var(--font-main);
+}
+.about-paragraph.highlight-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary);
+    line-height: 1.5;
+}
+.about-metrics {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+}
+.metric-card {
+    background: var(--bg-light);
+    border-left: 3px solid var(--accent);
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+}
+.metric-card h3 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    line-height: 1.1;
+    margin: 0 0 4px 0;
+    font-family: var(--font-heading);
+}
+.metric-card p {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin: 0;
+    font-family: var(--font-main);
+}
+.about-visual { position: relative; }
+.image-stack-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+}
+.main-stack-img { width: 100%; display: block; object-fit: cover; }
+
+.accent-badge-card {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    background: rgba(4, 78, 74, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.accent-badge-card i { color: var(--accent); font-size: 1.2rem; }
+.accent-badge-card span { font-size: 0.84rem; font-weight: 600; font-family: var(--font-main); }
+
+/* --- Categories Grid --- */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+}
+.category-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition: var(--transition-smooth);
+}
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(4, 78, 74, 0.04);
+    border-color: rgba(4, 78, 74, 0.15);
+}
+.cat-icon-wrap { font-size: 2rem; margin-bottom: 20px; display: inline-block; }
+.category-card h3 { font-size: 1.15rem; margin: 0 0 12px 0; font-weight: 700; color: var(--dark); font-family: var(--font-heading); }
+.category-card p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.5; margin: 0; font-family: var(--font-main); }
+
+/* --- Solutions Matrix Grid --- */
+.solutions-matrix {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+.solution-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: var(--transition-fast);
+}
+.solution-card:hover {
+    background: var(--white);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+}
+.sol-icon-box {
+    background: rgba(4, 78, 74, 0.05);
+    width: 48px; height: 48px;
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary); font-size: 1.25rem; flex-shrink: 0;
+    transition: var(--transition-fast);
+}
+.solution-card:hover .sol-icon-box { background: var(--primary); color: var(--white); }
+.sol-info h3 { font-size: 1.05rem; margin: 0 0 6px 0; font-family: var(--font-heading); color: var(--dark); }
+.sol-info p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.5; margin: 0; font-family: var(--font-main); }
+
+/* --- Private Label Split Layout --- */
+.manufacturing-split-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: stretch;
+}
+.mfg-panel {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+}
+.panel-header-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(16, 185, 129, 0.08); color: var(--primary);
+    padding: 6px 14px; border-radius: 30px; font-size: 0.76rem; font-weight: 700;
+    text-transform: uppercase; margin-bottom: 24px; font-family: var(--font-main);
+}
+.solution-checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 20px; }
+.solution-checklist li { display: flex; gap: 16px; align-items: flex-start; }
+.check-icon {
+    width: 24px; height: 24px; background: rgba(16, 185, 129, 0.15); color: var(--accent);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; flex-shrink: 0; margin-top: 2px;
+}
+.solution-checklist li strong { display: block; font-size: 0.92rem; color: var(--dark); margin-bottom: 2px; font-family: var(--font-heading); }
+.solution-checklist li span { display: block; font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; font-family: var(--font-main); }
+
+.forms-panel { background: var(--primary-dark); border-color: var(--primary-dark); color: rgba(255, 255, 255, 0.7); }
+.forms-panel .panel-header-badge { background: rgba(255, 255, 255, 0.08); color: var(--white); }
+.forms-intro { font-size: 0.88rem; margin-bottom: 28px; line-height: 1.5; font-family: var(--font-main); }
+.forms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+.form-node-card {
+    background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-md); padding: 20px; transition: var(--transition-fast);
+}
+.form-node-card:hover { background: rgba(255, 255, 255, 0.07); border-color: var(--accent); }
+.form-node-card i { color: var(--accent); font-size: 1.4rem; margin-bottom: 12px; display: block; }
+.form-node-card h4 { color: var(--white); font-size: 0.95rem; margin: 0 0 4px 0; font-family: var(--font-heading); }
+.form-node-card span { font-size: 0.76rem; line-height: 1.35; display: block; font-family: var(--font-main); }
+
+/* --- Trust Certifications Container --- */
+.cert-box-container {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px 40px;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    background: var(--bg-light);
+}
+.cert-meta { max-width: 320px; }
+.cert-meta h4 { font-size: 1.1rem; margin: 0 0 8px 0; font-family: var(--font-heading); }
+.cert-meta p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; margin: 0; font-family: var(--font-main); }
+.cert-badge-track { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.cert-item-block { text-align: center; width: 80px; }
+.cert-mock-logo {
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md);
+    height: 54px; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 0.85rem; color: var(--primary);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); margin-bottom: 6px; font-family: var(--font-heading);
+}
+.cert-item-block p { font-size: 0.58rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; line-height: 1.2; margin: 0; font-family: var(--font-main); }
+
+/* --- Global Regions Grid Area --- */
+.presence-container {
+    background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.03), transparent), var(--bg-light);
+    border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 60px; text-align: center;
+}
+.presence-header { max-width: 500px; margin: 0 auto 36px; }
+.presence-header p { font-size: 0.88rem; color: var(--text-muted); margin: 0; font-family: var(--font-main); }
+.regions-list-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.region-pill-node {
+    background: var(--white); border: 1px solid var(--border); padding: 12px 24px;
+    border-radius: 30px; font-size: 0.88rem; font-weight: 600; color: var(--dark);
+    display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    font-family: var(--font-main);
+}
+.region-pill-node i { color: var(--accent); }
+
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN CLEAN SYSTEM BREAKPOINTS
+   ========================================================================== */
+
+/* Laptops & Small Desktops (Tuning Column Splits) */
+@media (max-width: 1024px) {
+    .about-grid, .manufacturing-split-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .cert-box-container {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 32px;
+    }
+    .cert-meta { max-width: 100%; }
+    .cert-badge-track { justify-content: center; }
+}
+
+/* Tablets & Medium viewports */
+@media (max-width: 768px) {
+    .about-section, .categories-section, .solutions-section, .private-label-section {
+        padding: 60px 0;
+    }
+    .section-title { font-size: 1.75rem; }
+    .hero-banner { height: 55vh; }
+    .solutions-matrix { grid-template-columns: 1fr; }
+    .presence-container { padding: 40px 24px; }
+    .prev-arrow { left: 20px; }
+    .next-arrow { right: 20px; }
+}
+
+/* Mobile Devices */
+@media (max-width: 576px) {
+    .hero-banner {
+        height: 40vh;
+        min-height: 300px;
+        max-height: 400px;
+    }
+    .slide-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        border-radius: var(--radius-md);
+    }
+    .prev-arrow { left: 12px; }
+    .next-arrow { right: 12px; }
+    .slide-dots { bottom: 16px; padding: 6px 12px; gap: 8px; }
+    .explore-btn { padding: 12px 28px; font-size: 0.85rem; }
+    
+    .categories-grid, .forms-grid {
+        grid-template-columns: 1fr;
+    }
+    .mfg-panel { padding: 24px; }
+    .region-pill-node { width: 100%; justify-content: center; }
+    
+    /* CRITICAL FIX: Retain single row scrolling sequence layout on small devices */
+    .trust-track { gap: 20px; padding: 0 20px; }
+    .trust-node { padding: 12px 20px; font-size: 0.8rem; }
+}
+
+</style>
+</head>
+<body>
+
+    <header class="nav-anchor" id="mainHeader">
+        <div class="nav-container">
+            <div class="brand-wrapper" onclick="window.location.href='/home'">
+                <div class="creative-logo">
+                    <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" class="brand-logo-img">
+                </div>
+                <div class="brand-meta">
+                    <h2>AdVitum</h2>
+                    <span>Healthcare</span>
+                </div>
+            </div>
+            
+            <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            
+            <nav class="nav-linkset" id="navLinkset">
+                <div class="nav-item">
+                    <a href="/home" class="nav-link-item active">Home</a>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item">Company <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item">Services <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="/product" class="nav-link-item">Product's</a>
+                </div>
+                
+                
+                <div class="nav-item">
+                    <a href="/certifications" class="nav-link-item ">Certifications</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="/division" class="nav-link-item ">Pharma Division</a>
+                </div>
+                
+                <div class="nav-item btn-blog-container">
+                    <a href="/blog" class="btn-action primary">Blog</a>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="/contact" class="nav-link-item" style="color: var(--accent); font-weight: 700;">Contact Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    
+
+    <div class="hero-banner"  style="margin-top: 60px;">
+    <!-- The Slider Track -->
+    <div class="hero-slider-track">
+        <div class="hero-slide"><img src="01.png" alt="Medical Solutions 1"></div>
+        <div class="hero-slide"><img src="02.png" alt="Medical Solutions 2"></div>
+        <div class="hero-slide"><img src="03.png" alt="Medical Solutions 3"></div>
+        <div class="hero-slide"><img src="04.png" alt="Medical Solutions 4"></div>
+    </div>
+
+    <!-- Left & Right Arrow Buttons -->
+    <button class="slide-arrow prev-arrow" aria-label="Previous Slide">&#10094;</button>
+    <button class="slide-arrow next-arrow" aria-label="Next Slide">&#10095;</button>
+
+    <!-- Navigation Dots -->
+    <div class="slide-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+   <!-- Floating Action Group Pinned to Screen Bottom-Right -->
+<div class="floating-action-group">
+    
+    <!-- 1. WhatsApp Action Button (Top) -->
+    <a href="/contact" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+        <span>CHAT WITH US</span>
+    </a>
+
+    <!-- 2. Explore Button (Bottom) -->
+    <a href="/product" class="explore-btn">EXPLORE &gt;&gt;&gt;</a>
+
+</div>
+</div>
+
+<!-- ==========================================================================
+   TRUST BAR COMPONENT
+   ========================================================================== -->
+<section class="trust-bar" style="padding: 8px 0 !important; width: 100% !important; margin: 0 !important; max-width: 100% !important; box-sizing: border-box !important;">
+    <div class="nav-wrapper" style="display: flex !important; align-items: center !important; justify-content: space-between !important; width: 100% !important; max-width: 100% !important; padding: 0 4px !important; gap: 8px !important; box-sizing: border-box !important; margin: 0 !important;">
+        
+        <!-- Left Button: Zero side margin -->
+        <button class="nav-btn prev" style="position: static !important; top: auto !important; left: auto !important; transform: none !important; margin: 0 !important; background-color: #0d6e69 !important; flex-shrink: 0 !important; cursor: pointer;">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        
+        <!-- Cards Track Container -->
+        <div class="trust-track" style="display: flex !important; align-items: center !important; gap: 12px !important; margin: 0 !important; flex: 1 !important; min-width: 0 !important; overflow-x: auto !important; scrollbar-width: none !important; -ms-overflow-style: none !important; white-space: nowrap !important;">
+            <div class="trust-node" style="flex-shrink: 0 !important;"><i class="fa-solid fa-award"></i> <span>Quality-Focused Supply</span></div>
+            <div class="trust-node" style="flex-shrink: 0 !important;"><i class="fa-solid fa-tags"></i> <span>Private Label Solutions</span></div>
+            <div class="trust-node" style="flex-shrink: 0 !important;"><i class="fa-solid fa-ship"></i> <span>International Export Support</span></div>
+            <div class="trust-node" style="flex-shrink: 0 !important;"><i class="fa-solid fa-industry"></i> <span>Reliable Manufacturing Network</span></div>
+            <div class="trust-node" style="flex-shrink: 0 !important;"><i class="fa-solid fa-handshake-dollar"></i> <span>Competitive Pricing</span></div>
+            <div class="trust-node" style="flex-shrink: 0 !important;"><i class="fa-solid fa-globe"></i> <span>Global Business Partnerships</span></div>
+        </div>
+        
+        <!-- Right Button: Zero side margin -->
+        <button class="nav-btn next" style="position: static !important; top: auto !important; right: auto !important; transform: none !important; margin: 0 !important; background-color: #0d6e69 !important; flex-shrink: 0 !important; cursor: pointer;">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+    </div>
+</section>
+
+<!-- ==========================================================================
+   ABOUT SECTION
+   ========================================================================== -->
+<section class="about-section" id="about" style="margin-top: -90px; padding-left: 20px; padding-right: 20px;">
+    <div class="wrapper" style="max-width: 95%; width: 100%; margin-left: auto; margin-right: auto; padding-left: 0; padding-right: 0;">
+        <div class="about-grid">
+            <div class="about-content">
+                <span class="section-tagline">Global Wellness Architecture</span>
+                <h2 class="section-title">About AdVitum Healthcare</h2>
+                <p class="about-paragraph highlight-text">AdVitum Healthcare is an India-based healthcare export company focused on nutraceutical, wellness, and future pharmaceutical solutions for international markets.</p>
+                <p class="about-paragraph">We are committed to delivering quality-driven products, professional export support, and long-term business partnerships through trusted manufacturing collaborations and customer-focused service.</p>
+                <p class="about-paragraph">Our goal is to support global healthcare businesses with reliable, innovative, and export-ready nutraceutical solutions from India.</p>
+                <div class="about-metrics">
+                    <div class="metric-card">
+                        <h3>India</h3>
+                        <p>Operational Base</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>100%</h3>
+                        <p>Export Ready</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="image-stack-wrapper">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800" alt="Laboratory Quality Research" class="main-stack-img">
+                    <div class="accent-badge-card">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Quality Certified Network</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   PRODUCT CATEGORIES SECTION
+   ========================================================================== -->
+<section class="categories-section" id="categories" style="padding-top: 10px; padding-bottom: 10px; padding-left: 8px; padding-right: 8px; margin-top: 0;">
+    <div class="wrapper" style="max-width: 96%; width: 100%; margin-left: auto; margin-right: auto; padding-left: 0; padding-right: 0;">
+        <div class="section-header-center">
+            <span class="section-tagline">Comprehensive Formulation Portfolio</span>
+            <h2 class="section-title">Targeted Product Categories</h2>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="cat-icon-wrap">🌿</div>
+                <h3>General Wellness</h3>
+                <p>Core daily nutrition and therapeutic vitalization formulations.</p>
+            </div>
+            <div class="category-card">
+                <div class="cat-icon-wrap">🦴</div>
+                <h3>Bone & Joint Care</h3>
+                <p>Advanced structural matrices targeting mobility, calcium, and joint repair.</p>
+            </div>
+            <div class="category-card">
+                <div class="cat-icon-wrap">♀️</div>
+                <h3>Women’s Health</h3>
+                <p>Hormonal balance, prenatal optimization, and lifecycle vitality pathways.</p>
+            </div>
+            <div class="category-card">
+                <div class="cat-icon-wrap">♂️</div>
+                <h3>Men’s Health</h3>
+                <p>Stamina optimization, energy metabolism, and targeted metabolic care.</p>
+            </div>
+            <div class="category-card">
+                <div class="cat-icon-wrap">✨</div>
+                <h3>Beauty & Hair Care</h3>
+                <p>Nutricosmetic formulations designed for collagen support and cellular radiance.</p>
+            </div>
+            <div class="category-card">
+                <div class="cat-icon-wrap">🧠</div>
+                <h3>Brain & Nerve Health</h3>
+                <p>Nootropic vectors and neurological support systems for cognitive clarity.</p>
+            </div>
+            <div class="category-card">
+                <div class="cat-icon-wrap">🌱</div>
+                <h3>Digestive & Immunity</h3>
+                <p>Gastrointestinal microflora stabilizers and biological defenses enhancers.</p>
+            </div>
+            <div class="category-card">
+                <div class="cat-icon-wrap">💧</div>
+                <h3>Effervescent Range</h3>
+                <p>High-bioavailability, soluble rapid-delivery tablet technologies.</p>
+            </div>
+            <div class="category-card">
+                <div class="cat-icon-wrap">🍬</div>
+                <h3>Gummies Range</h3>
+                <p>Premium functional confectionery formats for accessible health delivery.</p>
+            </div>
+        </div>
+
+        <div class="center-action-row">
+            <a href="#" class="btn-action primary">View All Categories <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   EXPORT SOLUTIONS MATRIX (4x2 Optimized Layout)
+   ========================================================================== -->
+<section class="solutions-section" id="solutions" style="padding-top: 30px !important; padding-bottom: 40px !important; padding-left: 15px !important; padding-right: 15px !important; margin-top: 0 !important;">
+    <div class="wrapper" style="max-width: 96% !important; width: 100% !important; margin-left: auto !important; margin-right: auto !important; padding-left: 0 !important; padding-right: 0 !important;">
+        
+        <div class="section-header-center">
+            <span class="section-tagline">Strategic Execution Capabilities</span>
+            <h2 class="section-title">Our Global Export Solutions</h2>
+        </div>
+
+        <div class="solutions-matrix">
+            <div class="solution-card">
+                <div class="sol-icon-box"><i class="fa-solid fa-globe"></i></div>
+                <div class="sol-info">
+                    <h3>Global Supply</h3>
+                    <p>Seamless international trade distribution pipelines with deep regulatory clearance capabilities.</p>
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-icon-box"><i class="fa-solid fa-tags"></i></div>
+                <div class="sol-info">
+                    <h3>Private Labeling</h3>
+                    <p>End-to-end custom brand building featuring premium positioning metrics.</p>
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-icon-box"><i class="fa-solid fa-industry"></i></div>
+                <div class="sol-info">
+                    <h3>OEM Manufacturing</h3>
+                    <p>Flexible manufacturing capacity matching precise tech-transfer standards.</p>
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-icon-box"><i class="fa-solid fa-flask"></i></div>
+                <div class="sol-info">
+                    <h3>Product Development</h3>
+                    <p>R&D iteration testing designed to meet strict geographic regulatory demands.</p>
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-icon-box"><i class="fa-solid fa-box-open"></i></div>
+                <div class="sol-info">
+                    <h3>Custom Packaging</h3>
+                    <p>Climate-resilient, custom export barriers tailored for shelf life optimization.</p>
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-icon-box"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="sol-info">
+                    <h3>Quality Assurance</h3>
+                    <p>Rigorous, batch-by-batch laboratory validation tracking with full traceability.</p>
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-icon-box"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                <div class="sol-info">
+                    <h3>Export Logistics</h3>
+                    <p>Optimized cold-chain and multi-modal transit management for continuous supply lines.</p>
+                </div>
+            </div>
+            <div class="solution-card">
+                <div class="sol-icon-box"><i class="fa-solid fa-handshake"></i></div>
+                <div class="sol-info">
+                    <h3>Business Partnerships</h3>
+                    <p>Equitable, long-term commercial models structured for shared market growth.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+<!-- ==========================================================================
+   PRIVATE LABEL & MANUFACTURING SYSTEM
+   ========================================================================== -->
+<section class="private-label-section" id="private-label">
+    <div class="wrapper">
+        <div class="private-header">
+            <span class="section-tagline">Industrial Scaling & Formulation Flexibility</span>
+            <h2 class="section-title">Private Label & Third-Party Manufacturing</h2>
+            <p class="section-subtitle">AdVitum Healthcare provides customized private label and third-party manufacturing support for international distributors, importers, and healthcare brands.</p>
+        </div>
+
+        <div class="manufacturing-split-grid">
+            <div class="mfg-panel solutions-panel">
+                <div class="panel-header-badge">
+                    <i class="fa-solid fa-gears"></i> <span>Our Turnkey Solutions</span>
+                </div>
+                <ul class="solution-checklist">
+                    <li>
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <strong>Custom Branding</strong>
+                            <span>Visual ecosystem definition to target localized consumer bases.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <strong>Packaging Solutions</strong>
+                            <span>Blister packs, composite cans, premium jars, and custom configurations.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <strong>Bulk Manufacturing</strong>
+                            <span>High-output industrial throughput maintaining absolute dosage uniformities.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <strong>OEM/ODM Services</strong>
+                            <span>Complete custom specifications control from basic idea validation to shelf delivery.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <strong>Export-Ready Production</strong>
+                            <span>Documentation and chemical parameters matching localized import guidelines.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <strong>Customized Formulations</strong>
+                            <span>Tailored vitamin matrices, allergen-free components, and optimized taste profiles.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mfg-panel forms-panel">
+                <div class="panel-header-badge">
+                    <i class="fa-solid fa-capsules"></i> <span>Supported Galenical Forms</span>
+                </div>
+                <p class="forms-intro">Our factories adapt to diverse physical configurations for high biological performance and commercial viability.</p>
+                
+                <div class="forms-grid">
+                    <div class="form-node-card">
+                        <i class="fa-solid fa-tablets"></i>
+                        <h4>Tablets</h4>
+                        <span>Coated, chewable, or delayed-release layers.</span>
+                    </div>
+                    <div class="form-node-card">
+                        <i class="fa-solid fa-capsules"></i>
+                        <h4>Capsules</h4>
+                        <span>Vegetarian, gelatin, or liquid-filled options.</span>
+                    </div>
+                    <div class="form-node-card">
+                        <i class="fa-solid fa-candy-cane"></i>
+                        <h4>Gummies</h4>
+                        <span>Pectin-based functional confections.</span>
+                    </div>
+                    <div class="form-node-card">
+                        <i class="fa-solid fa-mortar-pestle"></i>
+                        <h4>Powders</h4>
+                        <span>High-homogeneity nutritional matrices.</span>
+                    </div>
+                    <div class="form-node-card">
+                        <i class="fa-solid fa-envelopes-bulk"></i>
+                        <h4>Sachets</h4>
+                        <span>Precise unit-dose dynamic barriers.</span>
+                    </div>
+                    <div class="form-node-card">
+                        <i class="fa-solid fa-droplet"></i>
+                        <h4>Effervescent Tablets</h4>
+                        <span>Fast-dissolving, carbonated release formats.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   STANDARDS & CERTIFICATIONS COMPONENT
+   ========================================================================== -->
+<section class="certifications-section" style="padding: 10px 0 !important; width: 100% !important; margin: 0 !important; box-sizing: border-box !important;">
+
+    <div class="wrapper">
+        <div class="cert-box-container">
+            <div class="cert-meta">
+                <h4>Standards & Certifications</h4>
+                <p>Every product lot leaves our partner facilities with internationally recognized validation frameworks.</p>
+            </div>
+            <div class="cert-badge-track">
+                <div class="cert-item-block">
+                    <div class="cert-mock-logo"><span>GMP</span></div>
+                    <!-- <p>Good Manufacturing Practice</p> -->
+                </div>
+                <div class="cert-item-block">
+                    <div class="cert-mock-logo"><span>ISO</span></div>
+                    <!-- <p>9001 & 22000 Quality Management</p> -->
+                </div>
+                <div class="cert-item-block">
+                    <div class="cert-mock-logo"><span>HACCP</span></div>
+                    <!-- <p>Hazard Analysis Control</p> -->
+                </div>
+                <div class="cert-item-block">
+                    <div class="cert-mock-logo"><span>FSSAI</span></div>
+                    <!-- <p>Food Safety Standards India</p> -->
+                </div>
+                <div class="cert-item-block">
+                    <div class="cert-mock-logo"><span>HALAL</span></div>
+                    <!-- <p>Compliance Certified</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   GLOBAL PRESENCE MAP SUMMARY
+   ========================================================================== -->
+<section class="presence-section">
+    <div class="wrapper">
+        <div class="presence-container">
+            <div class="presence-header">
+                <span class="section-tagline">Logistical Reach</span>
+                <h2 class="section-title">Our Global Presence</h2>
+                <p>Connecting modern Indian nutricosmetics and therapeutic labs to global distributors.</p>
+            </div>
+            <div class="regions-list-row">
+                <div class="region-pill-node"><i class="fa-solid fa-earth-asia"></i> Central Asia</div>
+                <div class="region-pill-node"><i class="fa-solid fa-earth-europe"></i> CIS Countries</div>
+                <div class="region-pill-node"><i class="fa-solid fa-map-location-dot"></i> Southeast Asia</div>
+                <div class="region-pill-node"><i class="fa-solid fa-earth-africa"></i> Africa</div>
+                <div class="region-pill-node"><i class="fa-solid fa-map-pin"></i> Middle East</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <footer class="footer-architecture">
+        <div class="wrapper">
+            <div class="footer-matrix-pipeline">
+                <div class="footer-anchor-identity">
+                    <h3>AdVitum Healthcare</h3>
+                    <p style="margin-bottom: 12px;">An institutional-grade healthcare export framework operating from India, provisioning bespoke nutraceutical manufacturing and future pharmaceutical products across international domains.</p>
+                    <div class="footer-social-channels">
+                        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Global Web"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Corporate Matrix</h4>
+                    <ul>
+                        <li><a href="/home">Home Gateway</a></li>
+                        <li><a href="/about">About Architecture</a></li>
+                        <li><a href="/product">Nutraceutical Formulations</a></li>
+                        <li><a href="/label">Private Label Setup</a></li>
+                        <li><a href="/exportservices">Export Operations</a></li>
+                        <li><a href="/certifications">Global Regulatory Profiles</a></li>
+                        <li><a href="/blog">Corporate Insights</a></li>
+                        <li><a href="/contact">Initiate Trade Desk</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Formulation Arrays</h4>
+                    <ul>
+                        <li><a href="/product#multivitamins">Advanced Multivitamins</a></li>
+                        <li><a href="/product#herbal">Standardized Bio-Extracts</a></li>
+                        <li><a href="/product#sports">Kinetic Sports Nutrition</a></li>
+                        <li><a href="/product#gummies">Pectin Functional Gummies</a></li>
+                        <li><a href="/product#effervescent">Effervescent Technology</a></li>
+                        <li><a href="/product#womens-health">Targeted Women's Health</a></li>
+                        <li><a href="/product#mens-health">Andrological Optimization</a></li>
+                        <li><a href="/product#protein">Isolated Protein Arrays</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Global Nodes</h4>
+                    <ul class="footer-address-nodes">
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong>Communications</strong>
+                                <a href="mailto:info@advitumhealthcare.com">info@advitumhealthcare.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp Trade Gateway</strong>
+                                <a href="https://wa.me/919898265440" target="_blank">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <div>
+                                <strong>Voice Trunk Desk</strong>
+                                <a href="tel:+919898265440">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>Corporate Headquarters</strong>
+                                <span>Siddhi Vinayak Business Park, Makarba, S.G. Road, Ahmedabad (380051), Gujarat, India</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-signature-row">
+                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
+                <div class="designer-tag-container">
+                    <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank">Powered by Haidarali</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mainNavbar = document.querySelector('.nav-anchor');
+            const menuToggle = document.querySelector('#menuToggle');
+            const navLinkItems = document.querySelectorAll('.nav-link-item');
+
+            // 1. Scroll State Matrix Watcher
+            const syncScrollState = () => {
+                if (window.scrollY > 20) {
+                    mainNavbar.classList.add('scrolled');
+                } else {
+                    mainNavbar.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', syncScrollState, { passive: true });
+            syncScrollState();
+
+            // 2. Mobile Dashboard Drawer Viewport Control
+            if (menuToggle && mainNavbar) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mainNavbar.classList.toggle('open-viewport');
+                    
+                    if (mainNavbar.classList.contains('open-viewport')) {
+                        document.body.style.overflow = 'hidden';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                    } else {
+                        document.body.style.overflow = '';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+                    }
+                });
+            }
+
+            // 3. Mobile Sub-link Accordion Engine
+            navLinkItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 991) {
+                        const hasDropdown = item.parentElement.querySelector('.dropdown-card');
+                        if (hasDropdown) {
+                            e.preventDefault();
+                            const activeNode = item.parentElement;
+                            
+                            document.querySelectorAll('.nav-item').forEach(node => {
+                                if(node !== activeNode) node.classList.remove('mobile-active');
+                            });
+
+                            activeNode.classList.toggle('mobile-active');
+                        }
+                    }
+                });
+            });
+        });
+
+
+        // below is slide code 
+        document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector('.hero-slider-track');
+    const slides = document.querySelectorAll('.hero-slide');
+    const prevBtn = document.querySelector('.prev-arrow');
+    const nextBtn = document.querySelector('.next-arrow');
+    const dots = document.querySelectorAll('.dot');
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    let autoPlayTimer;
+
+    function updateSlider() {
+        // Moves the track horizontally by multi-ples of 100%
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Synchronize dots active look
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides; // Loops back to 0 at the end
+        updateSlider();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Loops to last slide if going backwards
+        updateSlider();
+    }
+
+    // Click Events
+    nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
+    prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+            resetAutoPlay();
+        });
+    });
+
+    // Auto-advance every 5 seconds seamlessly
+    function startAutoPlay() {
+        autoPlayTimer = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoPlay() {
+        clearInterval(autoPlayTimer);
+        startAutoPlay(); // Restarts clock so it doesn't flip instantly after a manual click
+    }
+
+   
+    startAutoPlay();
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector(".trust-track");
+    const prevBtn = document.querySelector(".nav-btn.prev");
+    const nextBtn = document.querySelector(".nav-btn.next");
+
+    // Button Click Logic
+    const scrollAmount = 300; 
+    nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
+    prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+
+    // Drag to Scroll Logic
+    let isDown = false;
+    let startX, scrollLeft;
+
+    track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => isDown = false);
+    track.addEventListener('mouseup', () => isDown = false);
+    track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        track.scrollLeft = scrollLeft - (x - startX) * 2;
+    });
+});
+
+    </script>
+</body>
+</html>

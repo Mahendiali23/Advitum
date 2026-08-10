@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdVitum Healthcare | Global Nutraceuticals</title>
+    <link rel="icon" type="image/png" href="/logo.png?v=10">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+         /* ==========================================================================
+   1. ENTERPRISE DESIGN SYSTEM VARIABLES & CORE RESET
+   ========================================================================== */
+:root {
+    --primary: #044E4A;
+    --primary-light: #0B6B65;
+    --primary-dark: #022F2D;
+    --accent: #10B981;
+    --accent-light: #E6FDF5;
+    --dark: #0F172A;
+    --text: #334155;
+    --text-muted: #64748B;
+    --bg-light: #F8FAFC;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --white: #FFFFFF;
+    --border: rgba(226, 232, 240, 0.8);
+    
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(4, 78, 74, 0.03);
+    --shadow-md: 0 16px 36px -4px rgba(4, 78, 74, 0.06);
+    --shadow-lg: 0 24px 60px -12px rgba(4, 78, 74, 0.12);
+    
+    --radius-pill: 100px;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+    height: 100%;
+}
+
+body { 
+    font-family: var(--font-main); 
+    color: var(--text); 
+    background-color: var(--bg-light); 
+    line-height: 1.6; 
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 { 
+    font-family: var(--font-heading); 
+    color: var(--dark); 
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: var(--transition); 
+}
+
+main {
+    flex: 1 0 auto;
+    padding-top: 80px; /* Synchronized with new structural desktop navbar height */
+}
+
+.wrapper { 
+    max-width: 1280px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
+    width: 100%; 
+}
+
+/* --- Premium Action Controls --- */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    letter-spacing: 0.3px;
+}
+
+.btn-action.primary {
+    background-color: var(--primary);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(4, 78, 74, 0.18);
+}
+
+.btn-action.primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.btn-action.primary:hover::before {
+    opacity: 1;
+}
+
+.btn-action.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(4, 78, 74, 0.28);
+}
+
+/* ==========================================================================
+   2. BRAND ARCHITECTURE LOGO (OPTIMIZED FOR EXACT ALIGNMENT)
+   ========================================================================== */
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.creative-logo {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.brand-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.brand-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-meta h2 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.brand-meta span {
+    font-size: 0.58rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   3. FLOATING NAVIGATION ARCHITECTURE (DESKTOP REFACTOR)
+   ========================================================================== */
+.nav-anchor {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 80px; 
+    z-index: 1000;
+    padding: 0 32px;
+    background-color: white;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: height 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-anchor.scrolled {
+    height: 68px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow-md);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px; 
+    margin: 0 auto;
+}
+
+.nav-linkset {
+    display: flex;
+    align-items: center;
+    gap: 4px; 
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link-item {
+    font-size: 0.86rem; 
+    font-weight: 600;   
+    color: var(--text-muted);      
+    padding: 8px 16px; 
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    position: relative;
+    letter-spacing: -0.01em;
+}
+
+.nav-link-item i {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* --- State Anchoring System --- */
+
+/* Normal Layer Reset (Handled by base color definitions) */
+
+/* Hover Layer State */
+.nav-link-item:hover {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.04);
+}
+
+.nav-link-item:hover i {
+    color: var(--primary);
+}
+
+/* Active State Layer Anchor */
+.nav-link-item.active {
+    color: var(--primary);
+    background-color: var(--accent-light);
+    font-weight: 700;
+}
+
+.nav-link-item.active i {
+    color: var(--primary);
+}
+
+.nav-item:hover .nav-link-item i {
+    transform: rotate(180deg);
+}
+
+.nav-actions-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lang-switcher {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+}
+
+.lang-switcher:hover {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.04);
+}
+
+.btn-contact {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--primary); 
+    padding: 10px 20px;
+    border-radius: var(--radius-pill); 
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(4, 78, 74, 0.12);
+}
+
+.btn-contact:hover {
+    background-color: var(--primary-light); 
+    box-shadow: 0 6px 18px rgba(4, 78, 74, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Premium Desktop Hover Dropdowns */
+.dropdown-card {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px); 
+    min-width: 240px; 
+    border-radius: var(--radius-lg);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(16px);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+    z-index: 1010;
+}
+
+.nav-item:hover .dropdown-card {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.dropdown-node a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px; 
+    font-size: 0.84rem; 
+    font-weight: 500;
+    color: var(--text);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.dropdown-node a:hover {
+    background-color: var(--accent-light);
+    color: var(--primary-light);
+    padding-left: 18px;
+}
+
+.mobile-hamburger {
+    display: none;
+    font-size: 1.4rem; 
+    cursor: pointer;
+    color: var(--dark);
+    background: transparent;
+    border: none;
+    padding: 4px;
+    transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   4. MODERN FOOTER PIPELINE
+   ========================================================================== */
+.footer-architecture {
+    background-color: #020C0B;
+    color: #8A9AAD;
+    padding: 100px 0 40px;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(16, 185, 129, 0.15);
+    position: relative;
+    flex-shrink: 0; 
+}
+
+.footer-matrix-pipeline {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+}
+
+.footer-anchor-identity h3 {
+    color: var(--white);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.footer-anchor-identity p {
+    line-height: 1.7;
+    color: #9494A1;
+}
+
+.footer-social-channels {
+    display: flex;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.footer-social-channels a {
+    width: 42px;
+    height: 42px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9494A1;
+    font-size: 1.1rem;
+}
+
+.footer-social-channels a:hover {
+    background-color: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+}
+
+.footer-link-group h4 {
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    font-weight: 700;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-link-group h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 24px;
+    height: 2px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.footer-link-group ul {
+    list-style: none;
+}
+
+.footer-link-group ul li {
+    margin-bottom: 14px;
+}
+
+.footer-link-group ul li a {
+    color: #8A9AAD;
+    display: inline-block;
+}
+
+.footer-link-group ul li a:hover {
+    color: var(--white);
+    transform: translateX(4px);
+}
+
+.footer-address-nodes li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 20px !important;
+}
+
+.footer-address-nodes li i {
+    color: var(--accent);
+    font-size: 1rem;
+    background: rgba(16, 185, 129, 0.06);
+    padding: 10px;
+    border-radius: var(--radius-md);
+}
+
+.footer-address-nodes div strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.footer-address-nodes div span, 
+.footer-address-nodes div a {
+    color: #9494A1;
+    line-height: 1.5;
+}
+
+.footer-signature-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: #61616A;
+}
+
+.designer-tag-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(4, 78, 74, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.08);
+    border-radius: var(--radius-pill);
+    padding: 8px 20px;
+}
+
+.designer-tag-container a {
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.designer-tag-container a:hover {
+    color: var(--white);
+}
+
+/* ==========================================================================
+   5. BREAKPOINT RESPONSIVE GRID MATRIX & COMPRESSION FIXES
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .nav-anchor {
+        padding: 0 24px;
+    }
+    .footer-matrix-pipeline {
+        grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+        gap: 32px;
+    }
+}
+
+/* --- Tablet / Large Mobile Viewports --- */
+@media (max-width: 991px) {
+    main {
+        padding-top: 72px; /* Aligns smoothly with new structural responsive height bounds */
+    }
+
+    .mobile-hamburger {
+        display: block;
+    }
+
+    /* Fixed Layout Footprint Preservation */
+    .brand-wrapper {
+        min-width: 0;
+        max-width: 75%;
+    }
+
+    .creative-logo {
+        width: 38px !important;    
+        height: 38px !important;   
+        flex-shrink: 0 !important; 
+    }
+
+    .brand-logo-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important; 
+    }
+
+    .brand-meta h2 {
+        font-size: 1.1rem;
+    }
+
+    .nav-anchor {
+        height: 72px;
+        padding: 0 24px;
+    }
+
+    /* Sliding Navigation Drawer Structure */
+    .nav-linkset {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 72px);
+        background: #021715; 
+        flex-direction: column;
+        align-items: stretch;
+        padding: 32px 24px;
+        gap: 12px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+        z-index: 999;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .nav-linkset::before {
+        content: 'DISTRIBUTION DIRECTORY';
+        display: block;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+        color: rgba(16, 185, 129, 0.6);
+        font-weight: 700;
+        margin-bottom: 4px;
+        padding-left: 12px;
+    }
+
+    /* Drawer Visibility Modifier State */
+    .nav-anchor.open-viewport .nav-linkset {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-actions-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .lang-switcher {
+        color: rgba(255, 255, 255, 0.8);
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .btn-contact {
+        width: 100%;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    /* Drawer Item Typography Real Estate Overrides */
+    .nav-link-item {
+        width: 100%;
+        color: rgba(255, 255, 255, 0.75);
+        padding: 12px 18px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--radius-md);
+        justify-content: space-between;
+        font-size: 0.9rem;
+    }
+
+    .nav-link-item:hover,
+    .nav-link-item.active,
+    .nav-item.mobile-active .nav-link-item {
+        color: var(--white);
+        background-color: rgba(16, 185, 129, 0.15);
+        border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .nav-link-item i {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .nav-item.mobile-active .nav-link-item i {
+        transform: rotate(180deg);
+        color: var(--accent);
+    }
+
+    /* Mobile Accordion Dropdowns */
+    .dropdown-card {
+        position: static;
+        transform: none !important;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        background: rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        border: none;
+        padding: 4px;
+        display: none;
+        border-left: 2px solid var(--accent);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        width: 100%;
+        margin-top: -4px;
+    }
+
+    .nav-item.mobile-active .dropdown-card {
+        display: block;
+    }
+
+    .dropdown-node a {
+        color: rgba(255, 255, 255, 0.65);
+        padding: 10px 16px;
+        font-size: 0.84rem;
+    }
+
+    .dropdown-node a:hover {
+        background: transparent;
+        color: var(--white);
+        padding-left: 20px;
+    }
+
+    /* Open Navigation Header Override Theme */
+    .nav-anchor.open-viewport {
+        background-color: #021715 !important;
+        border-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .nav-anchor.open-viewport .brand-meta h2,
+    .nav-anchor.open-viewport .mobile-hamburger { 
+        color: var(--white); 
+    }
+    
+    .btn-blog-container {
+        width: 100%;
+    }
+    
+    .btn-blog-container .btn-action {
+        width: 100%;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .footer-matrix-pipeline {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+    }
+}
+
+/* --- Mobile Viewports (600px Breakpoint) --- */
+@media (max-width: 600px) {
+    .footer-matrix-pipeline {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footer-anchor-identity h3 {
+        font-size: 1.45rem;
+    }
+    .footer-signature-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+    }
+    .designer-tag-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
+/* ==========================================================================
+   1. Design System Tokens & Variable Scoping (Enterprise Matched)
+   ========================================================================== */
+:root {
+    --primary: #044E4A;
+    --primary-light: #0B6B65;
+    --primary-dark: #011E1C; /* Synced with your enterprise dark choice */
+    --accent: #10B981;
+    --accent-light: #E6FDF5;
+    --dark: #0F172A;
+    --text: #334155;
+    --text-muted: #64748B;
+    --bg-light: #F8FAFC;
+    --bg-glass: rgba(255, 255, 255, 0.75); /* Matching exact structural opacity */
+    --white: #FFFFFF;
+    --border: rgba(226, 232, 240, 0.7); /* Matching clean border weights */
+    
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    
+    /* Premium Layered Cinematic Micro-Shadows System Overhauled */
+    --shadow-sm: 0 2px 8px -1px rgba(4, 78, 74, 0.02), 0 4px 16px -2px rgba(4, 78, 74, 0.02);
+    --shadow-md: 0 12px 24px -4px rgba(4, 78, 74, 0.04), 0 24px 48px -8px rgba(4, 78, 74, 0.03);
+    --shadow-lg: 0 32px 64px -16px rgba(4, 78, 74, 0.08), 0 16px 32px -8px rgba(4, 78, 74, 0.04);
+    
+    --radius-pill: 100px;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   2. Base Section Isolation & Structural Overrides
+   ========================================================================== */
+.advitum-page-container {
+    width: 100%;
+    margin-top: 0; /* Handled perfectly by global main layout container padding */
+    background-color: #FDFEFE;
+    font-family: var(--font-main);
+    color: var(--text);
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.advitum-page-container *,
+.advitum-page-container *::before,
+.advitum-page-container *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   3. Premium Hero Header Element (Detailed Typographic Downscaling)
+   ========================================================================== */
+.advitum-hero-header {
+    background: radial-gradient(120% 120% at 50% 0%, var(--primary-light) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+   
+    padding: 110px 24px 90px; /* Streamlined for corporate balance */
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Layer 1: High-Resolution Clinical Sourcing Network Imagery */
+.advitum-hero-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+   
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.14; /* Perfectly calculated contrast ratio protection */
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* Layer 2: Geometric Dot Matrix Grid Layer */
+.advitum-hero-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.advitum-hero-header h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem; /* Downscaled to match the clean corporate design polish exactly */
+    font-weight: 700;
+    margin-bottom: 16px;
+    margin-top: 50px;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    background: linear-gradient(180deg, var(--white) 40%, rgba(255, 255, 255, 0.85) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.advitum-hero-header p {
+    font-size: 0.95rem; /* Exactly configured micro typography baseline */
+    color: #E2E8F0;
+    max-width: 580px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Premium Navigation Tab Controller Pill Array */
+.advitum-tabs-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    padding: 5px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 5;
+}
+
+.advitum-tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem; /* Perfectly downscaled text matrix node */
+    letter-spacing: 0.02em;
+    padding: 10px 28px;
+    cursor: pointer;
+    border-radius: var(--radius-pill);
+    transition: var(--transition);
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.advitum-tab-btn:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+
+.advitum-tab-btn.is-active {
+    background: var(--white);
+    color: var(--primary-dark);
+    opacity: 1;
+    font-weight: 600;
+    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   4. Content Display Switching Mechanics
+   ========================================================================== */
+.advitum-tab-panel {
+    display: none;
+    max-width: 1200px; /* Aligned with your system's grid boundaries */
+    margin: 0 auto;
+    padding: 90px 32px;
+}
+
+.advitum-tab-panel.is-active {
+    display: block;
+    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translate3d(0, 15px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* ==========================================================================
+   5. Dynamic Layout Blocks & Premium Typography Harmony
+   ========================================================================== */
+.advitum-content-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 80px; /* Streamlined modern system spacing */
+    align-items: center; /* Enforces strict baseline alignment */
+    margin-bottom: 110px;
+}
+
+.advitum-content-grid.reverse-layout {
+    grid-template-columns: 0.95fr 1.05fr;
+}
+
+.advitum-text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.advitum-text-block h2 {
+    font-family: var(--font-heading);
+    font-size: 1.95rem; /* Downscaled from 2.4rem for sharp layout aesthetics */
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+    margin-bottom: 20px;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 70%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.advitum-text-block p {
+    font-size: 0.92rem; /* Clean, modern scalable body line copy */
+    line-height: 1.55;
+    color: #475569; 
+    margin-bottom: 20px;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+}
+
+.advitum-text-block p:last-of-type {
+    margin-bottom: 0;
+}
+
+.advitum-text-block p strong {
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+/* Elegant Vector-Icon Checklists with Embedded Light Backdrops */
+.advitum-styled-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.advitum-styled-list li {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.4;
+    transition: var(--transition);
+}
+
+.advitum-styled-list li i {
+    color: var(--accent);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+/* ==========================================================================
+   6. Premium Interactive Feature Card Component (Box Shadow Arrays Updated)
+   ========================================================================== */
+.section-headline-block {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-headline-block h3 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem; /* Aligned typography nodes */
+    color: var(--primary-dark);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.advitum-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 110px;
+}
+
+.advitum-feature-card {
+    background: var(--white); /* Switched away from linear to clean flat white */
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px; /* Standard micro-padding framework */
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm); /* Bound directly to dynamic shadow tokens */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transition: var(--transition);
+    z-index: 1;
+}
+
+/* Dynamic glow borders architecture */
+.advitum-feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 1.5px;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+
+.card-icon-frame {
+    width: 44px;
+    height: 44px;
+    background: var(--bg-light);
+    color: var(--primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.advitum-feature-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: var(--transition);
+}
+
+.advitum-feature-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    transition: var(--transition);
+}
+
+/* ==========================================================================
+   7. Luxury Manufacturing Capabilities Visual Badges Array
+   ========================================================================== */
+.manufacturing-caps-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.cap-badge-node {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: var(--radius-pill);
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--text);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+/* ==========================================================================
+   8. Minimal High-End Workflow Cards (Timeline Engine Layout)
+   ========================================================================== */
+.process-workflow-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.process-step-node {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.step-marker-count {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, rgba(4, 78, 74, 0.15) 0%, rgba(16, 185, 129, 0.03) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    user-select: none;
+}
+
+.process-step-node h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+}
+
+.process-step-node p {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+/* ==========================================================================
+   9. Desktop Interactive Hover Implementations
+   ========================================================================== */
+@media (hover: hover) {
+    .advitum-feature-card:hover {
+        transform: translate3d(0, -4px, 0);
+        box-shadow: var(--shadow-md);
+    }
+    .advitum-feature-card:hover::before {
+        opacity: 1;
+    }
+    .advitum-feature-card:hover h4 {
+        color: var(--primary);
+    }
+    .cap-badge-node:hover {
+        background: var(--primary);
+        color: var(--white);
+        border-color: transparent;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+    .process-step-node:hover {
+        border-color: rgba(16, 185, 129, 0.3);
+        transform: translate3d(0, -4px, 0);
+        box-shadow: var(--shadow-md);
+    }
+}
+
+/* ==========================================================================
+   10. Typography Micro-Utilities
+   ========================================================================== */
+.text-sm {
+    font-size: 0.84rem !important;
+    line-height: 1.5 !important;
+}
+
+/* ==========================================================================
+   11. Adaptive Responsive Layout Breakpoints
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .advitum-content-grid { gap: 40px; }
+}
+
+@media (max-width: 992px) {
+    .advitum-hero-header h1 { font-size: 2.1rem; }
+    .advitum-tab-panel { padding: 60px 24px; }
+    .advitum-content-grid, 
+    .advitum-content-grid.reverse-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+    .advitum-text-block h2 { font-size: 1.75rem; }
+}
+
+@media (max-width: 576px) {
+    .advitum-hero-header { padding: 80px 16px 60px; }
+    .advitum-hero-header h1 { font-size: 1.75rem; }
+    .advitum-tabs-nav { width: 100%; flex-direction: column; border-radius: var(--radius-lg); }
+    .advitum-tab-btn { width: 100%; padding: 12px; border-radius: var(--radius-md); }
+    .advitum-cards-grid { grid-template-columns: 1fr; gap: 20px; }
+    .process-workflow-timeline { grid-template-columns: 1fr; gap: 20px; }
+}
+
+    </style>
+</head>
+<body>
+
+   <header class="nav-anchor" id="mainHeader">
+        <div class="nav-container">
+            <div class="brand-wrapper" onclick="window.location.href='/home'">
+                <div class="creative-logo">
+                    <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" class="brand-logo-img">
+                </div>
+                <div class="brand-meta">
+                    <h2>AdVitum</h2>
+                    <span>Healthcare</span>
+                </div>
+            </div>
+            
+            <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            
+            <nav class="nav-linkset" id="navLinkset">
+                <div class="nav-item">
+                    <a href="/home" class="nav-link-item ">Home</a>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item">Company <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item active">Services <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="/product" class="nav-link-item">Product's</a>
+                </div>
+                
+                
+                <div class="nav-item">
+                    <a href="/certifications" class="nav-link-item ">Certifications</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="/division" class="nav-link-item ">Pharma Division</a>
+                </div>
+                
+                <div class="nav-item btn-blog-container">
+                    <a href="/blog" class="btn-action primary">Blog</a>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="/contact" class="nav-link-item" style="color: var(--accent); font-weight: 700;">Contact Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+<main class="advitum-page-container">
+    
+    <header class="advitum-hero-header" style="background: var(--primary-light); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; margin-top: -120px;">
+        <h1>Global Sourcing Excellence</h1>
+        <p>Explore our specialized private label solutions, dedicated international export services, and global regulatory compliance structures crafted for international B2B brands.</p>
+        
+        <nav class="advitum-tabs-nav">
+            <button class="advitum-tab-btn is-active" onclick="switchAdVitumTab(event, 'private-label-tab')">Private Label</button>
+            <button class="advitum-tab-btn" onclick="switchAdVitumTab(event, 'export-services-tab')">Export Services</button>
+              </nav>
+    </header>
+
+    <section id="private-label-tab" class="advitum-tab-panel is-active">
+        
+        <div class="advitum-content-grid">
+            <div class="advitum-text-block">
+                <h2>Private Label & Third-Party Manufacturing Solutions</h2>
+                <p>We support international healthcare businesses with private label nutraceutical solutions tailored to specific market requirements, branding preferences, and product positioning goals.</p>
+                <p>Our infrastructure provides an agile ecosystem built for reliable, consistent commercial output, helping international clients navigate cross-border trade effortlessly.</p>
+            </div>
+            
+            <div class="advitum-text-block">
+                <h2>Designed for Global Brands</h2>
+                <p>Our private label contract manufacturing pipelines are structured to meet the demanding scalability criteria of:</p>
+                <ul class="advitum-styled-list">
+                    <li><i class="fa-solid fa-box-open"></i> Importers & Large Scale Wholesalers</li>
+                    <li><i class="fa-solid fa-network-wired"></i> Global Distributors & Retail Chains</li>
+                    <li><i class="fa-solid fa-prescription-bottle-medical"></i> Established Healthcare & Online Wellness Brands</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-headline-block">
+            <h3>Our Private Label Services</h3>
+        </div>
+        
+        <div class="advitum-cards-grid">
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-gears"></i></div>
+                <h4>OEM Manufacturing</h4>
+                <p>Customized contract manufacturing solutions safely executed directly under your proprietary company brand name.</p>
+            </div>
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-handshake"></i></div>
+                <h4>Third-Party Production</h4>
+                <p>Reliable, compliant production support optimized for scalable corporate healthcare operations.</p>
+            </div>
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-flask-vial"></i></div>
+                <h4>Custom Formulations</h4>
+                <p>Advanced development support for specialized nutraceutical configurations based on global market trends.</p>
+            </div>
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-box"></i></div>
+                <h4>Packaging Solutions</h4>
+                <p>Professional primary and secondary structural packaging configurations for bottles, jars, sachets, tubes, and boxes.</p>
+            </div>
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-palette"></i></div>
+                <h4>Label Design Support</h4>
+                <p>Private branding visual architecture and global packaging identity compliance assistance.</p>
+            </div>
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                <h4>Bulk Supply Solutions</h4>
+                <p>Large-volume industrial production capabilities paired with dependable international export freight fulfillment.</p>
+            </div>
+        </div>
+
+        <div class="section-headline-block">
+            <h3>Private Label Operational Process</h3>
+        </div>
+        
+        <div class="process-workflow-timeline">
+            <div class="process-step-node">
+                <div class="step-marker-count">01</div>
+                <h4>Product Selection</h4>
+                <p>Choose from our verified, highly competitive nutraceutical and wellness product categories.</p>
+            </div>
+            <div class="process-step-node">
+                <div class="step-marker-count">02</div>
+                <h4>Branding & Packaging</h4>
+                <p>Finalize technical graphic design assets, container shapes, and label preferences.</p>
+            </div>
+            <div class="process-step-node">
+                <div class="step-marker-count">03</div>
+                <h4>Production Coordination</h4>
+                <p>Streamlined manufacturing, mixing, and primary packaging coordination process cycles.</p>
+            </div>
+            <div class="process-step-node">
+                <div class="step-marker-count">04</div>
+                <h4>Quality Review</h4>
+                <p>Rigid double-tier physical, chemical, and packaging quality verification protocols.</p>
+            </div>
+            <div class="process-step-node">
+                <div class="step-marker-count">05</div>
+                <h4>Export Documentation</h4>
+                <p>Preparation of precise regulatory paperwork to ensure smooth destination custom clearance.</p>
+            </div>
+            <div class="process-step-node">
+                <div class="step-marker-count">06</div>
+                <h4>International Shipping</h4>
+                <p>Global multi-modal freight logistics orchestration and secure drop-off coordination.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="export-services-tab" class="advitum-tab-panel">
+        
+        <div class="advitum-content-grid reverse-layout">
+            <div class="advitum-text-block">
+                <h2>Designed for Seamless Import Channels</h2>
+                <p>Our systems are built from the ground up to support modern procurement, minimizing supply delays through cross-border clearing mechanisms.</p>
+                <ul class="advitum-styled-list">
+                    <li><i class="fa-solid fa-globe"></i> International Importers & Distributors</li>
+                    <li><i class="fa-solid fa-shop"></i> Global Retail Chains & Supermarkets</li>
+                    <li><i class="fa-solid fa-file-medical"></i> Regulated Healthcare Procurement Desks</li>
+                    <li><i class="fa-solid fa-tags"></i> Premium Private Label Brand Entities</li>
+                </ul>
+            </div>
+            
+            <div class="advitum-text-block">
+                <h2>International Nutraceutical Export Solutions</h2>
+                <p>AdVitum Healthcare supports international buyers and healthcare businesses with export-focused nutraceutical supply solutions designed for smooth global trade operations.</p>
+                <p>We focus on supporting international nutraceutical exports through professional coordination, export-oriented heavy transit packaging, and reliable documentation assistance.</p>
+            </div>
+        </div>
+
+        <div class="section-headline-block">
+            <h3>Our Export Services</h3>
+        </div>
+        
+        <div class="advitum-cards-grid">
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-cubes"></i></div>
+                <h4>Bulk Supply Solutions</h4>
+                <p>Reliable large-volume nutraceutical export fulfillment models mapped to tight commercial lead times.</p>
+            </div>
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-folder-open"></i></div>
+                <h4>Export Documentation</h4>
+                <p>Professional cross-border clearance coordination and complete trade portfolio structuring.</p>
+            </div>
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-ship"></i></div>
+                <h4>International Shipping</h4>
+                <p>Integrated air freight and sea shipment logistics planning with end-to-end milestone cargo tracking.</p>
+            </div>
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-box-tissue"></i></div>
+                <h4>Packaging Compliance</h4>
+                <p>Export-oriented structural packaging insulation and labeling customized for long-distance international transit.</p>
+            </div>
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h4>Regulatory Coordination</h4>
+                <p>Basic international export compliance assessment, data alignment, and structural trade guidance.</p>
+            </div>
+            <div class="advitum-feature-card">
+                <div class="card-icon-frame"><i class="fa-solid fa-users-gear"></i></div>
+                <h4>Distributor Support</h4>
+                <p>Dedicated ongoing accounts management assistance tailored specifically for international wholesalers and bulk importers.</p>
+            </div>
+        </div>
+
+        <div class="advitum-content-grid" style="margin-bottom: 0;">
+            <div class="advitum-text-block">
+                <h2>Export Documentation Support</h2>
+                <p>To assure compliance with customs authorities at destination ports, we provide support with critical, industry-standard verification dossiers and certificates.</p>
+                <p>Our regulatory team closely oversees the administrative details to make sure all import paperwork is prepared accurately and efficiently.</p>
+            </div>
+            
+            <div class="advitum-text-block">
+                <h2>Supported Core Dossier Elements</h2>
+                <div class="manufacturing-caps-flex">
+                    <span class="cap-badge-node">Certificate of Analysis (COA)</span>
+                    <span class="cap-badge-node">Certificate of Origin</span>
+                    <span class="cap-badge-node">Free Sale Certificate</span>
+                    <span class="cap-badge-node">Packing List Dossier</span>
+                    <span class="cap-badge-node">Commercial Invoice Assets</span>
+                    <span class="cap-badge-node">Product Specifications</span>
+                    <span class="cap-badge-node">International Shipping Documents</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="certifications-tab" class="advitum-tab-panel">
+        
+        <div class="advitum-content-grid" style="margin-bottom: 0;">
+            <div class="advitum-text-block">
+                <h2>Certifications & Quality Management Framework</h2>
+                <p>At AdVitum Healthcare, global compliance underpins our entire production and fulfillment ecosystem. We align our services with manufacturing partners that strictly adhere to international manufacturing guidelines.</p>
+                <p>This disciplined focus ensures that every batch processed is reliable, traceably validated, and fully prepared to enter competitive international distribution networks.</p>
+            </div>
+            
+            <div class="advitum-text-block">
+                <h2>Industry Sourcing Benchmarks</h2>
+                <p>We actively collaborate with processing facilities designed around globally recognized structural quality and regulatory standards:</p>
+                <ul class="advitum-styled-list">
+                    <li><i class="fa-solid fa-circle-check"></i> Good Manufacturing Practices Compliance (GMP)</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Certified Food Safety Standard Systems</li>
+                    <li><i class="fa-solid fa-circle-check"></i> International Standards Association Sourcing Alignment</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Safe Structural Export Material Controls</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+
+    <footer class="footer-architecture">
+        <div class="wrapper">
+            <div class="footer-matrix-pipeline">
+                <div class="footer-anchor-identity">
+                    <h3>AdVitum Healthcare</h3>
+                    <p style="margin-bottom: 12px;">An institutional-grade healthcare export framework operating from India, provisioning bespoke nutraceutical manufacturing and future pharmaceutical products across international domains.</p>
+                    <div class="footer-social-channels">
+                        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Global Web"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Corporate Matrix</h4>
+                    <ul>
+                        <li><a href="/home">Home Gateway</a></li>
+                        <li><a href="/about">About Architecture</a></li>
+                        <li><a href="/product">Nutraceutical Formulations</a></li>
+                        <li><a href="/label">Private Label Setup</a></li>
+                        <li><a href="/exportservices">Export Operations</a></li>
+                        <li><a href="/certifications">Global Regulatory Profiles</a></li>
+                        <li><a href="/blog">Corporate Insights</a></li>
+                        <li><a href="/contact">Initiate Trade Desk</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Formulation Arrays</h4>
+                    <ul>
+                        <li><a href="/product#multivitamins">Advanced Multivitamins</a></li>
+                        <li><a href="/product#herbal">Standardized Bio-Extracts</a></li>
+                        <li><a href="/product#sports">Kinetic Sports Nutrition</a></li>
+                        <li><a href="/product#gummies">Pectin Functional Gummies</a></li>
+                        <li><a href="/product#effervescent">Effervescent Technology</a></li>
+                        <li><a href="/product#womens-health">Targeted Women's Health</a></li>
+                        <li><a href="/product#mens-health">Andrological Optimization</a></li>
+                        <li><a href="/product#protein">Isolated Protein Arrays</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Global Nodes</h4>
+                    <ul class="footer-address-nodes">
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong>Communications</strong>
+                                <a href="mailto:info@advitumhealthcare.com">info@advitumhealthcare.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp Trade Gateway</strong>
+                                <a href="https://wa.me/919898265440" target="_blank">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <div>
+                                <strong>Voice Trunk Desk</strong>
+                                <a href="tel:+919898265440">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>Corporate Headquarters</strong>
+                                <span>Siddhi Vinayak Business Park, Makarba, S.G. Road, Ahmedabad (380051), Gujarat, India</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-signature-row">
+                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
+                <div class="designer-tag-container">
+                    <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank">Powered by Haidarali</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mainNavbar = document.querySelector('.nav-anchor');
+            const menuToggle = document.querySelector('#menuToggle');
+            const navLinkItems = document.querySelectorAll('.nav-link-item');
+
+            // 1. Scroll State Matrix Watcher
+            const syncScrollState = () => {
+                if (window.scrollY > 20) {
+                    mainNavbar.classList.add('scrolled');
+                } else {
+                    mainNavbar.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', syncScrollState, { passive: true });
+            syncScrollState();
+
+            // 2. Mobile Dashboard Drawer Viewport Control
+            if (menuToggle && mainNavbar) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mainNavbar.classList.toggle('open-viewport');
+                    
+                    if (mainNavbar.classList.contains('open-viewport')) {
+                        document.body.style.overflow = 'hidden';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                    } else {
+                        document.body.style.overflow = '';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+                    }
+                });
+            }
+
+            // 3. Mobile Sub-link Accordion Engine
+            navLinkItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 991) {
+                        const hasDropdown = item.parentElement.querySelector('.dropdown-card');
+                        if (hasDropdown) {
+                            e.preventDefault();
+                            const activeNode = item.parentElement;
+                            
+                            document.querySelectorAll('.nav-item').forEach(node => {
+                                if(node !== activeNode) node.classList.remove('mobile-active');
+                            });
+
+                            activeNode.classList.toggle('mobile-active');
+                        }
+                    }
+                });
+            });
+        });
+
+        function switchAdVitumTab(event, targetPanelId) {
+    const tabsButtons = document.querySelectorAll('.advitum-tab-btn');
+    const contentPanels = document.querySelectorAll('.advitum-tab-panel');
+
+    // Remove active state markers smoothly
+    tabsButtons.forEach(btn => btn.classList.remove('is-active'));
+    contentPanels.forEach(panel => panel.classList.remove('is-active'));
+
+    // Apply active visibility to the selected tab and panel
+    event.currentTarget.classList.add('is-active');
+    document.getElementById(targetPanelId).classList.add('is-active');
+}
+    </script>
+</body>
+</html>

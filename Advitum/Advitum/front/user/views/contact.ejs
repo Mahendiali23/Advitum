@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdVitum Healthcare | Global Nutraceuticals</title>
+    <link rel="icon" type="image/png" href="/logo.png?v=10">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Paste this inside your HTML <head> tag -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ==========================================================================
+   1. ENTERPRISE DESIGN SYSTEM VARIABLES & CORE RESET
+   ========================================================================== */
+:root {
+    --primary: #044E4A;
+    --primary-light: #0B6B65;
+    --primary-dark: #022F2D;
+    --accent: #10B981;
+    --accent-light: #E6FDF5;
+    --dark: #0F172A;
+    --text: #334155;
+    --text-muted: #64748B;
+    --bg-light: #F8FAFC;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --white: #FFFFFF;
+    --border: rgba(226, 232, 240, 0.8);
+    
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(4, 78, 74, 0.03);
+    --shadow-md: 0 16px 36px -4px rgba(4, 78, 74, 0.06);
+    --shadow-lg: 0 24px 60px -12px rgba(4, 78, 74, 0.12);
+    
+    --radius-pill: 100px;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+    height: 100%;
+}
+
+body { 
+    font-family: var(--font-main); 
+    color: var(--text); 
+    background-color: var(--bg-light); 
+    line-height: 1.6; 
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 { 
+    font-family: var(--font-heading); 
+    color: var(--dark); 
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: var(--transition); 
+}
+
+main {
+    flex: 1 0 auto;
+    padding-top: 80px; /* Synchronized with new structural desktop navbar height */
+}
+
+.wrapper { 
+    max-width: 1280px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
+    width: 100%; 
+}
+
+/* --- Premium Action Controls --- */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    letter-spacing: 0.3px;
+}
+
+.btn-action.primary {
+    background-color: var(--primary);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(4, 78, 74, 0.18);
+}
+
+.btn-action.primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.btn-action.primary:hover::before {
+    opacity: 1;
+}
+
+.btn-action.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(4, 78, 74, 0.28);
+}
+
+/* ==========================================================================
+   2. BRAND ARCHITECTURE LOGO (OPTIMIZED FOR EXACT ALIGNMENT)
+   ========================================================================== */
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.creative-logo {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.brand-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.brand-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-meta h2 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.brand-meta span {
+    font-size: 0.58rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   3. FLOATING NAVIGATION ARCHITECTURE (DESKTOP REFACTOR)
+   ========================================================================== */
+.nav-anchor {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 80px; 
+    z-index: 1000;
+    padding: 0 32px;
+    background-color: white;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: height 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-anchor.scrolled {
+    height: 68px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow-md);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px; 
+    margin: 0 auto;
+}
+
+.nav-linkset {
+    display: flex;
+    align-items: center;
+    gap: 4px; 
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link-item {
+    font-size: 0.86rem; 
+    font-weight: 600;   
+    color: var(--text-muted);      
+    padding: 8px 16px; 
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    position: relative;
+    letter-spacing: -0.01em;
+}
+
+.nav-link-item i {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* --- State Anchoring System --- */
+
+/* Normal Layer Reset (Handled by base color definitions) */
+
+/* Hover Layer State */
+.nav-link-item:hover {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.04);
+}
+
+.nav-link-item:hover i {
+    color: var(--primary);
+}
+
+/* Active State Layer Anchor */
+.nav-link-item.active {
+    color: var(--primary);
+    background-color: var(--accent-light);
+    font-weight: 700;
+}
+
+.nav-link-item.active i {
+    color: var(--primary);
+}
+
+.nav-item:hover .nav-link-item i {
+    transform: rotate(180deg);
+}
+
+.nav-actions-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lang-switcher {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+}
+
+.lang-switcher:hover {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.04);
+}
+
+.btn-contact {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--primary); 
+    padding: 10px 20px;
+    border-radius: var(--radius-pill); 
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(4, 78, 74, 0.12);
+}
+
+.btn-contact:hover {
+    background-color: var(--primary-light); 
+    box-shadow: 0 6px 18px rgba(4, 78, 74, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Premium Desktop Hover Dropdowns */
+.dropdown-card {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px); 
+    min-width: 240px; 
+    border-radius: var(--radius-lg);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(16px);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+    z-index: 1010;
+}
+
+.nav-item:hover .dropdown-card {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.dropdown-node a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px; 
+    font-size: 0.84rem; 
+    font-weight: 500;
+    color: var(--text);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.dropdown-node a:hover {
+    background-color: var(--accent-light);
+    color: var(--primary-light);
+    padding-left: 18px;
+}
+
+.mobile-hamburger {
+    display: none;
+    font-size: 1.4rem; 
+    cursor: pointer;
+    color: var(--dark);
+    background: transparent;
+    border: none;
+    padding: 4px;
+    transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   4. MODERN FOOTER PIPELINE
+   ========================================================================== */
+.footer-architecture {
+    background-color: #020C0B;
+    color: #8A9AAD;
+    padding: 100px 0 40px;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(16, 185, 129, 0.15);
+    position: relative;
+    flex-shrink: 0; 
+}
+
+.footer-matrix-pipeline {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+}
+
+.footer-anchor-identity h3 {
+    color: var(--white);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.footer-anchor-identity p {
+    line-height: 1.7;
+    color: #9494A1;
+}
+
+.footer-social-channels {
+    display: flex;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.footer-social-channels a {
+    width: 42px;
+    height: 42px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9494A1;
+    font-size: 1.1rem;
+}
+
+.footer-social-channels a:hover {
+    background-color: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+}
+
+.footer-link-group h4 {
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    font-weight: 700;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-link-group h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 24px;
+    height: 2px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.footer-link-group ul {
+    list-style: none;
+}
+
+.footer-link-group ul li {
+    margin-bottom: 14px;
+}
+
+.footer-link-group ul li a {
+    color: #8A9AAD;
+    display: inline-block;
+}
+
+.footer-link-group ul li a:hover {
+    color: var(--white);
+    transform: translateX(4px);
+}
+
+.footer-address-nodes li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 20px !important;
+}
+
+.footer-address-nodes li i {
+    color: var(--accent);
+    font-size: 1rem;
+    background: rgba(16, 185, 129, 0.06);
+    padding: 10px;
+    border-radius: var(--radius-md);
+}
+
+.footer-address-nodes div strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.footer-address-nodes div span, 
+.footer-address-nodes div a {
+    color: #9494A1;
+    line-height: 1.5;
+}
+
+.footer-signature-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: #61616A;
+}
+
+.designer-tag-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(4, 78, 74, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.08);
+    border-radius: var(--radius-pill);
+    padding: 8px 20px;
+}
+
+.designer-tag-container a {
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.designer-tag-container a:hover {
+    color: var(--white);
+}
+
+/* ==========================================================================
+   5. BREAKPOINT RESPONSIVE GRID MATRIX & COMPRESSION FIXES
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .nav-anchor {
+        padding: 0 24px;
+    }
+    .footer-matrix-pipeline {
+        grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+        gap: 32px;
+    }
+}
+
+/* --- Tablet / Large Mobile Viewports --- */
+@media (max-width: 991px) {
+    main {
+        padding-top: 72px; /* Aligns smoothly with new structural responsive height bounds */
+    }
+
+    .mobile-hamburger {
+        display: block;
+    }
+
+    /* Fixed Layout Footprint Preservation */
+    .brand-wrapper {
+        min-width: 0;
+        max-width: 75%;
+    }
+
+    .creative-logo {
+        width: 38px !important;    
+        height: 38px !important;   
+        flex-shrink: 0 !important; 
+    }
+
+    .brand-logo-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important; 
+    }
+
+    .brand-meta h2 {
+        font-size: 1.1rem;
+    }
+
+    .nav-anchor {
+        height: 72px;
+        padding: 0 24px;
+    }
+
+    /* Sliding Navigation Drawer Structure */
+    .nav-linkset {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 72px);
+        background: #021715; 
+        flex-direction: column;
+        align-items: stretch;
+        padding: 32px 24px;
+        gap: 12px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+        z-index: 999;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .nav-linkset::before {
+        content: 'DISTRIBUTION DIRECTORY';
+        display: block;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+        color: rgba(16, 185, 129, 0.6);
+        font-weight: 700;
+        margin-bottom: 4px;
+        padding-left: 12px;
+    }
+
+    /* Drawer Visibility Modifier State */
+    .nav-anchor.open-viewport .nav-linkset {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-actions-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .lang-switcher {
+        color: rgba(255, 255, 255, 0.8);
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .btn-contact {
+        width: 100%;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    /* Drawer Item Typography Real Estate Overrides */
+    .nav-link-item {
+        width: 100%;
+        color: rgba(255, 255, 255, 0.75);
+        padding: 12px 18px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--radius-md);
+        justify-content: space-between;
+        font-size: 0.9rem;
+    }
+
+    .nav-link-item:hover,
+    .nav-link-item.active,
+    .nav-item.mobile-active .nav-link-item {
+        color: var(--white);
+        background-color: rgba(16, 185, 129, 0.15);
+        border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .nav-link-item i {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .nav-item.mobile-active .nav-link-item i {
+        transform: rotate(180deg);
+        color: var(--accent);
+    }
+
+    /* Mobile Accordion Dropdowns */
+    .dropdown-card {
+        position: static;
+        transform: none !important;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        background: rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        border: none;
+        padding: 4px;
+        display: none;
+        border-left: 2px solid var(--accent);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        width: 100%;
+        margin-top: -4px;
+    }
+
+    .nav-item.mobile-active .dropdown-card {
+        display: block;
+    }
+
+    .dropdown-node a {
+        color: rgba(255, 255, 255, 0.65);
+        padding: 10px 16px;
+        font-size: 0.84rem;
+    }
+
+    .dropdown-node a:hover {
+        background: transparent;
+        color: var(--white);
+        padding-left: 20px;
+    }
+
+    /* Open Navigation Header Override Theme */
+    .nav-anchor.open-viewport {
+        background-color: #021715 !important;
+        border-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .nav-anchor.open-viewport .brand-meta h2,
+    .nav-anchor.open-viewport .mobile-hamburger { 
+        color: var(--white); 
+    }
+    
+    .btn-blog-container {
+        width: 100%;
+    }
+    
+    .btn-blog-container .btn-action {
+        width: 100%;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .footer-matrix-pipeline {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+    }
+}
+
+/* --- Mobile Viewports (600px Breakpoint) --- */
+@media (max-width: 600px) {
+    .footer-matrix-pipeline {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footer-anchor-identity h3 {
+        font-size: 1.45rem;
+    }
+    .footer-signature-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+    }
+    .designer-tag-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   1. Design System Tokens (Minimalist Compact System)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --advitum-primary: #044E4A;
+    --advitum-primary-light: #0B6B65;
+    --advitum-primary-dark: #022F2D;
+    --advitum-accent: #10B981;
+    --advitum-accent-light: #F0FDF4;
+    --advitum-dark: #0F172A;
+    --advitum-text: #334155;
+    --advitum-text-muted: #64748B;
+    --advitum-white: #FFFFFF;
+    --advitum-border: #E2E8F0;
+    --advitum-placeholder: #94A3B8;
+    
+    /* Sleek & Compact Typography */
+    --advitum-font-main: 'Inter', sans-serif;
+    
+    /* Creative Micro-Elevations */
+    --advitum-shadow-premium-panel: 
+        0 4px 20px -2px rgba(4, 78, 74, 0.03),
+        0 12px 32px -4px rgba(4, 78, 74, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+        
+    --advitum-shadow-card: 
+        0 1px 3px 0 rgba(0, 0, 0, 0.05),
+        0 4px 12px -2px rgba(4, 78, 74, 0.03);
+
+    --advitum-shadow-card-hover: 
+        0 10px 20px -6px rgba(2, 47, 45, 0.1),
+        0 0 0 1px var(--advitum-accent) inset;
+        
+    --advitum-radius-pill: 50px;
+    --advitum-radius-lg: 16px;
+    --advitum-radius-md: 10px;
+    --advitum-transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ==========================================================================
+   2. Main Structural Layout & Wrapper
+   ========================================================================== */
+.advitum-contact-container {
+    width: 100%;
+    position: relative;
+    background-color: #FAFAFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.advitum-contact-section {
+    width: 100%;
+    max-width: 1300px; 
+    margin: 0 auto;
+    padding: 80px 24px 100px; 
+    background: radial-gradient(circle at 90% 10%, rgba(16, 185, 129, 0.03) 0%, rgba(255, 255, 255, 0) 40%),
+                var(--advitum-white);
+    position: relative;
+}
+
+/* Global Scope Reset Safeguard */
+.advitum-contact-section *,
+.advitum-contact-section *::before,
+.advitum-contact-section *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.contact-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 64px; 
+    align-items: center; 
+    width: 100%;
+}
+
+/* ==========================================================================
+   3. Left Info Column Elements (Small, High-Density Crisp Typography)
+   ========================================================================== */
+.contact-info-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-mini-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--advitum-accent-light);
+    color: var(--advitum-primary-light);
+    padding: 6px 14px;
+    border-radius: var(--advitum-radius-pill);
+    font-size: 0.68rem;
+    font-weight: 700;
+    font-family: var(--advitum-font-main);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    align-self: flex-start;
+    margin-bottom: 20px; 
+}
+
+.contact-main-title {
+    font-family: var(--advitum-font-main);
+    font-size: 2.15rem; 
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--advitum-primary-dark);
+    margin-bottom: 16px;
+    letter-spacing: -0.03em;
+}
+
+.contact-intro-text {
+    font-family: var(--advitum-font-main);
+    font-size: 0.88rem; 
+    color: var(--advitum-text-muted);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.panel-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--advitum-border) 0%, rgba(226,232,240,0) 100%);
+    margin: 28px 0;
+}
+
+/* Communication Channels (Compact Minimal Cards) */
+.communication-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+}
+
+.channel-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--advitum-white);
+    border: 1px solid var(--advitum-border);
+    border-radius: var(--advitum-radius-md);
+    padding: 16px 20px;
+    text-decoration: none;
+    box-shadow: var(--advitum-shadow-card);
+    transition: var(--advitum-transition);
+}
+
+.channel-icon-box {
+    width: 38px;
+    height: 38px;
+    background-color: #F8FAFC;
+    color: var(--advitum-primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    transition: var(--advitum-transition);
+    flex-shrink: 0;
+}
+
+.channel-icon-box.whatsapp-bg { color: #23C55E; background-color: #F0FDF4; }
+.channel-icon-box.email-bg { color: #0284c7; background-color: #F0F9FF; }
+
+.channel-data { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 2px; 
+}
+
+.channel-data span { 
+    font-family: var(--advitum-font-main); 
+    font-size: 0.65rem; 
+    font-weight: 600; 
+    color: var(--advitum-text-muted); 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px;
+}
+
+.channel-data strong { 
+    font-family: var(--advitum-font-main); 
+    font-size: 1.02rem; 
+    font-weight: 700;
+    color: var(--advitum-dark); 
+    letter-spacing: -0.01em;
+    word-break: break-all;
+}
+
+/* Social Nodes Hub Section */
+.social-footer-hub {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+    gap: 16px;
+}
+
+.social-row-strip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-circle-node {
+    width: 34px;
+    height: 34px;
+    background-color: var(--advitum-white);
+    border: 1px solid var(--advitum-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--advitum-text-muted);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--advitum-transition);
+}
+
+.location-brief-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--advitum-text-muted);
+    font-family: var(--advitum-font-main);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.location-brief-indicator i {
+    color: var(--advitum-accent);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   4. Right Column Form Design (Sleek Compact Card Dashboard Theme)
+   ========================================================================== */
+.contact-form-panel {
+    background: var(--advitum-white);
+    border: 1px solid var(--advitum-border);
+    box-shadow: var(--advitum-shadow-premium-panel);
+    border-radius: var(--advitum-radius-lg);
+    padding: 36px 32px;
+    position: relative;
+}
+
+.form-accent-glow {
+    display: none; /* Removed for hyper-clean ultra minimal style */
+}
+
+.form-header-box {
+    margin-bottom: 24px;
+    border-left: 3px solid var(--advitum-primary);
+    padding-left: 12px;
+}
+
+.form-title { 
+    font-family: var(--advitum-font-main); 
+    font-size: 1.25rem; 
+    font-weight: 800; 
+    color: var(--advitum-dark); 
+    margin-bottom: 4px; 
+    letter-spacing: -0.02em;
+}
+
+.form-subtitle { 
+    font-family: var(--advitum-font-main); 
+    font-size: 0.78rem; 
+    color: var(--advitum-text-muted); 
+    line-height: 1.4; 
+}
+
+.inquiry-form-wrapper { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 16px; 
+}
+
+.form-field-group { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 6px; 
+}
+
+.form-field-group label { 
+    font-family: var(--advitum-font-main); 
+    font-size: 0.72rem; 
+    font-weight: 700; 
+    color: var(--advitum-dark); 
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+/* Compact Inputs & Clean Placeholders */
+.input-relative-container, 
+.textarea-relative-container { 
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    width: 100%; 
+}
+
+.field-icon, 
+.textarea-icon { 
+    position: absolute; 
+    left: 16px; 
+    color: #A1A1AA; 
+    font-size: 0.95rem; 
+    transition: color 0.2s ease; 
+    pointer-events: none; 
+    z-index: 2; 
+}
+
+.textarea-icon { top: 14px; }
+
+.input-relative-container input, 
+.textarea-relative-container textarea {
+    width: 100%; 
+    background-color: #F8FAFC; 
+    border: 1px solid #E2E8F0; 
+    border-radius: var(--advitum-radius-md);
+    font-family: var(--advitum-font-main); 
+    font-size: 0.88rem; 
+    font-weight: 500;
+    color: var(--advitum-dark); 
+    outline: none; 
+    transition: var(--advitum-transition);
+}
+
+.input-relative-container input { padding: 12px 14px 12px 42px; }
+.textarea-relative-container textarea { padding: 12px 14px 12px 42px; resize: none; min-height: 90px; line-height: 1.5; }
+
+/* Micro Placeholder Custom Adjustments */
+.input-relative-container input::placeholder,
+.textarea-relative-container textarea::placeholder {
+    color: var(--advitum-placeholder);
+    font-weight: 400;
+    font-size: 0.82rem;
+}
+
+/* Input Focus States */
+.input-relative-container input:focus, 
+.textarea-relative-container textarea:focus {
+    background-color: var(--advitum-white); 
+    border-color: var(--advitum-primary);
+    box-shadow: 0 0 0 3px rgba(4, 78, 74, 0.08);
+}
+
+.input-relative-container input:focus ~ .field-icon, 
+.textarea-relative-container textarea:focus ~ .textarea-icon { 
+    color: var(--advitum-primary); 
+}
+
+/* Micro Action Button */
+.submit-action-btn {
+    position: relative; 
+    background-color: var(--advitum-primary); 
+    color: var(--advitum-white); 
+    border: none; 
+    border-radius: var(--advitum-radius-md);
+    padding: 14px 24px; 
+    font-family: var(--advitum-font-main); 
+    font-size: 0.85rem; 
+    font-weight: 700; 
+    letter-spacing: 0.5px; 
+    cursor: pointer;
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px; 
+    transition: var(--advitum-transition); 
+    margin-top: 6px; 
+    width: 100%;
+}
+
+/* Desktop Hover States */
+@media (hover: hover) {
+    .channel-card:hover { 
+        transform: translateY(-2px);
+        box-shadow: var(--advitum-shadow-card-hover);
+        border-color: transparent;
+    }
+    .channel-card:hover .channel-icon-box {
+        background-color: var(--advitum-primary);
+        color: var(--advitum-white);
+    }
+    .channel-card:hover .channel-icon-box.whatsapp-bg { background-color: #23C55E; color: #fff; }
+    .channel-card:hover .channel-icon-box.email-bg { background-color: #0284c7; color: #fff; }
+
+    .social-circle-node:hover {
+        color: var(--advitum-white);
+        transform: translateY(-2px);
+    }
+    .social-circle-node.linkedin-color:hover { background-color: #0077B5; border-color: #0077B5; }
+    .social-circle-node.instagram-color:hover { background-color: #E1306C; border-color: #E1306C; }
+
+    .submit-action-btn:hover { 
+        background-color: var(--advitum-primary-light);
+        box-shadow: 0 4px 12px rgba(4, 78, 74, 0.2);
+    }
+}
+
+/* ==========================================================================
+   5. Feedback Toast Notifications Engine
+   ========================================================================== */
+.toast-container-anchor { 
+    position: fixed; 
+    bottom: 24px; 
+    right: 24px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px; 
+    z-index: 99999; 
+    pointer-events: none; 
+}
+
+.creative-toast-node {
+    background: #022F2D;
+    padding: 14px 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+    display: flex; 
+    align-items: center; 
+    gap: 12px;
+    pointer-events: auto; 
+    min-width: 280px; 
+    transform: translate3d(30px, 0, 0); 
+    opacity: 0; 
+    transition: var(--advitum-transition);
+}
+
+.creative-toast-node.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+.creative-toast-node.is-fading { opacity: 0; transform: translateY(10px); }
+
+.toast-indicator-pill { 
+    position: absolute; 
+    left: 0; top: 0; bottom: 0; width: 4px; 
+    background-color: var(--advitum-accent); 
+    border-top-left-radius: 10px; border-bottom-left-radius: 10px; 
+}
+
+.toast-icon-check { color: var(--advitum-accent); font-size: 1.1rem; }
+.toast-message-body { 
+    font-family: var(--advitum-font-main); 
+    font-size: 0.82rem; 
+    font-weight: 600; 
+    color: var(--advitum-white); 
+}
+
+/* ==========================================================================
+   6. Fluid Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 992px) { 
+    .advitum-contact-section { padding: 60px 20px; }
+    .contact-main-grid { grid-template-columns: 1fr; gap: 44px; } 
+    .contact-main-title { font-size: 1.85rem; text-align: center; }
+    .contact-intro-text { text-align: center; }
+    .contact-mini-badge { align-self: center; }
+}
+
+@media (max-width: 576px) { 
+    .advitum-contact-section { padding: 48px 16px; }
+    .contact-form-panel { padding: 28px 20px; border-radius: 14px; } 
+    .channel-card { padding: 14px 16px; gap: 12px; }
+    .channel-icon-box { width: 34px; height: 34px; font-size: 0.95rem; }
+    .channel-data strong { font-size: 0.92rem; }
+    .social-footer-hub { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .toast-container-anchor { left: 16px; right: 16px; bottom: 16px; } 
+    .creative-toast-node { min-width: 100%; } 
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="nav-anchor" id="mainHeader">
+        <div class="nav-container">
+            <div class="brand-wrapper" onclick="window.location.href='/home'">
+                <div class="creative-logo">
+                    <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" class="brand-logo-img">
+                </div>
+                <div class="brand-meta">
+                    <h2>AdVitum</h2>
+                    <span>Healthcare</span>
+                </div>
+            </div>
+            
+            <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            
+            <nav class="nav-linkset" id="navLinkset">
+                <div class="nav-item">
+                    <a href="/home" class="nav-link-item">Home</a>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item">Company <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item">Services <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                 <div class="nav-item">
+                    <a href="/product" class="nav-link-item">Product's</a>
+                </div>
+                
+                
+                <div class="nav-item">
+                    <a href="/certifications" class="nav-link-item ">Certifications</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="/division" class="nav-link-item ">Pharma Division</a>
+                </div>
+                
+                <div class="nav-item btn-blog-container">
+                    <a href="/blog" class="btn-action primary">Blog</a>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="/contact" class="nav-link-item active" style="color: var(--accent); font-weight: 700;">Contact Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="wrapper">
+            </div>
+    </main>
+
+<div class="advitum-contact-container">
+    <section class="advitum-contact-section">
+        <div class="wrapper"> 
+            <div class="contact-main-grid">
+                
+                <div class="contact-info-panel">
+                    <span class="contact-mini-badge">
+                        <i class="fa-solid fa-earth-americas"></i> Global Logistics Support
+                    </span>
+                    <h2 class="contact-main-title">Looking for Reliable Nutraceutical Export Solutions?</h2>
+                    <p class="contact-intro-text">Partner with AdVitum Healthcare for premium grade nutraceutical products, world-class private label solutions, and seamless end-to-end global export execution support.</p>
+                    
+                    <hr class="panel-divider">
+
+                    <div class="communication-channels">
+                        <a href="tel:+919328137186" class="channel-card">
+                            <div class="channel-icon-box"><i class="fa-solid fa-phone"></i></div>
+                            <div class="channel-data">
+                                <span>Contact Number</span>
+                                <strong>+91 93281 37186</strong>
+                            </div>
+                        </a>
+                        
+                        <a href="https://wa.me/919328137186" target="_blank" class="channel-card">
+                            <div class="channel-icon-box whatsapp-bg"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div class="channel-data">
+                                <span>WhatsApp Support</span>
+                                <strong>+91 93281 37186</strong>
+                            </div>
+                        </a>
+
+                        <a href="mailto:info@advitumhealthcare.com" class="channel-card">
+                            <div class="channel-icon-box email-bg"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="channel-data">
+                                <span>Mail Support</span>
+                                <strong>info@advitumhealthcare.com</strong>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="social-footer-hub">
+                     <div class="social-row-strip">
+    <!-- LinkedIn -->
+    <a href="https://linkedin.com" target="_blank" class="social-circle-node linkedin-color" aria-label="LinkedIn Connect">
+        <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+    
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" class="social-circle-node instagram-color" aria-label="Instagram Connect">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+    
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" class="social-circle-node facebook-color" aria-label="Facebook Connect">
+        <i class="fa-brands fa-facebook-f"></i>
+    </a>
+    
+    <!-- Twitter / X -->
+    <a href="https://twitter.com" target="_blank" class="social-circle-node twitter-color" aria-label="Twitter X Connect">
+        <i class="fa-brands fa-x-twitter"></i>
+    </a>
+</div>
+                        <div class="location-brief-indicator">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Gujarat, India — Global Export Hub</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-panel">
+                    <div class="form-accent-glow"></div>
+                    <div class="form-header-box">
+                        <h3 class="form-title">Inquiry Support Form</h3>
+                        <p class="form-subtitle">Complete your information details below to submit directly via WhatsApp.</p>
+                    </div>
+
+                    <form id="advitumExportForm" class="inquiry-form-wrapper" onsubmit="handleInquirySubmit(event)">
+                        <div class="form-field-group">
+                            <label for="clientName">Full Name</label>
+                            <div class="input-relative-container">
+                                <i class="fa-solid fa-user field-icon"></i>
+                                <input type="text" id="clientName" name="clientName" required placeholder="Your Name">
+                            </div>
+                        </div>
+
+                        <div class="form-field-group">
+                            <label for="clientCountry">Country</label>
+                            <div class="input-relative-container">
+                                <i class="fa-solid fa-globe field-icon"></i>
+                                <input type="text" id="clientCountry" name="clientCountry" required placeholder="India">
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="form-field-group">
+                            <label for="clientWhatsApp">WhatsApp Contact Number</label>
+                            <div class="input-relative-container">
+                                <i class="fa-brands fa-whatsapp field-icon"></i>
+                                <input type="tel" id="clientWhatsApp" name="clientWhatsApp" required placeholder="+91">
+                            </div>
+                        </div>
+
+                        <div class="form-field-group">
+                            <label for="clientMessage">Detailed Message / Import Requirement</label>
+                            <div class="textarea-relative-container">
+                                <i class="fa-solid fa-pen-to-square textarea-icon"></i>
+                                <textarea id="clientMessage" name="clientMessage" rows="4" required placeholder="Describe your product specifications, raw material requirements, or contract manufacturing quantity guidelines here..."></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-action-btn">
+                            <span>SUBMIT</span> <i class="fa-brands fa-whatsapp"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="toast-container-anchor" id="toastAnchor"></div>
+
+<!-- Creative Toast Notification Target Anchor Container -->
+<div class="toast-container-anchor" id="toastAnchor"></div>
+
+<!-- Paste directly above your Footer code -->
+
+    <footer class="footer-architecture">
+        <div class="wrapper">
+            <div class="footer-matrix-pipeline">
+                <div class="footer-anchor-identity">
+                    <h3>AdVitum Healthcare</h3>
+                    <p style="margin-bottom: 12px;">An institutional-grade healthcare export framework operating from India, provisioning bespoke nutraceutical manufacturing and future pharmaceutical products across international domains.</p>
+                    <div class="footer-social-channels">
+                        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Global Web"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Corporate Matrix</h4>
+                    <ul>
+                        <li><a href="/home">Home Gateway</a></li>
+                        <li><a href="/about">About Architecture</a></li>
+                        <li><a href="/product">Nutraceutical Formulations</a></li>
+                        <li><a href="/label">Private Label Setup</a></li>
+                        <li><a href="/exportservices">Export Operations</a></li>
+                        <li><a href="/certifications">Global Regulatory Profiles</a></li>
+                        <li><a href="/blog">Corporate Insights</a></li>
+                        <li><a href="/contact">Initiate Trade Desk</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Formulation Arrays</h4>
+                    <ul>
+                        <li><a href="/product#multivitamins">Advanced Multivitamins</a></li>
+                        <li><a href="/product#herbal">Standardized Bio-Extracts</a></li>
+                        <li><a href="/product#sports">Kinetic Sports Nutrition</a></li>
+                        <li><a href="/product#gummies">Pectin Functional Gummies</a></li>
+                        <li><a href="/product#effervescent">Effervescent Technology</a></li>
+                        <li><a href="/product#womens-health">Targeted Women's Health</a></li>
+                        <li><a href="/product#mens-health">Andrological Optimization</a></li>
+                        <li><a href="/product#protein">Isolated Protein Arrays</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Global Nodes</h4>
+                    <ul class="footer-address-nodes">
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong>Communications</strong>
+                                <a href="mailto:info@advitumhealthcare.com">info@advitumhealthcare.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp Trade Gateway</strong>
+                                <a href="https://wa.me/919898265440" target="_blank">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <div>
+                                <strong>Voice Trunk Desk</strong>
+                                <a href="tel:+919898265440">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>Corporate Headquarters</strong>
+                                <span>Siddhi Vinayak Business Park, Makarba, S.G. Road, Ahmedabad (380051), Gujarat, India</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-signature-row">
+                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
+                <div class="designer-tag-container">
+                    <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank">Powered by Haidarali</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mainNavbar = document.querySelector('.nav-anchor');
+            const menuToggle = document.querySelector('#menuToggle');
+            const navLinkItems = document.querySelectorAll('.nav-link-item');
+
+            // 1. Scroll State Matrix Watcher
+            const syncScrollState = () => {
+                if (window.scrollY > 20) {
+                    mainNavbar.classList.add('scrolled');
+                } else {
+                    mainNavbar.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', syncScrollState, { passive: true });
+            syncScrollState();
+
+            // 2. Mobile Dashboard Drawer Viewport Control
+            if (menuToggle && mainNavbar) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mainNavbar.classList.toggle('open-viewport');
+                    
+                    if (mainNavbar.classList.contains('open-viewport')) {
+                        document.body.style.overflow = 'hidden';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                    } else {
+                        document.body.style.overflow = '';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+                    }
+                });
+            }
+
+            // 3. Mobile Sub-link Accordion Engine
+            navLinkItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 991) {
+                        const hasDropdown = item.parentElement.querySelector('.dropdown-card');
+                        if (hasDropdown) {
+                            e.preventDefault();
+                            const activeNode = item.parentElement;
+                            
+                            document.querySelectorAll('.nav-item').forEach(node => {
+                                if(node !== activeNode) node.classList.remove('mobile-active');
+                            });
+
+                            activeNode.classList.toggle('mobile-active');
+                        }
+                    }
+                });
+            });
+        });
+
+        function handleInquirySubmit(event) {
+    event.preventDefault();
+    
+    // Target corporate phone number
+    const whatsappCompanyNumber = "919328137186"; 
+
+    // Extracting DOM values
+    const name = document.getElementById('clientName').value.trim();
+    const country = document.getElementById('clientCountry').value.trim();
+    const email = document.getElementById('clientEmail').value.trim();
+    const clientWA = document.getElementById('clientWhatsApp').value.trim();
+    const message = document.getElementById('clientMessage').value.trim();
+
+    // Clean Message template structure
+    const textMessage = 
+`*New Business Inquiry | AdVitum Healthcare*
+
+*Client Details:*
+• *Name:* ${name}
+• *Country:* ${country}
+• *Email:* ${email}
+• *WhatsApp:* ${clientWA}
+
+*Message:*
+${message}`;
+
+    const encodedMessage = encodeURIComponent(textMessage);
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappCompanyNumber}&text=${encodedMessage}`;
+
+    // Show feedback alert animation
+    showCreativeToast("Redirecting to WhatsApp...");
+
+    // Clear form layout values smoothly
+    document.getElementById('advitumExportForm').reset();
+
+    // Trigger explicit redirect sequence window thread
+    setTimeout(() => {
+        window.open(whatsappUrl, '_blank');
+    }, 800);
+}
+
+function showCreativeToast(message) {
+    const container = document.getElementById('toastContainer');
+    if (!container) return; // Prevent breaking code if missing anchor execution
+    
+    const toast = document.createElement('div');
+    toast.className = 'creative-toast-node';
+    toast.innerHTML = `
+        <div class="toast-indicator-pill"></div>
+        <i class="fa-solid fa-circle-check toast-icon-check"></i>
+        <div class="toast-message-body">${message}</div>
+    `;
+    container.appendChild(toast);
+    
+    setTimeout(() => { toast.classList.add('is-visible'); }, 50);
+    setTimeout(() => {
+        toast.classList.remove('is-visible');
+        toast.classList.add('is-fading');
+        setTimeout(() => { toast.remove(); }, 400);
+    }, 3500);
+}
+    </script>
+</body>
+</html>

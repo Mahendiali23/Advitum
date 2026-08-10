@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>AdVitum Healthcare</title>
+       <link rel="icon" type="image/png" href="/logo.png?v=10">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --primary: #044E4A;
+            --primary-light: #0B6B65;
+            --primary-dark: #033E3B;
+            --accent: #10B981;
+            --accent-light: #D1FAE5;
+            --dark: #1E293B;
+            --text: #475569;
+            --text-muted: #94A3B8;
+            --bg-light: #F8FAFC;
+            --bg-tint: #F4FAF9;
+            --white: #FFFFFF;
+            --border: #E2E8F0;
+            
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-heading: 'Poppins', sans-serif;
+            --shadow-sm: 0 2px 4px rgba(4, 78, 74, 0.05);
+            --shadow-md: 0 10px 25px rgba(4, 78, 74, 0.08);
+            --shadow-lg: 0 20px 40px rgba(4, 78, 74, 0.12);
+            --radius-pill: 50px;
+            --radius-lg: 24px;
+            --radius-sm: 10px;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        body { 
+            font-family: var(--font-main); 
+            color: var(--text); 
+            background-color: var(--white); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            color: var(--dark); 
+        }
+        
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            display: block; 
+        }
+        
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+            transition: var(--transition); 
+        }
+
+        /* Global Layout Components */
+        .wrapper { 
+            max-width: 1240px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+            width: 100%; 
+        }
+        
+        .section-space { 
+            padding: 100px 0; 
+        }
+        
+        .section-space-alt { 
+            padding: 100px 0; 
+            background-color: var(--bg-tint); 
+        }
+
+        .section-badge { 
+            display: inline-block; 
+            padding: 6px 16px; 
+            background-color: var(--accent-light); 
+            color: var(--primary-dark); 
+            border-radius: var(--radius-pill); 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            margin-bottom: 16px; 
+            letter-spacing: 0.5px; 
+        }
+
+        /* Buttons */
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: var(--radius-pill);
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(4, 78, 74, 0.2);
+        }
+
+ /* ==========================================================================
+   2. HEADER & NAVIGATION ARCHITECTURE
+   ========================================================================== */
+:root {
+    /* Safe fallback tokens if your global css template variables are not parsed */
+    --white: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.nav-anchor {
+    position: fixed;
+    top: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 48px);
+    max-width: 1500px;
+    height: 100px;
+    z-index: 1000;
+    background-color: white; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px; 
+    padding: 0 36px;
+    box-shadow: 0 12px 30px rgba(4, 78, 74, 0.15);
+    transition: var(--transition);
+    backdrop-filter: blur(8px);
+    border: .5px solid #e2e8f0; 
+    border-left: 7px solid var(--primary, #0f615d); 
+    border-right: 7px solid var(--primary, #0f615d);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* Default Inverted Colors (Resting State) */
+.nav-anchor .brand-logo h2 { color: #044E4A;}
+.nav-anchor .brand-logo span { color: #64748B; }
+.nav-anchor .nav-link-item { color: #0F172A; }
+.nav-anchor .mobile-hamburger { color: #0F172A; }
+
+
+/* Typography & Brand Identity */
+.brand-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.brand-logo h2 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.brand-logo span {
+    font-size: 0.5rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    display: block;
+    margin-top: 5px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+/* Nav Linksets */
+.nav-linkset {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link-item {
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-anchor .nav-link-item:hover, 
+.nav-anchor .nav-link-item.active-node {
+     color: #044E4A !important;
+    background-color: rgba(4, 78, 74, 0.08);
+}
+
+.badge-new {
+    background: #ef4444;
+    color: white;
+    font-size: 0.5rem;
+    padding: 1px 5px;
+    border-radius: 4px;
+    margin-left: 6px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.mobile-hamburger {
+    display: none;
+    font-size: 1.35rem; 
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 6px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   HIGH-PERFORMANCE SCROLLED STATE (Desktop & Mobile Base)
+   ========================================================================== */
+.nav-anchor.scrolled {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+    max-width: 100%;
+    height: 80px;
+
+    border-radius: 0;
+    background: rgba(255,255,255,0.9);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+    box-shadow: 0 4px 20px rgba(15,23,42,0.06);
+    border-bottom-left-radius:12px ;
+    border-bottom-right-radius:12px ;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+/* Color Realignment for Scrolled Layout */
+.nav-anchor.scrolled .brand-logo h2 { color: #044E4A; } 
+.nav-anchor.scrolled .brand-logo span { color: #64748B; } 
+.nav-anchor.scrolled .nav-link-item { color: #0F172A; }   
+.nav-anchor.scrolled .mobile-hamburger { color: #0F172A; }
+
+.nav-anchor.scrolled .nav-link-item:hover, 
+.nav-anchor.scrolled .nav-link-item.active-node {
+    color: #044E4A !important;
+    background-color: rgba(4, 78, 74, 0.08);
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE RE-ENGINEERING (Flawless Axis Alignment)
+   ========================================================================== */
+@media (max-width: 991px) {
+    .nav-anchor {
+        height: 80px; /* Give mobile a consistent clean baseline height from the start */
+        padding: 0 24px;
+        width: calc(100% - 32px);
+        top: 16px;
+    }
+
+    .nav-anchor.scrolled {
+        top: 0;
+        width: 100%;
+        height: 70px; /* Crisp line when scrolling */
+    }
+
+    .mobile-hamburger {
+        display: flex; /* Enforces horizontal structural center alignment for icons */
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Fixed alignment hack: Keep cross and bar center-aligned inside the bounding box */
+    .mobile-hamburger i {
+        display: block;
+        line-height: 1;
+        width: auto;
+        height: auto;
+    }
+
+    /* Full screen mobile drawer */
+    .nav-linkset {
+        position: fixed;
+        left: 0;
+        width: 100%;
+        height: 0; 
+        background-color: #044E4A;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 0;
+        gap: 8px;
+        overflow-y: auto;
+        transition: var(--transition);
+        z-index: 999;
+    }
+
+    /* Dropdown placement matching navigation heights perfectly */
+    .nav-anchor { top: 16px; }
+    .nav-anchor .nav-linkset { top: 96px; } /* 80px (nav height) + 16px (top offset) */
+    .nav-anchor.scrolled .nav-linkset { top: 70px; }
+
+    /* Open State Configuration */
+    .nav-anchor.open-viewport .nav-linkset {
+        height: calc(100vh - 96px);
+        padding: 32px 0;
+    }
+    
+    .nav-anchor.scrolled.open-viewport .nav-linkset {
+        height: calc(100vh - 70px);
+    }
+
+    .nav-link-item {
+        width: 88%;
+        justify-content: center;
+        font-size: 15px;
+        padding: 16px 0;
+        color: rgba(255, 255, 255, 0.9) !important;
+        border-radius: 12px;
+        background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .nav-link-item:hover,
+    .nav-link-item.active-node {
+        background-color: rgba(230, 226, 226, 0.1) !important;
+        color: var(--white) !important;
+    }
+
+    /* Force background preservation when mobile menu layout is active */
+    .nav-anchor.open-viewport,
+    .nav-anchor.scrolled.open-viewport {
+        background-color: #044E4A !important;
+        border-radius: 16px !important; /* Keep a nice matching frame style when active open */
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .nav-anchor.scrolled.open-viewport {
+        top: 0 !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-top: none !important;
+    }
+
+    .nav-anchor.open-viewport .brand-logo h2,
+    .nav-anchor.scrolled.open-viewport .brand-logo h2 { color: var(--white) !important; }
+    
+    .nav-anchor.open-viewport .brand-logo span,
+    .nav-anchor.scrolled.open-viewport .brand-logo span { color: rgba(255, 255, 255, 0.6) !important; }
+    
+    .nav-anchor.open-viewport .mobile-hamburger,
+    .nav-anchor.scrolled.open-viewport .mobile-hamburger { color: var(--white) !important; }
+}
+
+      /* HERO */
+
+.interior-hero{
+    padding:160px 0 80px;
+    background:linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #f7fbfb 100%
+    );
+    border-bottom:1px solid #edf2f7;
+}
+
+.interior-hero h1{
+    font-size:46px;
+    line-height:1.2;
+    font-weight:700;
+    margin-bottom:16px;
+    color:var(--primary-dark);
+}
+
+.interior-hero p{
+    max-width:700px;
+    font-size:16px;
+    line-height:1.8;
+    color:var(--text-muted);
+}
+
+/* SECTIONS */
+
+.section-space,
+.section-space-alt{
+    padding:90px 0;
+}
+
+/* SECTION HEADINGS */
+
+.about-text h2,
+.section-space h2,
+.section-space-alt h2{
+    font-size:32px;
+    line-height:1.3;
+    margin-bottom:18px;
+    color:var(--primary-dark);
+}
+
+/* CONTENT */
+
+.about-text p,
+.vision-mission-card p,
+.value-node-card p{
+    font-size:15px;
+    line-height:1.8;
+}
+
+/* IMAGE */
+
+.about-image img{
+    height:460px;
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(4,78,74,.08);
+}
+
+/* GRIDS */
+
+.split-layout-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.dual-column-matrix{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+}
+
+.hexagonal-values-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+/* CARDS */
+
+.vision-mission-card,
+.value-node-card{
+    background:#fff;
+    border:1px solid #e8efef;
+    border-radius:18px;
+    padding:30px;
+    transition:.3s ease;
+}
+
+.vision-mission-card:hover,
+.value-node-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 25px rgba(4,78,74,.06);
+}
+
+.vision-mission-card h3{
+    font-size:22px;
+    margin-bottom:18px;
+}
+
+.value-node-card h4{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+/* CTA */
+
+.closing-banner-strip{
+    padding:65px 50px;
+    border-radius:24px;
+    background:var(--primary-dark);
+}
+
+.closing-banner-strip h2{
+    font-size:34px;
+    margin-bottom:14px;
+    color:#fff;
+}
+
+.closing-banner-strip p{
+    font-size:15px;
+    max-width:700px;
+    margin:0 auto 24px;
+}
+
+/* MOBILE */
+
+@media(max-width:992px){
+
+    .split-layout-grid,
+    .dual-column-matrix{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .hexagonal-values-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .about-image img{
+        height:350px;
+    }
+
+    .interior-hero h1{
+        font-size:38px;
+    }
+}
+
+@media(max-width:768px){
+
+    .section-space,
+    .section-space-alt{
+        padding:70px 0;
+    }
+
+    .hexagonal-values-grid{
+        grid-template-columns:1fr;
+    }
+
+    .interior-hero{
+        padding:130px 0 60px;
+    }
+
+    .interior-hero h1{
+        font-size:30px;
+    }
+
+    .about-text h2,
+    .section-space h2,
+    .section-space-alt h2{
+        font-size:26px;
+    }
+
+    .vision-mission-card,
+    .value-node-card{
+        padding:24px;
+    }
+
+    .closing-banner-strip{
+        padding:45px 25px;
+    }
+
+    .closing-banner-strip h2{
+        font-size:28px;
+    }
+}
+
+
+/*  footer start below  */
+
+ /* ==========================================================================
+        10. ENTERPRISE FOOTER ARCHITECTURE
+        ========================================================================== */
+        .footer-architecture {
+            background-color: #051413;
+            color: #94A3B8;
+            padding: 80px 0 30px;
+            font-size: 0.95rem;
+            border-top: 4px solid var(--primary);
+        }
+
+        .footer-matrix-pipeline {
+            display: grid;
+            grid-template-columns: 1.3fr 0.8fr 0.8fr 1.1fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+
+        .footer-anchor-identity h3 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .footer-anchor-identity p {
+            line-height: 1.5;
+        }
+
+        .footer-social-channels {
+            display: flex;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .footer-social-channels a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .footer-social-channels a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-link-group h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .footer-link-group h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-link-group ul {
+            list-style: none;
+        }
+
+        .footer-link-group ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-link-group ul li a {
+            color: #94A3B8;
+        }
+
+        .footer-link-group ul li a:hover {
+            color: var(--white);
+            padding-left: 6px;
+        }
+
+        .footer-address-nodes li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            line-height: 1.5;
+            margin-bottom: 16px !important;
+        }
+
+        .footer-address-nodes li i {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .footer-signature-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.85rem;
+        }
+/*  fotter starts here  */
+
+  /* ==========================================================================
+        11. MEDIA QUERIES (COMPREHENSIVE RESPONSIVENESS)
+        ========================================================================== */
+        @media (max-width: 1024px) {
+            
+
+            .hero-split-grid, .about-split-view, .split-card-architecture, .inquiry-split-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .about-collage-panel::after {
+                display: none;
+            }
+
+            .image-bounding-frame img, .about-collage-panel img {
+                height: 400px;
+            }
+
+            .footer-matrix-pipeline {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-space, .section-space-alt {
+                padding: 70px 0;
+            }
+
+            .hero-content-deck h1 {
+                font-size: 2.6rem;
+            }
+
+            .section-header-block h2 {
+                font-size: 2rem;
+            }
+
+            .form-row-dual {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .footer-matrix-pipeline {
+                grid-template-columns: 1fr;
+            }
+
+            .forms-pill-matrix {
+                grid-template-columns: 1fr;
+            }
+
+            .slider-arrow {
+                display: none;
+            }
+            
+            .arrow-prev { left: 10px; }
+            .arrow-next { right: 10px; }
+        }
+
+/*  fotter ennd here  */
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="nav-anchor" id="mainHeader">
+        <div class="nav-container">
+            <div class="brand-logo">
+                <a href="#home">
+                    <h2>AdVitum Healthcare</h2>
+                    <span>Nutraceuticals & Wellness</span>
+                </a>
+            </div>
+            <div class="mobile-hamburger" id="menuToggle">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
+             <nav class="nav-linkset" id="navLinkset">
+                <a href="/home" class="nav-link-item ">Home</a>
+                <a href="/about" class="nav-link-item  active-node">About Us</a>
+                <a href="/product" class="nav-link-item">Nutraceutical Products</a>
+                <a href="/label" class="nav-link-item">Private Label</a>
+                <a href="/exportservices" class="nav-link-item">Export Services</a>
+                <a href="/certifications" class="nav-link-item ">Certifications</a>
+                <a href="/blog" class="btn-pill btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">BLOG</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="interior-hero">
+        <div class="wrapper">
+            <span class="section-badge">Corporate Overview</span>
+            <h1>About AdVitum Healthcare</h1>
+            <p>An India-based healthcare export enterprise specializing in high-integrity nutraceutical solutions, contract manufacturing channels, and reliable worldwide logistics assistance.</p>
+        </div>
+    </section>
+
+    <section class="section-space">
+        <div class="wrapper split-layout-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" alt="Advanced Laboratory Analytics Pipeline">
+            </div>
+            <div class="about-text">
+                <h2>Our Identity & Commitment</h2>
+                <p>AdVitum Healthcare is an India-based healthcare export company specializing in nutraceutical, wellness, and healthcare solutions for international markets. We are committed to delivering quality-driven products, reliable export support, and long-term global business partnerships.</p>
+                <p>With a focus on innovation, quality, and customer satisfaction, we aim to provide internationally competitive nutraceutical formulations and private label solutions tailored to evolving market needs.</p>
+                <p>Our product portfolio includes wellness supplements, vitamins, minerals, herbal formulations, sports nutrition products, gummies, effervescent tablets, and other healthcare solutions developed through trusted manufacturing partnerships.</p>
+                <p>At AdVitum Healthcare, we believe in building sustainable relationships through professionalism, transparency, and reliable global supply capabilities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-space-alt">
+        <div class="wrapper dual-column-matrix">
+            <div class="vision-mission-card">
+                <h3><i class="fa-solid fa-eye"></i> Our Vision</h3>
+                <p>To become a globally trusted healthcare export company by delivering high-quality nutraceutical and wellness solutions that support healthier lifestyles across international markets.</p>
+            </div>
+            <div class="vision-mission-card">
+                <h3><i class="fa-solid fa-bullseye"></i> Our Mission</h3>
+                <ul class="bullet-list-pipeline">
+                    <li><i class="fa-solid fa-circle-check"></i> To provide quality-focused nutraceutical and wellness products for global buyers</li>
+                    <li><i class="fa-solid fa-circle-check"></i> To build strong international business partnerships based on trust and reliability</li>
+                    <li><i class="fa-solid fa-circle-check"></i> To support distributors and importers with professional export solutions</li>
+                    <li><i class="fa-solid fa-circle-check"></i> To expand healthcare accessibility through innovative and affordable products</li>
+                    <li><i class="fa-solid fa-circle-check"></i> To maintain high standards in quality, packaging, and customer service</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-space">
+        <div class="wrapper">
+            <div style="text-align:center; margin-bottom: 50px;">
+                <span class="section-badge">Competitive Advantage</span>
+                <h2>Why Choose AdVitum Healthcare</h2>
+            </div>
+            <div class="hexagonal-values-grid">
+                <div class="value-node-card"><h4>Reliable Export Partner</h4><p>We focus on international healthcare supply solutions with a commitment to professionalism, consistency, and long-term business relationships.</p></div>
+                <div class="value-node-card"><h4>Quality-Focused Approach</h4><p>Our manufacturing network is selected based on quality standards, compliance, and production capabilities.</p></div>
+                <div class="value-node-card"><h4>Private Label Solutions</h4><p>We provide customized private label and third-party manufacturing solutions for international distributors and healthcare brands.</p></div>
+                <div class="value-node-card"><h4>Competitive Pricing</h4><p>Our export-oriented approach helps us provide cost-effective supply solutions without compromising quality.</p></div>
+                <div class="value-node-card"><h4>Professional Communication</h4><p>We ensure responsive communication, efficient inquiry handling, and dedicated customer support for global clients.</p></div>
+                <div class="value-node-card"><h4>Global Business Vision</h4><p>We aim to establish long-term collaborations across emerging and developing international healthcare markets.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-space-alt">
+        <div class="wrapper dual-column-matrix">
+            <div class="vision-mission-card">
+                <h3><i class="fa-solid fa-plane-departure"></i> Export Focus</h3>
+                <p>AdVitum Healthcare is dedicated to supporting international buyers, distributors, importers, wholesalers, and healthcare companies through reliable nutraceutical export solutions from India.</p>
+                <ul class="bullet-list-pipeline" style="margin-top: 15px;">
+                    <li><i class="fa-solid fa-chevron-right"></i> Bulk supply requirements</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Private label partnerships</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Distributor networks</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> International healthcare sourcing</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> OEM/ODM business models</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Long-term import collaborations</li>
+                </ul>
+            </div>
+            <div class="vision-mission-card">
+                <h3><i class="fa-solid fa-award"></i> Quality Commitment</h3>
+                <p>Quality remains one of the core foundations of AdVitum Healthcare. We work with manufacturing facilities that follow recognized quality systems and industry standards to ensure product consistency.</p>
+                <ul class="bullet-list-pipeline" style="margin-top: 15px;">
+                    <li><i class="fa-solid fa-chevron-right"></i> Careful sourcing practices</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Quality-controlled manufacturing support</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Packaging and labeling standards</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Product specification management</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> International export compliance support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-space">
+        <div class="wrapper dual-column-matrix">
+            <div class="vision-mission-card" style="background:var(--bg-tint);">
+                <h3><i class="fa-solid fa-industry"></i> Manufacturing Capabilities</h3>
+                <ul class="bullet-list-pipeline" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                    <li><i class="fa-solid fa-capsules"></i> Tablets</li>
+                    <li><i class="fa-solid fa-capsules"></i> Capsules</li>
+                    <li><i class="fa-solid fa-capsules"></i> Gummies</li>
+                    <li><i class="fa-solid fa-capsules"></i> Effervescent</li>
+                    <li><i class="fa-solid fa-capsules"></i> Powders</li>
+                    <li><i class="fa-solid fa-capsules"></i> Sachets</li>
+                    <li><i class="fa-solid fa-capsules"></i> Syrups</li>
+                    <li><i class="fa-solid fa-capsules"></i> Proteins</li>
+                </ul>
+            </div>
+            <div class="vision-mission-card" style="background:var(--bg-tint);">
+                <h3><i class="fa-solid fa-earth-americas"></i> Focus Markets</h3>
+                <ul class="bullet-list-pipeline" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                    <li><i class="fa-solid fa-map-location-dot"></i> Central Asia</li>
+                    <li><i class="fa-solid fa-map-location-dot"></i> CIS Countries</li>
+                    <li><i class="fa-solid fa-map-location-dot"></i> Southeast Asia</li>
+                    <li><i class="fa-solid fa-map-location-dot"></i> Africa</li>
+                    <li><i class="fa-solid fa-map-location-dot"></i> Middle East</li>
+                    <li><i class="fa-solid fa-map-location-dot"></i> Emerging Markets</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-space-alt">
+        <div class="wrapper">
+            <div style="text-align:center; margin-bottom: 50px;">
+                <span class="section-badge">Core Pillars</span>
+                <h2>Our Business Values</h2>
+            </div>
+            <div class="hexagonal-values-grid">
+                <div class="value-node-card" style="text-align:center;"><h4>Integrity</h4><p>Transparent and ethical business practices.</p></div>
+                <div class="value-node-card" style="text-align:center;"><h4>Quality</h4><p>Consistent product quality and reliable service standards.</p></div>
+                <div class="value-node-card" style="text-align:center;"><h4>Commitment</h4><p>Long-term partnerships and customer satisfaction.</p></div>
+                <div class="value-node-card" style="text-align:center;"><h4>Innovation</h4><p>Evolving healthcare trends through modern nutraceutical solutions.</p></div>
+                <div class="value-node-card" style="text-align:center;"><h4>Professionalism</h4><p>Professional approach in communication and operations.</p></div>
+                <div class="value-node-card" style="text-align:center;"><h4>Growth</h4><p>Sustainable growth and global healthcare expansion.</p></div>
+            </div>
+        </div>
+    </section>
+   
+
+      <footer class="footer-architecture" >
+        <div class="wrapper">
+            <div class="footer-matrix-pipeline">
+                <div class="footer-anchor-identity">
+                    <h3>AdVitum Healthcare</h3>
+                    <p style="margin-bottom: 16px;">AdVitum Healthcare is an India-based export company specializing in nutraceutical, wellness, and future pharmaceutical export solutions for international healthcare markets.</p>
+                    <div class="footer-social-channels">
+                        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp Trade Channel"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a  aria-label="Global Support"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Nutraceutical Products</a></li>
+                        <li><a href="#private-label">Private Label</a></li>
+                        <li><a href="#export-services">Export Services</a></li>
+                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#pharmaceutical">Pharmaceutical Division</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#inquiry">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Product Categories</h4>
+                    <ul>
+                        <li><a href="#products">Multivitamins</a></li>
+                        <li><a href="#products">Herbal Supplements</a></li>
+                        <li><a href="#products">Sports Nutrition</a></li>
+                        <li><a href="#products">Gummies</a></li>
+                        <li><a href="#products">Effervescent Tablets</a></li>
+                        <li><a href="#products">Women's Health</a></li>
+                        <li><a href="#products">Men's Health</a></li>
+                        <li><a href="#products">Protein Supplements</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Contact Information</h4>
+                    <ul class="footer-address-nodes">
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong style="color: white; display:block;">Email Address</strong>
+                                <a >info@advitumhealthcare.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div>
+                                <strong style="color: white; display:block;">WhatsApp Number</strong>
+                                <a href="https://wa.me/919898265440" target="_blank">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <div>
+                                <strong style="color: white; display:block;">Phone Number</strong>
+                                <a>+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong style="color: white; display:block;">Business Address</strong>
+                                <span>Siddhi Vinayak Business Park, Makarba, S.G. Road, Ahmedabad(380051), Gujarat, India</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-signature-row">
+                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
+                <div style="display: flex; gap: 20px; background-color: var(--primary-light); color: var(--accent); border-radius: 10px ; padding: 6px ; font-weight: 500;">
+                    
+                    <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" >Powered by Haidarali</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const mainNavbar = document.querySelector('.nav-anchor');
+    const menuToggle = document.querySelector('.mobile-hamburger');
+    const navLinks = document.querySelectorAll('.nav-link-item');
+
+    // 1. Core Scroll Watcher Engine
+    const syncScrollState = () => {
+        if (window.scrollY > 20) {
+            mainNavbar.classList.add('scrolled');
+        } else {
+            mainNavbar.classList.remove('scrolled');
+        }
+    };
+
+    syncScrollState();
+    window.addEventListener('scroll', syncScrollState, { passive: true });
+
+    // 2. Mobile Drawer Event Management
+    if (menuToggle && mainNavbar) {
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            mainNavbar.classList.toggle('open-viewport');
+            
+            if (mainNavbar.classList.contains('open-viewport')) {
+                document.body.style.overflow = 'hidden'; // Protect background from dragging
+                menuToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>'; // Sets close icon cleanly
+            } else {
+                document.body.style.overflow = '';
+                menuToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>'; // Restores hamburger bars
+            }
+        });
+
+        // Auto-collapse when user selects an internal destination anchor target
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNavbar.classList.contains('open-viewport')) {
+                    mainNavbar.classList.remove('open-viewport');
+                    document.body.style.overflow = '';
+                    menuToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+                }
+            });
+        });
+    }
+});
+</script>
+
+</html>

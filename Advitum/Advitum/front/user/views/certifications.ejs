@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdVitum Healthcare | Global Nutraceuticals</title>
+    <link rel="icon" type="image/png" href="/logo.png?v=10">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        
+    /* ==========================================================================
+   1. ENTERPRISE DESIGN SYSTEM VARIABLES & CORE RESET
+   ========================================================================== */
+:root {
+    --primary: #044E4A;
+    --primary-light: #0B6B65;
+    --primary-dark: #022F2D;
+    --accent: #10B981;
+    --accent-light: #E6FDF5;
+    --dark: #0F172A;
+    --text: #334155;
+    --text-muted: #64748B;
+    --bg-light: #F8FAFC;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --white: #FFFFFF;
+    --border: rgba(226, 232, 240, 0.8);
+    
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(4, 78, 74, 0.03);
+    --shadow-md: 0 16px 36px -4px rgba(4, 78, 74, 0.06);
+    --shadow-lg: 0 24px 60px -12px rgba(4, 78, 74, 0.12);
+    
+    --radius-pill: 100px;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+    height: 100%;
+}
+
+body { 
+    font-family: var(--font-main); 
+    color: var(--text); 
+    background-color: var(--bg-light); 
+    line-height: 1.6; 
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 { 
+    font-family: var(--font-heading); 
+    color: var(--dark); 
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: var(--transition); 
+}
+
+main {
+    flex: 1 0 auto;
+    padding-top: 80px; /* Synchronized with new structural desktop navbar height */
+}
+
+.wrapper { 
+    max-width: 1280px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
+    width: 100%; 
+}
+
+/* --- Premium Action Controls --- */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    letter-spacing: 0.3px;
+}
+
+.btn-action.primary {
+    background-color: var(--primary);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(4, 78, 74, 0.18);
+}
+
+.btn-action.primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.btn-action.primary:hover::before {
+    opacity: 1;
+}
+
+.btn-action.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(4, 78, 74, 0.28);
+}
+
+/* ==========================================================================
+   2. BRAND ARCHITECTURE LOGO (OPTIMIZED FOR EXACT ALIGNMENT)
+   ========================================================================== */
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.creative-logo {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.brand-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.brand-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-meta h2 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.brand-meta span {
+    font-size: 0.58rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   3. FLOATING NAVIGATION ARCHITECTURE (DESKTOP REFACTOR)
+   ========================================================================== */
+.nav-anchor {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 80px; 
+    z-index: 1000;
+    padding: 0 32px;
+    background-color: white;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: height 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-anchor.scrolled {
+    height: 68px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow-md);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px; 
+    margin: 0 auto;
+}
+
+.nav-linkset {
+    display: flex;
+    align-items: center;
+    gap: 4px; 
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link-item {
+    font-size: 0.86rem; 
+    font-weight: 600;   
+    color: var(--text-muted);      
+    padding: 8px 16px; 
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    position: relative;
+    letter-spacing: -0.01em;
+}
+
+.nav-link-item i {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* --- State Anchoring System --- */
+
+/* Normal Layer Reset (Handled by base color definitions) */
+
+/* Hover Layer State */
+.nav-link-item:hover {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.04);
+}
+
+.nav-link-item:hover i {
+    color: var(--primary);
+}
+
+/* Active State Layer Anchor */
+.nav-link-item.active {
+    color: var(--primary);
+    background-color: var(--accent-light);
+    font-weight: 700;
+}
+
+.nav-link-item.active i {
+    color: var(--primary);
+}
+
+.nav-item:hover .nav-link-item i {
+    transform: rotate(180deg);
+}
+
+.nav-actions-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lang-switcher {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+}
+
+.lang-switcher:hover {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.04);
+}
+
+.btn-contact {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--primary); 
+    padding: 10px 20px;
+    border-radius: var(--radius-pill); 
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(4, 78, 74, 0.12);
+}
+
+.btn-contact:hover {
+    background-color: var(--primary-light); 
+    box-shadow: 0 6px 18px rgba(4, 78, 74, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Premium Desktop Hover Dropdowns */
+.dropdown-card {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px); 
+    min-width: 240px; 
+    border-radius: var(--radius-lg);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(16px);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+    z-index: 1010;
+}
+
+.nav-item:hover .dropdown-card {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.dropdown-node a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px; 
+    font-size: 0.84rem; 
+    font-weight: 500;
+    color: var(--text);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.dropdown-node a:hover {
+    background-color: var(--accent-light);
+    color: var(--primary-light);
+    padding-left: 18px;
+}
+
+.mobile-hamburger {
+    display: none;
+    font-size: 1.4rem; 
+    cursor: pointer;
+    color: var(--dark);
+    background: transparent;
+    border: none;
+    padding: 4px;
+    transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   4. MODERN FOOTER PIPELINE
+   ========================================================================== */
+.footer-architecture {
+    background-color: #020C0B;
+    color: #8A9AAD;
+    padding: 100px 0 40px;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(16, 185, 129, 0.15);
+    position: relative;
+    flex-shrink: 0; 
+}
+
+.footer-matrix-pipeline {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+}
+
+.footer-anchor-identity h3 {
+    color: var(--white);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.footer-anchor-identity p {
+    line-height: 1.7;
+    color: #9494A1;
+}
+
+.footer-social-channels {
+    display: flex;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.footer-social-channels a {
+    width: 42px;
+    height: 42px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9494A1;
+    font-size: 1.1rem;
+}
+
+.footer-social-channels a:hover {
+    background-color: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+}
+
+.footer-link-group h4 {
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    font-weight: 700;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-link-group h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 24px;
+    height: 2px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.footer-link-group ul {
+    list-style: none;
+}
+
+.footer-link-group ul li {
+    margin-bottom: 14px;
+}
+
+.footer-link-group ul li a {
+    color: #8A9AAD;
+    display: inline-block;
+}
+
+.footer-link-group ul li a:hover {
+    color: var(--white);
+    transform: translateX(4px);
+}
+
+.footer-address-nodes li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 20px !important;
+}
+
+.footer-address-nodes li i {
+    color: var(--accent);
+    font-size: 1rem;
+    background: rgba(16, 185, 129, 0.06);
+    padding: 10px;
+    border-radius: var(--radius-md);
+}
+
+.footer-address-nodes div strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.footer-address-nodes div span, 
+.footer-address-nodes div a {
+    color: #9494A1;
+    line-height: 1.5;
+}
+
+.footer-signature-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: #61616A;
+}
+
+.designer-tag-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(4, 78, 74, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.08);
+    border-radius: var(--radius-pill);
+    padding: 8px 20px;
+}
+
+.designer-tag-container a {
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.designer-tag-container a:hover {
+    color: var(--white);
+}
+
+/* ==========================================================================
+   5. BREAKPOINT RESPONSIVE GRID MATRIX & COMPRESSION FIXES
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .nav-anchor {
+        padding: 0 24px;
+    }
+    .footer-matrix-pipeline {
+        grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+        gap: 32px;
+    }
+}
+
+/* --- Tablet / Large Mobile Viewports --- */
+@media (max-width: 991px) {
+    main {
+        padding-top: 72px; /* Aligns smoothly with new structural responsive height bounds */
+    }
+
+    .mobile-hamburger {
+        display: block;
+    }
+
+    /* Fixed Layout Footprint Preservation */
+    .brand-wrapper {
+        min-width: 0;
+        max-width: 75%;
+    }
+
+    .creative-logo {
+        width: 38px !important;    
+        height: 38px !important;   
+        flex-shrink: 0 !important; 
+    }
+
+    .brand-logo-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important; 
+    }
+
+    .brand-meta h2 {
+        font-size: 1.1rem;
+    }
+
+    .nav-anchor {
+        height: 72px;
+        padding: 0 24px;
+    }
+
+    /* Sliding Navigation Drawer Structure */
+    .nav-linkset {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 72px);
+        background: #021715; 
+        flex-direction: column;
+        align-items: stretch;
+        padding: 32px 24px;
+        gap: 12px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+        z-index: 999;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .nav-linkset::before {
+        content: 'DISTRIBUTION DIRECTORY';
+        display: block;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+        color: rgba(16, 185, 129, 0.6);
+        font-weight: 700;
+        margin-bottom: 4px;
+        padding-left: 12px;
+    }
+
+    /* Drawer Visibility Modifier State */
+    .nav-anchor.open-viewport .nav-linkset {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-actions-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .lang-switcher {
+        color: rgba(255, 255, 255, 0.8);
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .btn-contact {
+        width: 100%;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    /* Drawer Item Typography Real Estate Overrides */
+    .nav-link-item {
+        width: 100%;
+        color: rgba(255, 255, 255, 0.75);
+        padding: 12px 18px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--radius-md);
+        justify-content: space-between;
+        font-size: 0.9rem;
+    }
+
+    .nav-link-item:hover,
+    .nav-link-item.active,
+    .nav-item.mobile-active .nav-link-item {
+        color: var(--white);
+        background-color: rgba(16, 185, 129, 0.15);
+        border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .nav-link-item i {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .nav-item.mobile-active .nav-link-item i {
+        transform: rotate(180deg);
+        color: var(--accent);
+    }
+
+    /* Mobile Accordion Dropdowns */
+    .dropdown-card {
+        position: static;
+        transform: none !important;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        background: rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        border: none;
+        padding: 4px;
+        display: none;
+        border-left: 2px solid var(--accent);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        width: 100%;
+        margin-top: -4px;
+    }
+
+    .nav-item.mobile-active .dropdown-card {
+        display: block;
+    }
+
+    .dropdown-node a {
+        color: rgba(255, 255, 255, 0.65);
+        padding: 10px 16px;
+        font-size: 0.84rem;
+    }
+
+    .dropdown-node a:hover {
+        background: transparent;
+        color: var(--white);
+        padding-left: 20px;
+    }
+
+    /* Open Navigation Header Override Theme */
+    .nav-anchor.open-viewport {
+        background-color: #021715 !important;
+        border-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .nav-anchor.open-viewport .brand-meta h2,
+    .nav-anchor.open-viewport .mobile-hamburger { 
+        color: var(--white); 
+    }
+    
+    .btn-blog-container {
+        width: 100%;
+    }
+    
+    .btn-blog-container .btn-action {
+        width: 100%;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .footer-matrix-pipeline {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+    }
+}
+
+/* --- Mobile Viewports (600px Breakpoint) --- */
+@media (max-width: 600px) {
+    .footer-matrix-pipeline {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footer-anchor-identity h3 {
+        font-size: 1.45rem;
+    }
+    .footer-signature-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+    }
+    .designer-tag-container {
+        width: 100%;
+        justify-content: center;
+    }
+}/* ==========================================================================
+   QUALITY & CERTIFICATIONS LAYOUT ENGINE (CREATIVE LIQUID ACCENT FULL EDITION)
+   ========================================================================== */
+:root {
+  --emerald-deep: #022c22;
+  --emerald-main: #047857;
+  --emerald-neon: #10b981;
+  --teal-accent: #06b6d4;
+  --slate-bg-tint: #f4f7f6; /* Premium soft canvas background */
+  --white-solid: #ffffff;
+  --text-dark-rgb: 15, 23, 42;
+  --text-muted-rgb: 71, 85, 105;
+}
+
+.quality-cert-container {
+  padding: 120px 0;
+  background-color: var(--slate-bg-tint);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Isolation scope shields */
+.quality-cert-container *,
+.quality-cert-container *::before,
+.quality-cert-container *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.quality-cert-container .wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY TOKEN HIGHLIGHTS & HEADER
+   ========================================================================== */
+.quality-section-header {
+  max-width: 720px;
+  margin: -30px auto 70px auto;
+  text-align: center;
+}
+
+/* Glowing Pulse Action Badge */
+.quality-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(4, 120, 87, 0.06);
+  color: var(--emerald-main);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-family: sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid rgba(4, 120, 87, 0.15);
+  margin-bottom: 24px;
+}
+
+.quality-badge i {
+  color: var(--emerald-neon);
+}
+
+@keyframes microPulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.2); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.animated-pulse {
+  animation: microPulse 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quality-section-header h2 {
+  font-family: sans-serif;
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-main) 60%, var(--teal-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.quality-lead-text {
+  font-family: sans-serif;
+  font-size: 0.98rem;
+  color: rgb(var(--text-muted-rgb));
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.highlight-token {
+  background: linear-gradient(120deg, rgba(16, 185, 129, 0.08) 0%, rgba(6, 182, 212, 0.05) 100%);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--emerald-deep);
+  border-bottom: 1.5px solid rgba(4, 120, 87, 0.2);
+}
+
+.highlight-token.text-brand {
+  background: linear-gradient(135deg, var(--emerald-main), var(--teal-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0;
+  border-bottom: none;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   THE CREATIVE GALLERY (ASYNCHRONOUS LIQUID LEFT ACCENT)
+   ========================================================================== */
+.certifications-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 24px;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.cert-image-card {
+  background: var(--white-solid);
+  border: none; 
+  border-radius: 20px;
+  padding: 36px 24px 28px 32px; /* Left aligned breathing room */
+  box-shadow: 0 10px 30px -15px rgba(2, 44, 34, 0.05), 
+              0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  position: relative;
+  z-index: 1;
+  overflow: hidden; 
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+/* Creative Accent Interpretation from image_ee8d10.png */
+.cert-image-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px; 
+  height: 100%;
+  background: linear-gradient(180deg, var(--emerald-neon) 0%, var(--emerald-main) 100%);
+  border-radius: 20px 0 0 20px;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+  z-index: 2;
+}
+
+/* Floating Interlocking Squircle Stamp */
+.cert-stamp {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px; 
+  background: rgba(2, 44, 34, 0.04);
+  border: 1px solid rgba(4, 120, 87, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.cert-stamp .stamp-top {
+  font-size: 0.52rem;
+  font-weight: 800;
+  color: var(--emerald-main);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cert-stamp i {
+  font-size: 0.85rem;
+  color: var(--emerald-deep);
+  margin-top: 3px;
+}
+
+/* Minimalist Inner Frame for Logos */
+.cert-img-frame {
+  width: 84px; 
+  height: 84px;
+  background: var(--slate-bg-tint);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.01);
+  transition: all 0.4s ease;
+}
+
+.cert-img-element {
+  width: 65%;
+  height: 65%;
+  object-fit: contain;
+  mix-blend-mode: multiply; /* Fixes white box issue completely */
+  transition: transform 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+/* Metadata Typography Grid Alignment */
+.cert-card-meta {
+  text-align: left; 
+  width: 100%;
+}
+
+.cert-card-meta h4 {
+  font-family: sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: rgb(var(--text-dark-rgb));
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.badge-subtext {
+  font-family: sans-serif;
+  font-size: 0.78rem;
+  color: rgb(var(--text-muted-rgb));
+  font-weight: 500;
+  line-height: 1.4;
+  display: block;
+}
+
+/* Premium Linear Space Separator */
+.quality-divider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(4, 120, 87, 0.1) 50%, transparent);
+  margin: 70px 0;
+}
+
+/* ==========================================================================
+   STANDARDS MATRIX ARRAYS WITH VISUAL NODAL ACCENTS
+   ========================================================================== */
+.subsection-title {
+  font-family: sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--emerald-deep);
+  text-align: center;
+  margin-bottom: 44px;
+  letter-spacing: -0.02em;
+}
+
+.standards-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 70px;
+}
+
+.standard-node {
+  background: var(--white-solid);
+  border: none;
+  border-radius: 20px;
+  padding: 44px 36px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+  box-shadow: 0 10px 30px -15px rgba(2, 44, 34, 0.04);
+}
+
+.standard-node.accent-node {
+  background: linear-gradient(180deg, var(--white-solid) 0%, rgba(6, 182, 212, 0.02) 100%);
+  box-shadow: 0 10px 30px -15px rgba(6, 182, 212, 0.1);
+}
+
+.standard-node::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--teal-accent);
+  border-radius: 3px 3px 0 0;
+  transition: width 0.4s ease;
+}
+
+.standard-icon-box {
+  width: 56px;
+  height: 56px;
+  background-color: rgba(4, 120, 87, 0.05);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--emerald-main);
+  font-size: 1.35rem;
+  margin-bottom: 24px;
+  transition: all 0.4s ease;
+}
+
+.standard-icon-box.unique-accent {
+  background-color: rgba(6, 182, 212, 0.06);
+  color: var(--teal-accent);
+}
+
+.standard-node h3 {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgb(var(--text-dark-rgb));
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.standard-node p {
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  color: rgb(var(--text-muted-rgb));
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   LUXURY FEATURE SPLIT PANEL ARCHITECTURE
+   ========================================================================== */
+.quality-features-panel {
+  background: linear-gradient(135deg, var(--emerald-deep) 0%, #011c16 100%);
+  border-radius: 28px;
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.quality-features-panel::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.quality-features-panel.feature-panel-glow {
+  box-shadow: 0 30px 60px -15px rgba(2, 44, 34, 0.4);
+}
+
+.panel-heading {
+  font-family: sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--white-solid);
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+
+.panel-subtext {
+  font-family: sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.65;
+}
+
+.premium-feature-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 32px;
+}
+
+.premium-feature-list li {
+  font-family: sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  line-height: 1.4;
+}
+
+.premium-feature-list li i {
+  color: var(--emerald-neon);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  background: rgba(16, 185, 129, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   HIGH FIDELITY HOVER CONFIGURATIONS (INTELLIGENT KINETICS)
+   ========================================================================== */
+@media (hover: hover) {
+  /* Gallery Card Hover Elements */
+  .cert-image-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 25px 50px -20px rgba(2, 44, 34, 0.12);
+  }
+
+  .cert-image-card:hover::before {
+    width: 12px;
+    background: linear-gradient(180deg, var(--teal-accent) 0%, var(--emerald-main) 100%);
+  }
+
+  .cert-image-card:hover .cert-stamp {
+    background: var(--emerald-main);
+    border-color: transparent;
+    transform: translateY(-2px) rotate(5deg) scale(1.05);
+    box-shadow: -4px 6px 15px rgba(4, 120, 87, 0.2);
+  }
+
+  .cert-image-card:hover .cert-stamp .stamp-top,
+  .cert-image-card:hover .cert-stamp i {
+    color: var(--white-solid);
+  }
+
+  .cert-image-card:hover .cert-img-frame {
+    background: var(--white-solid);
+    box-shadow: 0 8px 20px rgba(4, 120, 87, 0.05);
+  }
+
+  .cert-image-card:hover .cert-img-element {
+    transform: scale(1.08);
+  }
+
+  /* Matrix Node Hover Elements */
+  .standard-node:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -15px rgba(2, 44, 34, 0.08);
+  }
+
+  .standard-node:hover::after {
+    width: 40%;
+  }
+
+  .standard-node:hover .standard-icon-box {
+    background: linear-gradient(135deg, var(--emerald-main), var(--teal-accent));
+    color: var(--white-solid);
+    transform: scale(1.06) rotate(-3deg);
+  }
+}
+
+/* ==========================================================================
+   ADAPTIVE RESPONSIVE GRID ENGINE (BREAKPOINTS TUNING)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .certifications-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .standards-matrix-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .quality-features-panel {
+    grid-template-columns: 1fr;
+    padding: 48px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .quality-cert-container {
+    padding: 80px 0;
+  }
+
+  .quality-section-header h2 {
+    font-size: 2.25rem;
+  }
+
+  .subsection-title {
+    font-size: 1.6rem;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .certifications-gallery,
+  .standards-matrix-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cert-image-card {
+    padding: 32px 20px 24px 24px;
+  }
+
+  .standard-node {
+    padding: 36px 24px;
+  }
+
+  .quality-features-panel {
+    padding: 36px 24px;
+  }
+
+  .premium-feature-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+    </style>
+</head>
+<body>
+
+    <header class="nav-anchor" id="mainHeader">
+        <div class="nav-container">
+            <div class="brand-wrapper" onclick="window.location.href='/home'">
+                <div class="creative-logo">
+                    <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" class="brand-logo-img">
+                </div>
+                <div class="brand-meta">
+                    <h2>AdVitum</h2>
+                    <span>Healthcare</span>
+                </div>
+            </div>
+            
+            <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            
+            <nav class="nav-linkset" id="navLinkset">
+                <div class="nav-item">
+                    <a href="/home" class="nav-link-item ">Home</a>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item">Company <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-link-item">Services <i class="fa-solid fa-chevron-down"></i></div>
+                    <ul class="dropdown-card">
+                        <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="/product" class="nav-link-item">Product's</a>
+                </div>
+                
+                
+                <div class="nav-item">
+                    <a href="/certifications" class="nav-link-item active">Certifications</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="/division" class="nav-link-item ">Pharma Division</a>
+                </div>
+                
+                <div class="nav-item btn-blog-container">
+                    <a href="/blog" class="btn-action primary">Blog</a>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="/contact" class="nav-link-item" style="color: var(--accent); font-weight: 700;">Contact Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+            </div>
+    </main>
+
+      <section class="quality-cert-container">
+    <div class="wrapper">
+
+        <!-- Header Content Architecture with Strategic Token Highlights -->
+        <header class="quality-section-header">
+            <span class="quality-badge animated-pulse">
+                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Quality Assurance
+            </span>
+            <h2>Quality & Certifications</h2>
+            <p class="quality-lead-text"><span class="highlight-token text-brand">AdVitum Healthcare</span> aims to support international healthcare markets through <span class="highlight-token">reliable products</span>, professional quality systems, and trusted manufacturing collaborations.</p>
+        </header>
+
+        <!-- 4-Column High-Contrast Certifications Gallery Grid -->
+        <div class="certifications-gallery">
+            
+            <div class="cert-image-card highlight-glow-card">
+                <div class="cert-img-frame">
+                    <img src="who.png" alt="GMP Certification Document" class="cert-img-element">
+                </div>
+                <div class="cert-card-meta">
+                    <h4>GMP Certified</h4>
+                    <p class="badge-subtext">Good Manufacturing Practices</p>
+                </div>
+            </div>
+
+            <div class="cert-image-card">
+                <div class="cert-img-frame">
+                    <img src="eumdr.png" alt="ISO Certification Document" class="cert-img-element">
+                </div>
+                <div class="cert-card-meta">
+                    <h4>ISO Systems</h4>
+                    <p class="badge-subtext">Quality Management Certified</p>
+                </div>
+            </div>
+
+            <div class="cert-image-card">
+                <div class="cert-img-frame">
+                    <img src="iso2.png" alt="FSSAI Certification Document" class="cert-img-element">
+                </div>
+                <div class="cert-card-meta">
+                    <h4>FSSAI Compliant</h4>
+                    <p class="badge-subtext">Food Safety Standard Authority</p>
+                </div>
+            </div>
+
+            <div class="cert-image-card">
+                <div class="cert-img-frame">
+                    <img src="iso.png" alt="Halal Certification Document" class="cert-img-element">
+                </div>
+                <div class="cert-card-meta">
+                    <h4>HALAL Certified</h4>
+                    <p class="badge-subtext">International Compliance</p>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="quality-divider">
+
+        <!-- Standards Matrix Grid Section with Vibrant Background Accents -->
+        <div class="standards-section">
+            <h3 class="subsection-title">Our Quality Standards</h3>
+            <div class="standards-matrix-grid">
+                
+                <div class="standard-node accent-node">
+                    <div class="standard-icon-box unique-accent"><i class="fa-solid fa-gavel"></i></div>
+                    <h3>GMP Standards</h3>
+                    <p>Manufacturing support aligned with recognized Good Manufacturing Practices.</p>
+                </div>
+
+                <div class="standard-node">
+                    <div class="standard-icon-box"><i class="fa-solid fa-award"></i></div>
+                    <h3>ISO Standards</h3>
+                    <p>Commitment toward internationally recognized quality management systems.</p>
+                </div>
+
+                <div class="standard-node">
+                    <div class="standard-icon-box"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <h3>HACCP Compliance</h3>
+                    <p>Focus on safety-oriented production and handling processes.</p>
+                </div>
+
+                <div class="standard-node">
+                    <div class="standard-icon-box"><i class="fa-solid fa-building-shield"></i></div>
+                    <h3>FSSAI Compliance</h3>
+                    <p>Support for nutraceutical and wellness products aligned with Indian regulatory requirements.</p>
+                </div>
+
+                <div class="standard-node accent-node">
+                    <div class="standard-icon-box unique-accent"><i class="fa-solid fa-certificate"></i></div>
+                    <h3>HALAL Compliance</h3>
+                    <p>Manufacturing support aligned with recognized Halal standards for international nutraceutical markets.</p>
+                </div>
+
+                <div class="standard-node">
+                    <div class="standard-icon-box"><i class="fa-solid fa-boxes-packing"></i></div>
+                    <h3>Export Quality Support</h3>
+                    <p>Professional coordination for export-focused packaging, documentation, and product handling.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- High-Contrast Premium Split Features Panel -->
+        <div class="quality-features-panel feature-panel-glow">
+            <div class="features-text-side">
+                <h3 class="panel-heading">Quality Support Features</h3>
+                <p class="panel-subtext">Our structured workflows provide absolute transparency and cross-border operational compliance.</p>
+            </div>
+            <div class="features-list-side">
+                <ul class="premium-feature-list">
+                    <li><i class="fa-solid fa-circle-check"></i> Quality-focused manufacturing partnerships</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Export-ready packaging solutions</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Professional labeling support</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Product specification coordination</li>
+                    <li><i class="fa-solid fa-circle-check"></i> International business support</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Reliable export coordination</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <footer class="footer-architecture">
+        <div class="wrapper">
+            <div class="footer-matrix-pipeline">
+                <div class="footer-anchor-identity">
+                    <h3>AdVitum Healthcare</h3>
+                    <p style="margin-bottom: 12px;">An institutional-grade healthcare export framework operating from India, provisioning bespoke nutraceutical manufacturing and future pharmaceutical products across international domains.</p>
+                    <div class="footer-social-channels">
+                        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Global Web"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Corporate Matrix</h4>
+                    <ul>
+                        <li><a href="/home">Home Gateway</a></li>
+                        <li><a href="/about">About Architecture</a></li>
+                        <li><a href="/product">Nutraceutical Formulations</a></li>
+                        <li><a href="/label">Private Label Setup</a></li>
+                        <li><a href="/exportservices">Export Operations</a></li>
+                        <li><a href="/certifications">Global Regulatory Profiles</a></li>
+                        <li><a href="/blog">Corporate Insights</a></li>
+                        <li><a href="#inquiry">Initiate Trade Desk</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Formulation Arrays</h4>
+                    <ul>
+                        <li><a href="/product#multivitamins">Advanced Multivitamins</a></li>
+                        <li><a href="/product#herbal">Standardized Bio-Extracts</a></li>
+                        <li><a href="/product#sports">Kinetic Sports Nutrition</a></li>
+                        <li><a href="/product#gummies">Pectin Functional Gummies</a></li>
+                        <li><a href="/product#effervescent">Effervescent Technology</a></li>
+                        <li><a href="/product#womens-health">Targeted Women's Health</a></li>
+                        <li><a href="/product#mens-health">Andrological Optimization</a></li>
+                        <li><a href="/product#protein">Isolated Protein Arrays</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-link-group">
+                    <h4>Global Nodes</h4>
+                    <ul class="footer-address-nodes">
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <strong>Communications</strong>
+                                <a href="mailto:info@advitumhealthcare.com">info@advitumhealthcare.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp Trade Gateway</strong>
+                                <a href="https://wa.me/919898265440" target="_blank">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <div>
+                                <strong>Voice Trunk Desk</strong>
+                                <a href="tel:+919898265440">+91 98982 65440</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>Corporate Headquarters</strong>
+                                <span>Siddhi Vinayak Business Park, Makarba, S.G. Road, Ahmedabad (380051), Gujarat, India</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-signature-row">
+                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
+                <div class="designer-tag-container">
+                    <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank">Powered by Haidarali</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mainNavbar = document.querySelector('.nav-anchor');
+            const menuToggle = document.querySelector('#menuToggle');
+            const navLinkItems = document.querySelectorAll('.nav-link-item');
+
+            // 1. Scroll State Matrix Watcher
+            const syncScrollState = () => {
+                if (window.scrollY > 20) {
+                    mainNavbar.classList.add('scrolled');
+                } else {
+                    mainNavbar.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', syncScrollState, { passive: true });
+            syncScrollState();
+
+            // 2. Mobile Dashboard Drawer Viewport Control
+            if (menuToggle && mainNavbar) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mainNavbar.classList.toggle('open-viewport');
+                    
+                    if (mainNavbar.classList.contains('open-viewport')) {
+                        document.body.style.overflow = 'hidden';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                    } else {
+                        document.body.style.overflow = '';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+                    }
+                });
+            }
+
+            // 3. Mobile Sub-link Accordion Engine
+            navLinkItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 991) {
+                        const hasDropdown = item.parentElement.querySelector('.dropdown-card');
+                        if (hasDropdown) {
+                            e.preventDefault();
+                            const activeNode = item.parentElement;
+                            
+                            document.querySelectorAll('.nav-item').forEach(node => {
+                                if(node !== activeNode) node.classList.remove('mobile-active');
+                            });
+
+                            activeNode.classList.toggle('mobile-active');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
