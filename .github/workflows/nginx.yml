@@ -50,3 +50,15 @@ jobs:
 
             # Test Nginx and reload/restart
             sudo nginx -t && (sudo systemctl reload nginx || sudo systemctl restart nginx)
+
+            # Install Certbot if not installed
+            if ! command -v certbot &> /dev/null; then
+              echo "Installing Certbot..."
+              sudo apt-get install -y certbot python3-certbot-nginx
+            fi
+
+            # Request Let's Encrypt SSL certificate if not already created
+            if [ ! -d "/etc/letsencrypt/live/advitumhealthcare.com" ]; then
+              echo "Requesting SSL certificate..."
+              sudo certbot --nginx -d advitumhealthcare.com -d www.advitumhealthcare.com --non-interactive --agree-tos --register-unsafely-without-email
+            fi
