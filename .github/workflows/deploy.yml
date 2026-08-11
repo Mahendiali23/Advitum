@@ -28,7 +28,9 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             export PATH=$PATH:/usr/local/bin:$HOME/.bin:$HOME/.local/bin
 
-            cd ${{ secrets.HOSTINGER_DEPLOY_PATH }}
+            # Ensure deployment directory exists and change into it
+            mkdir -p "${{ secrets.HOSTINGER_DEPLOY_PATH }}"
+            cd "${{ secrets.HOSTINGER_DEPLOY_PATH }}" || exit 1
             
             # Check if directory is a git repository; if not, initialize it
             if [ ! -d ".git" ]; then
