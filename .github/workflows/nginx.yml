@@ -1,0 +1,31 @@
+name: Configure Nginx on Hostinger
+
+on:
+  workflow_run:
+    workflows: ["Deploy to Hostinger"]
+    types:
+      - completed
+
+jobs:
+  nginx-setup:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Update Nginx Config via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOSTINGER_SSH_HOST }}
+          username: ${{ secrets.HOSTINGER_SSH_USERNAME }}
+          key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          port: 22
+          script: |
+            # Copy nginx.conf to sites-available (requires root / sudo access)
+            sudo cp ${{ secrets.HOSTINGER_DEPLOY_PATH }}/nginx.conf /etc/nginx/sites-available/advitum
+            
+            # Enable config if not already enabled
+            if [ ! -f "/etc/nginx/sites-enabled/advitum" ]; then
+              sudo ln -s /etc/nginx/sites-available/advitum /etc/nginx/sites-enabled/
+            fi
+
+            # Test Nginx and reload
+            sudo nginx -t && sudo systemctl reload nginx
