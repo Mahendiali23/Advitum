@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node back/server.js"
+    "start": "node Backend/server.js"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
@@ -11,4 +11,4 @@
     "multer": "^2.2.0",
     "twilio": "^6.0.2"
   }
-}
+} 

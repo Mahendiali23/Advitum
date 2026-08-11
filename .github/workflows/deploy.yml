@@ -1,0 +1,35 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        with:
+          host: ${{ secrets.HOSTINGER_SSH_HOST }}
+          username: ${{ secrets.HOSTINGER_SSH_USERNAME }}
+          key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          port: 22
+          envs: ENV_FILE
+          script: |
+            cd ${{ secrets.HOSTINGER_DEPLOY_PATH }}
+            git fetch --all
+            git reset --hard origin/main
+            echo "$ENV_FILE" > Backend/.env
+            npm install --production
+            if ! command -v pm2 &> /dev/null; then
+              echo "Installing PM2 globally..."
+              npm install -g pm2
+            fi
+            pm2 restart all || pm2 start Backend/server.js --name "advitum"

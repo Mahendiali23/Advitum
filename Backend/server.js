@@ -1,4 +1,4 @@
-require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
+require('dotenv').config({ path: require('fs').existsSync(require('path').join(__dirname, '.env')) ? require('path').join(__dirname, '.env') : require('path').join(__dirname, '../.env') });
 
 const express = require('express');
 const path = require('path');
