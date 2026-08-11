@@ -19,11 +19,17 @@ jobs:
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
           port: 22
           script: |
-            # Copy nginx.conf to sites-available (requires root / sudo access)
-            sudo cp ${{ secrets.HOSTINGER_DEPLOY_PATH }}/nginx.conf /etc/nginx/sites-available/advitum
+            # Check if nginx.conf exists in the deploy path
+            if [ -f "${{ secrets.HOSTINGER_DEPLOY_PATH }}/nginx.conf" ]; then
+              sudo cp "${{ secrets.HOSTINGER_DEPLOY_PATH }}/nginx.conf" /etc/nginx/sites-available/advitum
+            else
+              echo "Error: nginx.conf not found in ${{ secrets.HOSTINGER_DEPLOY_PATH }}. Listing files:"
+              ls -la "${{ secrets.HOSTINGER_DEPLOY_PATH }}"
+              exit 1
+            fi
             
-            # Enable config if not already enabled
-            if [ ! -f "/etc/nginx/sites-enabled/advitum" ]; then
+            # Enable config if not already enabled (handles symlinks properly)
+            if [ ! -L "/etc/nginx/sites-enabled/advitum" ] && [ ! -f "/etc/nginx/sites-enabled/advitum" ]; then
               sudo ln -s /etc/nginx/sites-available/advitum /etc/nginx/sites-enabled/
             fi
 
