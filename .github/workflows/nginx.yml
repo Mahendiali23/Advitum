@@ -48,6 +48,11 @@ jobs:
               sudo ln -s /etc/nginx/sites-available/advitum /etc/nginx/sites-enabled/
             fi
 
+            # Remove default site configuration if it exists to avoid conflicts
+            if [ -f "/etc/nginx/sites-enabled/default" ]; then
+              sudo rm /etc/nginx/sites-enabled/default
+            fi
+
             # Test Nginx and reload/restart
             sudo nginx -t && (sudo systemctl reload nginx || sudo systemctl restart nginx)
 
