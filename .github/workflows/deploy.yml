@@ -30,10 +30,11 @@ jobs:
 
             cd ${{ secrets.HOSTINGER_DEPLOY_PATH }}
             
-            # Check if directory is a git repository; if not, clone it
+            # Check if directory is a git repository; if not, initialize it
             if [ ! -d ".git" ]; then
               echo "Initializing repository..."
-              git clone https://github.com/Mahendiali23/Advitum.git .
+              git init
+              git remote add origin https://github.com/Mahendiali23/Advitum.git
             fi
 
             git fetch --all
