@@ -5,7 +5,7 @@ dist/
 build/
 .vscode/
 .DS_Store
-Backend/.env
+/Backend/.env
 node_modules
 .DS_Store
 .env
