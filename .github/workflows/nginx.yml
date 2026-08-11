@@ -17,7 +17,7 @@ jobs:
           host: ${{ secrets.HOSTINGER_SSH_HOST }}
           username: ${{ secrets.HOSTINGER_SSH_USERNAME }}
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
-          port: 22
+          port: ${{ secrets.HOSTINGER_SSH_PORT || 22 }}
           script: |
             # Install Nginx if not installed
             if ! command -v nginx &> /dev/null; then

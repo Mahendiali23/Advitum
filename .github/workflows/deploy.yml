@@ -20,7 +20,7 @@ jobs:
           host: ${{ secrets.HOSTINGER_SSH_HOST }}
           username: ${{ secrets.HOSTINGER_SSH_USERNAME }}
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
-          port: 22
+          port: ${{ secrets.HOSTINGER_SSH_PORT || 22 }}
           envs: ENV_FILE
           script: |
             # Load NVM and node environment if installed via NVM
