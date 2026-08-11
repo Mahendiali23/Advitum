@@ -22,14 +22,14 @@ app.use(express.json());
 
 // Views parsing configuration
 app.set('views', [
-    path.join(__dirname, '..', 'front', 'user', 'views'),
-    path.join(__dirname, '..', 'front', 'admin', 'views')
+    path.join(__dirname, '..', 'Frontend', 'user', 'views'),
+    path.join(__dirname, '..', 'Frontend', 'admin', 'views')
 ]);
 app.set('view engine', 'ejs');
 
 // STATIC FILES CONFIGURATION
-// 1. Static assets from 'front/public' (CSS, Frontend JS, etc.)
-app.use(express.static(path.join(__dirname, '..', 'front', 'public')));
+// 1. Static assets from 'Frontend/public' (CSS, Frontend JS, etc.)
+app.use(express.static(path.join(__dirname, '..', 'Frontend', 'public')));
 
 // 2. Uploaded Images from 'back/public'
 const uploadPath = path.join(__dirname, 'public', 'uploads');
