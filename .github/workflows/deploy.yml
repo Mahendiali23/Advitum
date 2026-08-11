@@ -23,9 +23,22 @@ jobs:
           port: 22
           envs: ENV_FILE
           script: |
+            # Load NVM and node environment if installed via NVM
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            export PATH=$PATH:/usr/local/bin:$HOME/.bin:$HOME/.local/bin
+
             cd ${{ secrets.HOSTINGER_DEPLOY_PATH }}
+            
+            # Check if directory is a git repository; if not, clone it
+            if [ ! -d ".git" ]; then
+              echo "Initializing repository..."
+              git clone https://github.com/Mahendiali23/Advitum.git .
+            fi
+
             git fetch --all
             git reset --hard origin/main
+            mkdir -p Backend
             echo "$ENV_FILE" > Backend/.env
             npm install --production
             if ! command -v pm2 &> /dev/null; then
