@@ -19,12 +19,27 @@ jobs:
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
           port: 22
           script: |
-            # Check if nginx.conf exists in the deploy path
-            if [ -f "${{ secrets.HOSTINGER_DEPLOY_PATH }}/nginx.conf" ]; then
-              sudo cp "${{ secrets.HOSTINGER_DEPLOY_PATH }}/nginx.conf" /etc/nginx/sites-available/advitum
+            # Install Nginx if not installed
+            if ! command -v nginx &> /dev/null; then
+              echo "Installing Nginx..."
+              sudo apt-get update
+              sudo apt-get install -y nginx
+            fi
+
+            # Check if deploy path exists
+            if [ ! -d "${{ secrets.HOSTINGER_DEPLOY_PATH }}" ]; then
+              echo "Creating deployment directory..."
+              mkdir -p "${{ secrets.HOSTINGER_DEPLOY_PATH }}"
+            fi
+
+            cd "${{ secrets.HOSTINGER_DEPLOY_PATH }}"
+
+            # Check if nginx.conf exists
+            if [ -f "nginx.conf" ]; then
+              sudo cp nginx.conf /etc/nginx/sites-available/advitum
             else
-              echo "Error: nginx.conf not found in ${{ secrets.HOSTINGER_DEPLOY_PATH }}. Listing files:"
-              ls -la "${{ secrets.HOSTINGER_DEPLOY_PATH }}"
+              echo "Error: nginx.conf not found. Listing files in directory:"
+              ls -la
               exit 1
             fi
             
@@ -33,5 +48,5 @@ jobs:
               sudo ln -s /etc/nginx/sites-available/advitum /etc/nginx/sites-enabled/
             fi
 
-            # Test Nginx and reload
-            sudo nginx -t && sudo systemctl reload nginx
+            # Test Nginx and reload/restart
+            sudo nginx -t && (sudo systemctl reload nginx || sudo systemctl restart nginx)
