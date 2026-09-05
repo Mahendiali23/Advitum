@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdVitum Healthcare</title>
-    <link rel="icon" type="image/png" href="/logo.png?v=10">
+    <title>AdVitum Healthcare | Global Nutraceuticals</title>
+    <link rel="icon" type="image/png" href="/tablogo.png?v=10">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -662,69 +662,832 @@ main {
 }
 
 
+:root {
+    --primary: #044E4A;
+    --primary-light: #0B6B65;
+    --primary-dark: #022F2D;
+    --accent: #10B981;
+    --accent-light: #E6FDF5;
+    --dark: #0F172A;
+    --text: #334155;
+    --text-muted: #64748B;
+    --bg-light: #F8FAFC;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --white: #FFFFFF;
+    --border: rgba(226, 232, 240, 0.8);
+    
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(4, 78, 74, 0.03);
+    --shadow-md: 0 16px 36px -4px rgba(4, 78, 74, 0.06);
+    --shadow-lg: 0 24px 60px -12px rgba(4, 78, 74, 0.12);
+    
+    --radius-pill: 100px;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+    height: 100%;
+}
+
+body { 
+    font-family: var(--font-main); 
+    color: var(--text); 
+    background-color: var(--bg-light); 
+    line-height: 1.6; 
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 { 
+    font-family: var(--font-heading); 
+    color: var(--dark); 
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: var(--transition); 
+}
+
+main {
+    flex: 1 0 auto;
+    padding-top: 80px; /* Synchronized with new structural desktop navbar height */
+}
+
+.wrapper { 
+    max-width: 1280px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
+    width: 100%; 
+}
+
+/* --- Premium Action Controls --- */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    letter-spacing: 0.3px;
+}
+
+.btn-action.primary {
+    background-color: var(--primary);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(4, 78, 74, 0.18);
+}
+
+.btn-action.primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.btn-action.primary:hover::before {
+    opacity: 1;
+}
+
+.btn-action.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(4, 78, 74, 0.28);
+}
+
+/* ==========================================================================
+   2. BRAND ARCHITECTURE LOGO (OPTIMIZED FOR EXACT ALIGNMENT)
+   ========================================================================== */
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.creative-logo {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.brand-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.brand-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-meta h2 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.brand-meta span {
+    font-size: 0.58rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   3. FLOATING NAVIGATION ARCHITECTURE (DESKTOP REFACTOR)
+   ========================================================================== */
+.nav-anchor {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 80px; 
+    z-index: 1000;
+    padding: 0 32px;
+    background-color: white;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: height 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-anchor.scrolled {
+    height: 68px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow-md);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px; 
+    margin: 0 auto;
+}
+
+.nav-linkset {
+    display: flex;
+    align-items: center;
+    gap: 4px; 
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link-item {
+    font-size: 0.86rem; 
+    font-weight: 600;   
+    color: var(--text-muted);      
+    padding: 8px 16px; 
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    position: relative;
+    letter-spacing: -0.01em;
+}
+
+.nav-link-item i {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* --- State Anchoring System --- */
+
+/* Normal Layer Reset (Handled by base color definitions) */
+
+/* Hover Layer State */
+.nav-link-item:hover {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.04);
+}
+
+.nav-link-item:hover i {
+    color: var(--primary);
+}
+
+/* Active State Layer Anchor */
+.nav-link-item.active {
+    color: var(--primary);
+    background-color: var(--accent-light);
+    font-weight: 700;
+}
+
+.nav-link-item.active i {
+    color: var(--primary);
+}
+
+.nav-item:hover .nav-link-item i {
+    transform: rotate(180deg);
+}
+
+.nav-actions-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lang-switcher {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+}
+
+.lang-switcher:hover {
+    color: var(--primary);
+    background-color: rgba(4, 78, 74, 0.04);
+}
+
+.btn-contact {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--primary); 
+    padding: 10px 20px;
+    border-radius: var(--radius-pill); 
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(4, 78, 74, 0.12);
+}
+
+.btn-contact:hover {
+    background-color: var(--primary-light); 
+    box-shadow: 0 6px 18px rgba(4, 78, 74, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Premium Desktop Hover Dropdowns */
+.dropdown-card {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px); 
+    min-width: 240px; 
+    border-radius: var(--radius-lg);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(16px);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+    z-index: 1010;
+}
+
+.nav-item:hover .dropdown-card {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.dropdown-node a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px; 
+    font-size: 0.84rem; 
+    font-weight: 500;
+    color: var(--text);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.dropdown-node a:hover {
+    background-color: var(--accent-light);
+    color: var(--primary-light);
+    padding-left: 18px;
+}
+
+.mobile-hamburger {
+    display: none;
+    font-size: 1.4rem; 
+    cursor: pointer;
+    color: var(--dark);
+    background: transparent;
+    border: none;
+    padding: 4px;
+    transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   4. MODERN FOOTER PIPELINE
+   ========================================================================== */
+.footer-architecture {
+    background-color: #020C0B;
+    color: #8A9AAD;
+    padding: 100px 0 40px;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(16, 185, 129, 0.15);
+    position: relative;
+    flex-shrink: 0; 
+}
+
+.footer-matrix-pipeline {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+}
+
+.footer-anchor-identity h3 {
+    color: var(--white);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.footer-anchor-identity p {
+    line-height: 1.7;
+    color: #9494A1;
+}
+
+.footer-social-channels {
+    display: flex;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.footer-social-channels a {
+    width: 42px;
+    height: 42px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9494A1;
+    font-size: 1.1rem;
+}
+
+.footer-social-channels a:hover {
+    background-color: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+}
+
+.footer-link-group h4 {
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    font-weight: 700;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-link-group h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 24px;
+    height: 2px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.footer-link-group ul {
+    list-style: none;
+}
+
+.footer-link-group ul li {
+    margin-bottom: 14px;
+}
+
+.footer-link-group ul li a {
+    color: #8A9AAD;
+    display: inline-block;
+}
+
+.footer-link-group ul li a:hover {
+    color: var(--white);
+    transform: translateX(4px);
+}
+
+.footer-address-nodes li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 20px !important;
+}
+
+.footer-address-nodes li i {
+    color: var(--accent);
+    font-size: 1rem;
+    background: rgba(16, 185, 129, 0.06);
+    padding: 10px;
+    border-radius: var(--radius-md);
+}
+
+.footer-address-nodes div strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.footer-address-nodes div span, 
+.footer-address-nodes div a {
+    color: #9494A1;
+    line-height: 1.5;
+}
+
+.footer-signature-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: #61616A;
+}
+
+.designer-tag-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(4, 78, 74, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.08);
+    border-radius: var(--radius-pill);
+    padding: 8px 20px;
+}
+
+.designer-tag-container a {
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.designer-tag-container a:hover {
+    color: var(--white);
+}
+
+/* ==========================================================================
+   5. BREAKPOINT RESPONSIVE GRID MATRIX & COMPRESSION FIXES
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .nav-anchor {
+        padding: 0 24px;
+    }
+    .footer-matrix-pipeline {
+        grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+        gap: 32px;
+    }
+}
+
+/* --- Tablet / Large Mobile Viewports --- */
+@media (max-width: 991px) {
+    main {
+        padding-top: 72px; /* Aligns smoothly with new structural responsive height bounds */
+    }
+
+    .mobile-hamburger {
+        display: block;
+    }
+
+    /* Fixed Layout Footprint Preservation */
+    .brand-wrapper {
+        min-width: 0;
+        max-width: 75%;
+    }
+
+    .creative-logo {
+        width: 38px !important;    
+        height: 38px !important;   
+        flex-shrink: 0 !important; 
+    }
+
+    .brand-logo-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important; 
+    }
+
+    .brand-meta h2 {
+        font-size: 1.1rem;
+    }
+
+    .nav-anchor {
+        height: 72px;
+        padding: 0 24px;
+    }
+
+    /* Sliding Navigation Drawer Structure */
+    .nav-linkset {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 72px);
+        background: #021715; 
+        flex-direction: column;
+        align-items: stretch;
+        padding: 32px 24px;
+        gap: 12px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+        z-index: 999;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .nav-linkset::before {
+        content: 'DISTRIBUTION DIRECTORY';
+        display: block;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+        color: rgba(16, 185, 129, 0.6);
+        font-weight: 700;
+        margin-bottom: 4px;
+        padding-left: 12px;
+    }
+
+    /* Drawer Visibility Modifier State */
+    .nav-anchor.open-viewport .nav-linkset {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-actions-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .lang-switcher {
+        color: rgba(255, 255, 255, 0.8);
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .btn-contact {
+        width: 100%;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    /* Drawer Item Typography Real Estate Overrides */
+    .nav-link-item {
+        width: 100%;
+        color: rgba(255, 255, 255, 0.75);
+        padding: 12px 18px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--radius-md);
+        justify-content: space-between;
+        font-size: 0.9rem;
+    }
+
+    .nav-link-item:hover,
+    .nav-link-item.active,
+    .nav-item.mobile-active .nav-link-item {
+        color: var(--white);
+        background-color: rgba(16, 185, 129, 0.15);
+        border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .nav-link-item i {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .nav-item.mobile-active .nav-link-item i {
+        transform: rotate(180deg);
+        color: var(--accent);
+    }
+
+    /* Mobile Accordion Dropdowns */
+    .dropdown-card {
+        position: static;
+        transform: none !important;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        background: rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        border: none;
+        padding: 4px;
+        display: none;
+        border-left: 2px solid var(--accent);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        width: 100%;
+        margin-top: -4px;
+    }
+
+    .nav-item.mobile-active .dropdown-card {
+        display: block;
+    }
+
+    .dropdown-node a {
+        color: rgba(255, 255, 255, 0.65);
+        padding: 10px 16px;
+        font-size: 0.84rem;
+    }
+
+    .dropdown-node a:hover {
+        background: transparent;
+        color: var(--white);
+        padding-left: 20px;
+    }
+
+    /* Open Navigation Header Override Theme */
+    .nav-anchor.open-viewport {
+        background-color: #021715 !important;
+        border-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .nav-anchor.open-viewport .brand-meta h2,
+    .nav-anchor.open-viewport .mobile-hamburger { 
+        color: var(--white); 
+    }
+    
+    .btn-blog-container {
+        width: 100%;
+    }
+    
+    .btn-blog-container .btn-action {
+        width: 100%;
+        padding: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .footer-matrix-pipeline {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+    }
+}
+
+/* --- Mobile Viewports (600px Breakpoint) --- */
+@media (max-width: 600px) {
+    .footer-matrix-pipeline {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footer-anchor-identity h3 {
+        font-size: 1.45rem;
+    }
+    .footer-signature-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+    }
+    .designer-tag-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
     </style>
 </head>
 <body>
 
-    <header class="nav-anchor" id="mainHeader">
-        <div class="nav-container">
-            <div class="brand-wrapper" onclick="window.location.href='/home'">
-                <div class="creative-logo">
-                    <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" class="brand-logo-img">
-                </div>
-                <div class="brand-meta">
-                    <h2>AdVitum</h2>
-                    <span>Healthcare</span>
-                </div>
+   <header class="nav-anchor" id="mainHeader" style="border-left: 3px solid #022F2D; border-right: 3px solid #022F2D; border-top: 3px solid #022F2D;">
+    <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; min-height: 70px;">
+        
+        <!-- Logo Wrapper with Proper Height & Scaling -->
+          <div class="brand-wrapper" onclick="window.location.href='/home'" style="cursor: pointer; display: flex; align-items: center; flex-shrink: 0;">
+                 <div class="creative-logo" style="display: flex; align-items: center; height: 100%;">
+               <img src="/new_logo.png?v=11" alt="AdVitum Healthcare Logo" class="brand-logo-img" style="height: 50px !important; min-height: 50px !important; width: auto !important; max-height: none !important; display: block !important;">
+                    </div>
+        </div>
+        
+        <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        
+        <nav class="nav-linkset" id="navLinkset">
+            <div class="nav-item">
+                <a href="/home" class="nav-link-item">Home</a>
             </div>
             
-            <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
-                <i class="fa-solid fa-bars-staggered"></i>
-            </button>
+            <div class="nav-item">
+                <a href="/company" class="nav-link-item" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
+                    Company <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-card">
+                    <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                    <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
             
-            <nav class="nav-linkset" id="navLinkset">
-                <div class="nav-item">
-                    <a href="/home" class="nav-link-item">Home</a>
-                </div>
-                
-                <div class="nav-item">
-                    <div class="nav-link-item">Company <i class="fa-solid fa-chevron-down"></i></div>
-                    <ul class="dropdown-card">
-                        <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-                
-                <div class="nav-item">
-                    <div class="nav-link-item">Services <i class="fa-solid fa-chevron-down"></i></div>
-                    <ul class="dropdown-card">
-                        <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-                
-                <div class="nav-item">
-                    <a href="/product" class="nav-link-item active">Product's</a>
-                </div>
-                
-                <div class="nav-item">
-                    <a href="/certifications" class="nav-link-item">Certifications</a>
-                </div>
+            <div class="nav-item">
+                <a href="/services" class="nav-link-item" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
+                    Services <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-card">
+                    <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
+                    <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-item">
+                <a href="/product" class="nav-link-item active" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
+                    Products <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                 <ul class="dropdown-card">
+                    <li class="dropdown-node"><a href="/product">Pharmaceutical <i class="fa-solid fa-arrow-right"></i></a></li>
+                    <li class="dropdown-node"><a href="/product">Nutraceutical <i class="fa-solid fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-item">
+                <a href="/certifications" class="nav-link-item">Certifications</a>
+            </div>
 
-                <div class="nav-item">
-                    <a href="/division" class="nav-link-item">Pharma Division</a>
-                </div>
-                
-                <div class="nav-item btn-blog-container">
-                    <a href="/blog" class="btn-action primary">Blog</a>
-                </div>
-                
-                <div class="nav-item">
-                    <a href="/contact" class="nav-link-item" style="color: var(--accent); font-weight: 700;">Contact Us</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+            <div class="nav-item">
+                <a href="/division" class="nav-link-item">Pharma Division</a>
+            </div>
+
+            <div class="nav-item">
+                <a href="/blog" class="nav-link-item">Blog</a>
+            </div>
+            
+            <div class="nav-item btn-blog-container">
+                <a href="/contact" class="btn-action primary">Contact</a>
+            </div>
+        </nav>
+    </div>
+</header>
 
     <script id="data-store" type="application/json">
     <%- JSON.stringify(items) %>
@@ -759,78 +1522,79 @@ main {
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer-architecture">
+       <footer class="footer-architecture">
         <div class="wrapper">
             <div class="footer-matrix-pipeline">
                 <div class="footer-anchor-identity">
-                    <h3>AdVitum Healthcare</h3>
-                    <p style="margin-bottom: 16px;">AdVitum Healthcare is an India-based export company specializing in nutraceutical, wellness, and future pharmaceutical export solutions for international healthcare markets.</p>
-                    <div class="footer-social-channels">
-                        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp Trade Channel"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a aria-label="Global Support"><i class="fa-solid fa-globe"></i></a>
-                    </div>
-                </div>
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" style="height: 38px; width: auto; object-fit: contain;">
+        <h3 style="margin: 0;">AdVitum Healthcare</h3>
+    </div>
+    <p style="margin-bottom: 12px;">An institutional-grade healthcare export framework operating from India, provisioning bespoke nutraceutical manufacturing and future pharmaceutical products across international domains.</p>
+    <div class="footer-social-channels">
+        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" aria-label="Global Web"><i class="fa-solid fa-globe"></i></a>
+    </div>
+</div>
 
                 <div class="footer-link-group">
-                    <h4>Quick Links</h4>
+                    <h4>Corporate Matrix</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#products">Nutraceutical Products</a></li>
-                        <li><a href="#private-label">Private Label</a></li>
-                        <li><a href="#export-services">Export Services</a></li>
-                        <li><a href="#certifications">Certifications</a></li>
-                        <li><a href="#pharmaceutical">Pharmaceutical Division</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#inquiry">Contact Us</a></li>
+                        <li><a href="/home">Home Gateway</a></li>
+                        <li><a href="/about">About Architecture</a></li>
+                        <li><a href="/product">Nutraceutical Formulations</a></li>
+                        <li><a href="/label">Private Label Setup</a></li>
+                        <li><a href="/exportservices">Export Operations</a></li>
+                        <li><a href="/certifications">Global Regulatory Profiles</a></li>
+                        <li><a href="/blog">Corporate Insights</a></li>
+                        <li><a href="/contact">Initiate Trade Desk</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-link-group">
-                    <h4>Product Categories</h4>
+                    <h4>Formulation Arrays</h4>
                     <ul>
-                        <li><a href="#products">Multivitamins</a></li>
-                        <li><a href="#products">Herbal Supplements</a></li>
-                        <li><a href="#products">Sports Nutrition</a></li>
-                        <li><a href="#products">Gummies</a></li>
-                        <li><a href="#products">Effervescent Tablets</a></li>
-                        <li><a href="#products">Women's Health</a></li>
-                        <li><a href="#products">Men's Health</a></li>
-                        <li><a href="#products">Protein Supplements</a></li>
+                        <li><a href="/product">Advanced Multivitamins</a></li>
+                        <li><a href="/product">Standardized Bio-Extracts</a></li>
+                        <li><a href="/product">Kinetic Sports Nutrition</a></li>
+                        <li><a href="/product">Pectin Functional Gummies</a></li>
+                        <li><a href="/product">Effervescent Technology</a></li>
+                        <li><a href="/product">Targeted Women's Health</a></li>
+                        <li><a href="/product">Andrological Optimization</a></li>
+                        <li><a href="/product">Isolated Protein Arrays</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-link-group">
-                    <h4>Contact Information</h4>
+                    <h4>Global Nodes</h4>
                     <ul class="footer-address-nodes">
                         <li>
                             <i class="fa-solid fa-envelope"></i>
                             <div>
-                                <strong style="color: white; display:block;">Email Address</strong>
-                                <a>info@advitumhealthcare.com</a>
+                                <strong>Communications</strong>
+                                <a href="mailto:info@advitumhealthcare.com">info@advitumhealthcare.com</a>
                             </div>
                         </li>
                         <li>
                             <i class="fa-brands fa-whatsapp"></i>
                             <div>
-                                <strong style="color: white; display:block;">WhatsApp Number</strong>
+                                <strong>WhatsApp Trade Gateway</strong>
                                 <a href="https://wa.me/919898265440" target="_blank">+91 98982 65440</a>
                             </div>
                         </li>
                         <li>
                             <i class="fa-solid fa-phone-volume"></i>
                             <div>
-                                <strong style="color: white; display:block;">Phone Number</strong>
-                                <a>+91 98982 65440</a>
+                                <strong>Voice Trunk Desk</strong>
+                                <a href="tel:+919898265440">+91 98982 65440</a>
                             </div>
                         </li>
                         <li>
                             <i class="fa-solid fa-location-dot"></i>
                             <div>
-                                <strong style="color: white; display:block;">Business Address</strong>
-                                <span>Siddhi Vinayak Business Park, Makarba, S.G. Road, Ahmedabad(380051), Gujarat, India</span>
+                                <strong>Corporate Headquarters</strong>
+                                <span>Siddhi Vinayak Business Park, Makarba, S.G. Road, Ahmedabad (380051), Gujarat, India</span>
                             </div>
                         </li>
                     </ul>
@@ -838,13 +1602,15 @@ main {
             </div>
 
             <div class="footer-signature-row">
-                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
-                <div style="display: flex; gap: 20px; background-color: var(--primary-light); color: var(--accent); border-radius: 10px; padding: 6px; font-weight: 500;">
-                    <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/">Powered by Haidarali</a>
+                <div class="designer-tag-container">
+                    <a href="https://haidarali-portfolio.onrender.com/" target="_blank">Developed by Haidarali</a>
                 </div>
+                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
+                
             </div>
         </div>
     </footer>
+
 
     <!-- LOGIC SCRIPT -->
     <!-- LOGIC SCRIPT -->
@@ -1016,6 +1782,58 @@ main {
         // Initial Dynamic Load
         updateList();
     });
+
+      document.addEventListener("DOMContentLoaded", () => {
+            const mainNavbar = document.querySelector('.nav-anchor');
+            const menuToggle = document.querySelector('#menuToggle');
+            const navLinkItems = document.querySelectorAll('.nav-link-item');
+
+            // 1. Scroll State Matrix Watcher
+            const syncScrollState = () => {
+                if (window.scrollY > 20) {
+                    mainNavbar.classList.add('scrolled');
+                } else {
+                    mainNavbar.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', syncScrollState, { passive: true });
+            syncScrollState();
+
+            // 2. Mobile Dashboard Drawer Viewport Control
+            if (menuToggle && mainNavbar) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mainNavbar.classList.toggle('open-viewport');
+                    
+                    if (mainNavbar.classList.contains('open-viewport')) {
+                        document.body.style.overflow = 'hidden';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                    } else {
+                        document.body.style.overflow = '';
+                        menuToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+                    }
+                });
+            }
+
+            // 3. Mobile Sub-link Accordion Engine
+            navLinkItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 991) {
+                        const hasDropdown = item.parentElement.querySelector('.dropdown-card');
+                        if (hasDropdown) {
+                            e.preventDefault();
+                            const activeNode = item.parentElement;
+                            
+                            document.querySelectorAll('.nav-item').forEach(node => {
+                                if(node !== activeNode) node.classList.remove('mobile-active');
+                            });
+
+                            activeNode.classList.toggle('mobile-active');
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
