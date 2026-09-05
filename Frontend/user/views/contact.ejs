@@ -1255,67 +1255,73 @@ main {
 </head>
 <body>
 
-    <header class="nav-anchor" id="mainHeader">
-        <div class="nav-container">
-            <div class="brand-wrapper" onclick="window.location.href='/home'">
-                <div class="creative-logo">
-                    <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" class="brand-logo-img">
-                </div>
-                <div class="brand-meta">
-                    <h2>AdVitum</h2>
-                    <span>Healthcare</span>
-                </div>
+  <header class="nav-anchor" id="mainHeader" style="border-left: 3px solid var(--advitum-primary-dark); border-right: 3px solid var(--advitum-primary-dark); border-top: 3px solid var(--advitum-primary-dark);">
+    <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; min-height: 70px;">
+        
+        <!-- Logo Wrapper with Proper Height & Scaling -->
+         <div class="brand-wrapper" onclick="window.location.href='/home'" style="cursor: pointer; display: flex; align-items: center; flex-shrink: 0;">
+                 <div class="creative-logo" style="display: flex; align-items: center; height: 100%;">
+               <img src="/new_logo.png?v=11" alt="AdVitum Healthcare Logo" class="brand-logo-img" style="height: 50px !important; min-height: 50px !important; width: auto !important; max-height: none !important; display: block !important;">
+                    </div>
+        </div>
+        
+        <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        
+        <nav class="nav-linkset" id="navLinkset">
+            <div class="nav-item">
+                <a href="/home" class="nav-link-item">Home</a>
             </div>
             
-            <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
-                <i class="fa-solid fa-bars-staggered"></i>
-            </button>
+            <div class="nav-item">
+                <a href="/company" class="nav-link-item" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
+                    Company <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-card">
+                    <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                    <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
             
-            <nav class="nav-linkset" id="navLinkset">
-                <div class="nav-item">
-                    <a href="/home" class="nav-link-item">Home</a>
-                </div>
-                
-                <div class="nav-item">
-                    <div class="nav-link-item">Company <i class="fa-solid fa-chevron-down"></i></div>
-                    <ul class="dropdown-card">
-                        <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-                
-                <div class="nav-item">
-                    <div class="nav-link-item">Services <i class="fa-solid fa-chevron-down"></i></div>
-                    <ul class="dropdown-card">
-                        <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-                
-                 <div class="nav-item">
-                    <a href="/product" class="nav-link-item">Product's</a>
-                </div>
-                
-                
-                <div class="nav-item">
-                    <a href="/certifications" class="nav-link-item ">Certifications</a>
-                </div>
+            <div class="nav-item">
+                <a href="/services" class="nav-link-item" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
+                    Services <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-card">
+                    <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
+                    <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-item">
+                <a href="/product" class="nav-link-item" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
+                    Products <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                 <ul class="dropdown-card">
+                    <li class="dropdown-node"><a href="/product">Pharmaceutical <i class="fa-solid fa-arrow-right"></i></a></li>
+                    <li class="dropdown-node"><a href="/product">Nutraceutical <i class="fa-solid fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-item">
+                <a href="/certifications" class="nav-link-item">Certifications</a>
+            </div>
 
-                <div class="nav-item">
-                    <a href="/division" class="nav-link-item ">Pharma Division</a>
-                </div>
-                
-                <div class="nav-item btn-blog-container">
-                    <a href="/blog" class="btn-action primary">Blog</a>
-                </div>
-                
-                <div class="nav-item">
-                    <a href="/contact" class="nav-link-item active" style="color: var(--accent); font-weight: 700;">Contact Us</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-    
+            <div class="nav-item">
+                <a href="/division" class="nav-link-item">Pharma Division</a>
+            </div>
+
+            <div class="nav-item">
+                <a href="/blog" class="nav-link-item ">Blog</a>
+            </div>
+            
+            <div class="nav-item btn-blog-container">
+                <a href="/contact" class="btn-action primary">Contact</a>
+            </div>
+        </nav>
+    </div>
+</header>
     <main>
         <div class="wrapper">
             </div>
@@ -1398,44 +1404,51 @@ main {
                     </div>
 
                     <form id="advitumExportForm" class="inquiry-form-wrapper" onsubmit="handleInquirySubmit(event)">
-                        <div class="form-field-group">
-                            <label for="clientName">Full Name</label>
-                            <div class="input-relative-container">
-                                <i class="fa-solid fa-user field-icon"></i>
-                                <input type="text" id="clientName" name="clientName" required placeholder="Your Name">
-                            </div>
-                        </div>
+    <div class="form-field-group">
+        <label for="clientName">Full Name</label>
+        <div class="input-relative-container">
+            <i class="fa-solid fa-user field-icon"></i>
+            <input type="text" id="clientName" name="clientName" required placeholder="Your Name">
+        </div>
+    </div>
 
-                        <div class="form-field-group">
-                            <label for="clientCountry">Country</label>
-                            <div class="input-relative-container">
-                                <i class="fa-solid fa-globe field-icon"></i>
-                                <input type="text" id="clientCountry" name="clientCountry" required placeholder="India">
-                            </div>
-                        </div>
+    <div class="form-field-group">
+        <label for="clientCountry">Country</label>
+        <div class="input-relative-container">
+            <i class="fa-solid fa-globe field-icon"></i>
+            <input type="text" id="clientCountry" name="clientCountry" required placeholder="India">
+        </div>
+    </div>
 
-                        
+    <!-- Added missing clientEmail field -->
+    <div class="form-field-group">
+        <label for="clientEmail">Email Address</label>
+        <div class="input-relative-container">
+            <i class="fa-solid fa-envelope field-icon"></i>
+            <input type="email" id="clientEmail" name="clientEmail" required placeholder="name@example.com">
+        </div>
+    </div>
 
-                        <div class="form-field-group">
-                            <label for="clientWhatsApp">WhatsApp Contact Number</label>
-                            <div class="input-relative-container">
-                                <i class="fa-brands fa-whatsapp field-icon"></i>
-                                <input type="tel" id="clientWhatsApp" name="clientWhatsApp" required placeholder="+91">
-                            </div>
-                        </div>
+    <div class="form-field-group">
+        <label for="clientWhatsApp">WhatsApp Contact Number</label>
+        <div class="input-relative-container">
+            <i class="fa-brands fa-whatsapp field-icon"></i>
+            <input type="tel" id="clientWhatsApp" name="clientWhatsApp" required placeholder="+91">
+        </div>
+    </div>
 
-                        <div class="form-field-group">
-                            <label for="clientMessage">Detailed Message / Import Requirement</label>
-                            <div class="textarea-relative-container">
-                                <i class="fa-solid fa-pen-to-square textarea-icon"></i>
-                                <textarea id="clientMessage" name="clientMessage" rows="4" required placeholder="Describe your product specifications, raw material requirements, or contract manufacturing quantity guidelines here..."></textarea>
-                            </div>
-                        </div>
+    <div class="form-field-group">
+        <label for="clientMessage">Detailed Message / Import Requirement</label>
+        <div class="textarea-relative-container">
+            <i class="fa-solid fa-pen-to-square textarea-icon"></i>
+            <textarea id="clientMessage" name="clientMessage" rows="4" required placeholder="Describe your product specifications..."></textarea>
+        </div>
+    </div>
 
-                        <button type="submit" class="submit-action-btn">
-                            <span>SUBMIT</span> <i class="fa-brands fa-whatsapp"></i>
-                        </button>
-                    </form>
+    <button type="submit" class="submit-action-btn">
+        <span>SUBMIT</span> <i class="fa-brands fa-whatsapp"></i>
+    </button>
+</form>
                 </div>
 
             </div>
@@ -1449,19 +1462,21 @@ main {
 <div class="toast-container-anchor" id="toastAnchor"></div>
 
 <!-- Paste directly above your Footer code -->
-
-    <footer class="footer-architecture">
+   <footer class="footer-architecture">
         <div class="wrapper">
             <div class="footer-matrix-pipeline">
                 <div class="footer-anchor-identity">
-                    <h3>haidarali</h3>
-                    <p style="margin-bottom: 12px;">An institutional-grade healthcare export framework operating from India, provisioning bespoke nutraceutical manufacturing and future pharmaceutical products across international domains.</p>
-                    <div class="footer-social-channels">
-                        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="#" aria-label="Global Web"><i class="fa-solid fa-globe"></i></a>
-                    </div>
-                </div>
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" style="height: 38px; width: auto; object-fit: contain;">
+        <h3 style="margin: 0;">AdVitum Healthcare</h3>
+    </div>
+    <p style="margin-bottom: 12px;">An institutional-grade healthcare export framework operating from India, provisioning bespoke nutraceutical manufacturing and future pharmaceutical products across international domains.</p>
+    <div class="footer-social-channels">
+        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" aria-label="Global Web"><i class="fa-solid fa-globe"></i></a>
+    </div>
+</div>
 
                 <div class="footer-link-group">
                     <h4>Corporate Matrix</h4>
@@ -1480,14 +1495,14 @@ main {
                 <div class="footer-link-group">
                     <h4>Formulation Arrays</h4>
                     <ul>
-                        <li><a href="/product#multivitamins">Advanced Multivitamins</a></li>
-                        <li><a href="/product#herbal">Standardized Bio-Extracts</a></li>
-                        <li><a href="/product#sports">Kinetic Sports Nutrition</a></li>
-                        <li><a href="/product#gummies">Pectin Functional Gummies</a></li>
-                        <li><a href="/product#effervescent">Effervescent Technology</a></li>
-                        <li><a href="/product#womens-health">Targeted Women's Health</a></li>
-                        <li><a href="/product#mens-health">Andrological Optimization</a></li>
-                        <li><a href="/product#protein">Isolated Protein Arrays</a></li>
+                        <li><a href="/product">Advanced Multivitamins</a></li>
+                        <li><a href="/product">Standardized Bio-Extracts</a></li>
+                        <li><a href="/product">Kinetic Sports Nutrition</a></li>
+                        <li><a href="/product">Pectin Functional Gummies</a></li>
+                        <li><a href="/product">Effervescent Technology</a></li>
+                        <li><a href="/product">Targeted Women's Health</a></li>
+                        <li><a href="/product">Andrological Optimization</a></li>
+                        <li><a href="/product">Isolated Protein Arrays</a></li>
                     </ul>
                 </div>
 
@@ -1527,10 +1542,11 @@ main {
             </div>
 
             <div class="footer-signature-row">
-                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
                 <div class="designer-tag-container">
-                    <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank">Powered by Haidarali</a>
+                    <a href="https://haidarali-portfolio.onrender.com/" target="_blank">Developed by Haidarali</a>
                 </div>
+                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
+                
             </div>
         </div>
     </footer>
@@ -1591,17 +1607,27 @@ main {
         function handleInquirySubmit(event) {
     event.preventDefault();
     
-    // Target corporate phone number
+   function sendWhatsAppInquiry(event) {
+    // 1. Form ko page refresh karne se rokein
+    if (event) event.preventDefault();
+
+    // 2. Country code add karein (India: 91)
     const whatsappCompanyNumber = "919898265440"; 
 
-    // Extracting DOM values
+    // 3. Inputs fetch karein
     const name = document.getElementById('clientName').value.trim();
     const country = document.getElementById('clientCountry').value.trim();
     const email = document.getElementById('clientEmail').value.trim();
     const clientWA = document.getElementById('clientWhatsApp').value.trim();
     const message = document.getElementById('clientMessage').value.trim();
 
-    // Clean Message template structure
+    // Validation Check (Basic)
+    if (!name || !email || !message) {
+        showCreativeToast("Please fill all required fields!");
+        return;
+    }
+
+    // Message Template Format
     const textMessage = 
 `*New Business Inquiry | AdVitum Healthcare*
 
@@ -1617,16 +1643,16 @@ ${message}`;
     const encodedMessage = encodeURIComponent(textMessage);
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappCompanyNumber}&text=${encodedMessage}`;
 
-    // Show feedback alert animation
     showCreativeToast("Redirecting to WhatsApp...");
 
-    // Clear form layout values smoothly
+    // Form clear karein
     document.getElementById('advitumExportForm').reset();
 
-    // Trigger explicit redirect sequence window thread
-    setTimeout(() => {
-        window.open(whatsappUrl, '_blank');
-    }, 800);
+    // Direct window location set karein (Popup Blocker Bypass + Smooth Redirect)
+    window.location.href = whatsappUrl; 
+    
+    // YA fir agar new tab hi kholna hai toh setTimeout hata kar direct chalaein:
+    // window.open(whatsappUrl, '_blank');
 }
 
 function showCreativeToast(message) {
@@ -1648,6 +1674,43 @@ function showCreativeToast(message) {
         toast.classList.add('is-fading');
         setTimeout(() => { toast.remove(); }, 400);
     }, 3500);
+}
+        }
+
+        function handleInquirySubmit(event) {
+    event.preventDefault(); // Browser refresh break hone se bachega
+
+    const whatsappCompanyNumber = "919898265440"; // Country code pre-appended
+
+    // Optional chaining added to prevent null value breakage
+    const name = document.getElementById('clientName')?.value.trim() || '';
+    const country = document.getElementById('clientCountry')?.value.trim() || '';
+    const email = document.getElementById('clientEmail')?.value.trim() || 'N/A';
+    const clientWA = document.getElementById('clientWhatsApp')?.value.trim() || '';
+    const message = document.getElementById('clientMessage')?.value.trim() || '';
+
+    const textMessage = 
+`*New Business Inquiry | AdVitum Healthcare*
+
+*Client Details:*
+• *Name:* ${name}
+• *Country:* ${country}
+• *Email:* ${email}
+• *WhatsApp:* ${clientWA}
+
+*Message:*
+${message}`;
+
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappCompanyNumber}&text=${encodeURIComponent(textMessage)}`;
+
+    if (typeof showCreativeToast === "function") {
+        showCreativeToast("Redirecting to WhatsApp...");
+    }
+
+    document.getElementById('advitumExportForm').reset();
+
+    // Direct redirect execution avoids popup-blocker issues
+    window.location.href = whatsappUrl;
 }
     </script>
 </body>
