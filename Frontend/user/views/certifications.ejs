@@ -9,659 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-/* ==========================================================================
+        
+    /* ==========================================================================
    1. ENTERPRISE DESIGN SYSTEM VARIABLES & CORE RESET
    ========================================================================== */
-:root {
-    --primary: #044E4A;
-    --primary-light: #0B6B65;
-    --primary-dark: #022F2D;
-    --accent: #10B981;
-    --accent-light: #E6FDF5;
-    --dark: #0F172A;
-    --text: #334155;
-    --text-muted: #64748B;
-    --bg-light: #F8FAFC;
-    --bg-glass: rgba(255, 255, 255, 0.85);
-    --white: #FFFFFF;
-    --border: rgba(226, 232, 240, 0.8);
-    
-    --font-main: 'Plus Jakarta Sans', sans-serif;
-    --font-heading: 'Poppins', sans-serif;
-    
-    --shadow-sm: 0 4px 6px -1px rgba(4, 78, 74, 0.03);
-    --shadow-md: 0 16px 36px -4px rgba(4, 78, 74, 0.06);
-    --shadow-lg: 0 24px 60px -12px rgba(4, 78, 74, 0.12);
-    
-    --radius-pill: 100px;
-    --radius-lg: 16px;
-    --radius-md: 10px;
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-*, *::before, *::after { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
-
-html { 
-    scroll-behavior: smooth; 
-    height: 100%;
-}
-
-body { 
-    font-family: var(--font-main); 
-    color: var(--text); 
-    background-color: var(--bg-light); 
-    line-height: 1.6; 
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, h4 { 
-    font-family: var(--font-heading); 
-    color: var(--dark); 
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-}
-
-a { 
-    text-decoration: none; 
-    color: inherit; 
-    transition: var(--transition); 
-}
-
-main {
-    flex: 1 0 auto;
-    padding-top: 80px;
-}
-
-.wrapper { 
-    max-width: 1280px; 
-    margin: 0 auto; 
-    padding: 0 24px; 
-    width: 100%; 
-}
-
-/* --- Premium Action Controls --- */
-.btn-action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 22px;
-    font-weight: 600;
-    border-radius: var(--radius-pill);
-    font-size: 0.82rem;
-    cursor: pointer;
-    border: none;
-    transition: var(--transition);
-    gap: 8px;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    letter-spacing: 0.3px;
-}
-
-.btn-action.primary {
-    background-color: var(--primary);
-    color: var(--white);
-    box-shadow: 0 4px 14px rgba(4, 78, 74, 0.18);
-}
-
-.btn-action.primary::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
-    z-index: -1;
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.btn-action.primary:hover::before {
-    opacity: 1;
-}
-
-.btn-action.primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(4, 78, 74, 0.28);
-}
-
-/* ==========================================================================
-   2. BRAND ARCHITECTURE LOGO
-   ========================================================================== */
-.brand-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    min-width: 0;
-    flex-shrink: 0;
-}
-
-.creative-logo {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    background: transparent;
-}
-
-.brand-logo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    image-rendering: -webkit-optimize-contrast;
-}
-
-.brand-meta {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.brand-meta h2 {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: var(--primary);
-    line-height: 1;
-    letter-spacing: -0.03em;
-}
-
-.brand-meta span {
-    font-size: 0.58rem;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    display: block;
-    margin-top: 4px;
-    line-height: 1;
-}
-
-/* ==========================================================================
-   3. FLOATING NAVIGATION ARCHITECTURE
-   ========================================================================== */
-.nav-anchor {
-    position: fixed;
-    top: 0; 
-    left: 0;
-    width: 100%;
-    height: 80px; 
-    z-index: 1000;
-    padding: 0 32px;
-    background-color: white;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-    transition: height 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    align-items: center;
-}
-
-.nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1440px; 
-    margin: 0 auto;
-}
-
-.nav-linkset {
-    display: flex;
-    align-items: center;
-    gap: 4px; 
-    list-style: none;
-}
-
-.nav-item {
-    position: relative;
-}
-
-.nav-link-item {
-    font-size: 0.86rem; 
-    font-weight: 600;   
-    color: var(--text-muted);      
-    padding: 8px 16px; 
-    border-radius: var(--radius-pill);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    position: relative;
-    letter-spacing: -0.01em;
-}
-
-.nav-link-item:hover {
-    color: var(--primary);
-    background-color: rgba(4, 78, 74, 0.04);
-}
-
-.nav-link-item.active {
-    color: var(--primary);
-    background-color: var(--accent-light);
-    font-weight: 700;
-}
-
-.dropdown-card {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(12px); 
-    min-width: 240px; 
-    border-radius: var(--radius-lg);
-    padding: 8px;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    list-style: none;
-    background: rgba(255, 255, 255, 0.98);
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(16px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 1010;
-}
-
-.nav-item:hover .dropdown-card {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(4px);
-}
-
-.dropdown-node a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 14px; 
-    font-size: 0.84rem; 
-    font-weight: 500;
-    color: var(--text);
-    border-radius: var(--radius-md);
-    transition: var(--transition);
-}
-
-.dropdown-node a:hover {
-    background-color: var(--accent-light);
-    color: var(--primary-light);
-    padding-left: 18px;
-}
-
-.mobile-hamburger {
-    display: none;
-    font-size: 1.4rem; 
-    cursor: pointer;
-    color: var(--dark);
-    background: transparent;
-    border: none;
-    padding: 4px;
-}
-
-/* ==========================================================================
-   4. CATALOG & PRODUCT DISPLAY LAYOUT (EXACT REFERENCE DESIGN)
-   ========================================================================== */
-.catalog-container { 
-    height: 85vh; 
-    width: 100%; 
-    max-width: 1440px;
-    margin: 100px auto 20px auto; 
-    padding: 0 20px; 
-    display: flex; 
-    flex-direction: column; 
-    overflow: hidden; 
-    box-sizing: border-box;
-}
-
-.cat-nav-container { 
-    display: flex; 
-    gap: 10px; 
-    margin-bottom: 15px; 
-    overflow-x: auto; 
-    padding-bottom: 8px; 
-    flex-shrink: 0;
-    scrollbar-width: thin;
-    scrollbar-color: #cbd5e1 #f1f5f9;
-}
-
-.nav-btn { 
-    padding: 8px 20px; border-radius: 8px; border: 1px solid #e2e8f0; 
-    cursor: pointer; background: #fff; font-size: 0.88rem; font-weight: 500;
-    color: #64748b; transition: all 0.2s; white-space: nowrap; 
-}
-.nav-btn:hover { border-color: #044E4A; color: #044E4A; }
-.nav-btn.active { background: #044E4A; color: #fff; border-color: #044E4A; }
-
-.workspace-layout { 
-    display: grid; 
-    grid-template-columns: 300px 1fr; 
-    gap: 20px; 
-    flex: 1; 
-    overflow: hidden; 
-}
-
-/* Sidebar List */
-.sidebar-list { 
-    border: 1px solid #e2e8f0; 
-    border-radius: 12px; 
-    background: #fff; 
-    display: flex; 
-    flex-direction: column; 
-    overflow: hidden;
-}
-
-.search-box { padding: 12px; border-bottom: 1px solid #f1f5f9; flex-shrink: 0; }
-.search-box input { 
-    width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; 
-    border-radius: 8px; font-size: 0.9rem; outline: none;
-}
-.search-box input:focus { border-color: #044E4A; }
-
-.items-list { 
-    list-style: none; overflow-y: auto; flex: 1; 
-}
-.list-item { 
-    padding: 14px 18px; border-bottom: 1px solid #f1f5f9; 
-    cursor: pointer; font-size: 0.9rem; transition: 0.2s;
-    color: #334155; border-left: 4px solid transparent; font-weight: 500;
-}
-.list-item:hover { background: #f0fdf4; color: #044E4A; }
-.list-item.active { background: #e6fdf5; color: #044E4A; font-weight: 700; border-left: 4px solid #044E4A; }
-
-/* Product Display Panel */
-.display-panel { 
-    border: 1px solid #e2e8f0; 
-    border-radius: 12px; 
-    padding: 24px; 
-    background: #fff; 
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Header Action Row inside Detail View */
-.panel-top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 16px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #f1f5f9;
-}
-
-.breadcrumb-trail {
-    font-size: 0.85rem;
-    color: #64748b;
-    font-weight: 500;
-}
-
-.breadcrumb-trail span {
-    color: #0f172a;
-    font-weight: 700;
-}
-
-.top-bar-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-share {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    color: #334155;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.btn-share:hover { background: #f8fafc; }
-
-.btn-enquire {
-    background: #2dd4bf;
-    color: #022f2d;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.btn-enquire:hover { background: #14b8a6; color: #fff; }
-
-/* Split Container: Left Info, Right Media */
-.panel-content-grid {
-    display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 30px;
-    align-items: start;
-}
-
-.product-detail-left {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.product-title-main {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #0f172a;
-    margin: 0;
-}
-
-.market-name-tag {
-    font-size: 0.9rem;
-    color: #64748b;
-    font-weight: 600;
-}
-
-.detail-section-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin-top: 10px;
-    margin-bottom: 4px;
-}
-
-.detail-section-body {
-    font-size: 0.9rem;
-    color: #475569;
-    line-height: 1.6;
-}
-
-.product-detail-right {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.main-image-box {
-    width: 100%;
-    height: 260px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.main-image-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.gallery-thumbnails {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-}
-
-.thumb-item {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
-    overflow: hidden;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.thumb-item.active {
-    border: 2px solid #0d6e69;
-}
-
-.thumb-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* ==========================================================================
-   5. FOOTER ARCHITECTURE
-   ========================================================================== */
-.footer-architecture {
-    background-color: #020C0B;
-    color: #8A9AAD;
-    padding: 100px 0 40px;
-    font-size: 0.9rem;
-    border-top: 1px solid rgba(16, 185, 129, 0.15);
-    position: relative;
-    flex-shrink: 0; 
-}
-
-.footer-matrix-pipeline {
-    display: grid;
-    grid-template-columns: 1.4fr 0.8fr 0.8fr 1fr;
-    gap: 64px;
-    margin-bottom: 80px;
-}
-
-.footer-anchor-identity h3 {
-    color: var(--white);
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    font-weight: 800;
-}
-
-.footer-anchor-identity p {
-    line-height: 1.7;
-    color: #9494A1;
-}
-
-.footer-social-channels {
-    display: flex;
-    gap: 14px;
-    margin-top: 30px;
-}
-
-.footer-social-channels a {
-    width: 42px;
-    height: 42px;
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #9494A1;
-    font-size: 1.1rem;
-}
-
-.footer-link-group h4 {
-    color: var(--white);
-    font-size: 0.95rem;
-    margin-bottom: 28px;
-    font-weight: 700;
-    position: relative;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.footer-link-group h4::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 24px;
-    height: 2px;
-    background-color: var(--accent);
-    border-radius: 2px;
-}
-
-.footer-link-group ul {
-    list-style: none;
-}
-
-.footer-link-group ul li {
-    margin-bottom: 14px;
-}
-
-.footer-address-nodes li {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    margin-bottom: 20px !important;
-}
-
-.footer-address-nodes li i {
-    color: var(--accent);
-    font-size: 1rem;
-    background: rgba(16, 185, 129, 0.06);
-    padding: 10px;
-    border-radius: var(--radius-md);
-}
-
-.footer-signature-row {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    padding-top: 36px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 0.85rem;
-    color: #61616A;
-}
-
-/* Responsiveness */
-@media (max-width: 991px) {
-    .workspace-layout { grid-template-columns: 1fr; }
-    .panel-content-grid { grid-template-columns: 1fr; }
-    .catalog-container { height: auto; }
-    .footer-matrix-pipeline { grid-template-columns: 1fr 1fr; gap: 40px; }
-}
-
-@media (max-width: 600px) {
-    .footer-matrix-pipeline { grid-template-columns: 1fr; }
-}
-
-
 :root {
     --primary: #044E4A;
     --primary-light: #0B6B65;
@@ -1414,18 +768,538 @@ main {
         width: 100%;
         justify-content: center;
     }
+}/* ==========================================================================
+   QUALITY & CERTIFICATIONS LAYOUT ENGINE (CREATIVE LIQUID ACCENT FULL EDITION)
+   ========================================================================== */
+:root {
+  --emerald-deep: #022c22;
+  --emerald-main: #047857;
+  --emerald-neon: #10b981;
+  --teal-accent: #06b6d4;
+  --slate-bg-tint: #f4f7f6; /* Premium soft canvas background */
+  --white-solid: #ffffff;
+  --text-dark-rgb: 15, 23, 42;
+  --text-muted-rgb: 71, 85, 105;
 }
 
+.quality-cert-container {
+  padding: 120px 0;
+  background-color: var(--slate-bg-tint);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
 
+/* Isolation scope shields */
+.quality-cert-container *,
+.quality-cert-container *::before,
+.quality-cert-container *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.quality-cert-container .wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY TOKEN HIGHLIGHTS & HEADER
+   ========================================================================== */
+.quality-section-header {
+  max-width: 720px;
+  margin: -30px auto 70px auto;
+  text-align: center;
+}
+
+/* Glowing Pulse Action Badge */
+.quality-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(4, 120, 87, 0.06);
+  color: var(--emerald-main);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-family: sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid rgba(4, 120, 87, 0.15);
+  margin-bottom: 24px;
+}
+
+.quality-badge i {
+  color: var(--emerald-neon);
+}
+
+@keyframes microPulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.2); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.animated-pulse {
+  animation: microPulse 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quality-section-header h2 {
+  font-family: sans-serif;
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-main) 60%, var(--teal-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.quality-lead-text {
+  font-family: sans-serif;
+  font-size: 0.98rem;
+  color: rgb(var(--text-muted-rgb));
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.highlight-token {
+  background: linear-gradient(120deg, rgba(16, 185, 129, 0.08) 0%, rgba(6, 182, 212, 0.05) 100%);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--emerald-deep);
+  border-bottom: 1.5px solid rgba(4, 120, 87, 0.2);
+}
+
+.highlight-token.text-brand {
+  background: linear-gradient(135deg, var(--emerald-main), var(--teal-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0;
+  border-bottom: none;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   THE CREATIVE GALLERY (ASYNCHRONOUS LIQUID LEFT ACCENT)
+   ========================================================================== */
+.certifications-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 24px;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.cert-image-card {
+  background: var(--white-solid);
+  border: none; 
+  border-radius: 20px;
+  padding: 36px 24px 28px 32px; /* Left aligned breathing room */
+  box-shadow: 0 10px 30px -15px rgba(2, 44, 34, 0.05), 
+              0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  position: relative;
+  z-index: 1;
+  overflow: hidden; 
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+/* Creative Accent Interpretation from image_ee8d10.png */
+.cert-image-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px; 
+  height: 100%;
+  background: linear-gradient(180deg, var(--emerald-neon) 0%, var(--emerald-main) 100%);
+  border-radius: 20px 0 0 20px;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+  z-index: 2;
+}
+
+/* Floating Interlocking Squircle Stamp */
+.cert-stamp {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px; 
+  background: rgba(2, 44, 34, 0.04);
+  border: 1px solid rgba(4, 120, 87, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.cert-stamp .stamp-top {
+  font-size: 0.52rem;
+  font-weight: 800;
+  color: var(--emerald-main);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cert-stamp i {
+  font-size: 0.85rem;
+  color: var(--emerald-deep);
+  margin-top: 3px;
+}
+
+/* Minimalist Inner Frame for Logos */
+.cert-img-frame {
+  width: 84px; 
+  height: 84px;
+  background: var(--slate-bg-tint);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.01);
+  transition: all 0.4s ease;
+}
+
+.cert-img-element {
+  width: 65%;
+  height: 65%;
+  object-fit: contain;
+  mix-blend-mode: multiply; /* Fixes white box issue completely */
+  transition: transform 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+/* Metadata Typography Grid Alignment */
+.cert-card-meta {
+  text-align: left; 
+  width: 100%;
+}
+
+.cert-card-meta h4 {
+  font-family: sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: rgb(var(--text-dark-rgb));
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.badge-subtext {
+  font-family: sans-serif;
+  font-size: 0.78rem;
+  color: rgb(var(--text-muted-rgb));
+  font-weight: 500;
+  line-height: 1.4;
+  display: block;
+}
+
+/* Premium Linear Space Separator */
+.quality-divider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(4, 120, 87, 0.1) 50%, transparent);
+  margin: 70px 0;
+}
+
+/* ==========================================================================
+   STANDARDS MATRIX ARRAYS WITH VISUAL NODAL ACCENTS
+   ========================================================================== */
+.subsection-title {
+  font-family: sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--emerald-deep);
+  text-align: center;
+  margin-bottom: 44px;
+  letter-spacing: -0.02em;
+}
+
+.standards-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 70px;
+}
+
+.standard-node {
+  background: var(--white-solid);
+  border: none;
+  border-radius: 20px;
+  padding: 44px 36px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+  box-shadow: 0 10px 30px -15px rgba(2, 44, 34, 0.04);
+}
+
+.standard-node.accent-node {
+  background: linear-gradient(180deg, var(--white-solid) 0%, rgba(6, 182, 212, 0.02) 100%);
+  box-shadow: 0 10px 30px -15px rgba(6, 182, 212, 0.1);
+}
+
+.standard-node::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--teal-accent);
+  border-radius: 3px 3px 0 0;
+  transition: width 0.4s ease;
+}
+
+.standard-icon-box {
+  width: 56px;
+  height: 56px;
+  background-color: rgba(4, 120, 87, 0.05);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--emerald-main);
+  font-size: 1.35rem;
+  margin-bottom: 24px;
+  transition: all 0.4s ease;
+}
+
+.standard-icon-box.unique-accent {
+  background-color: rgba(6, 182, 212, 0.06);
+  color: var(--teal-accent);
+}
+
+.standard-node h3 {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgb(var(--text-dark-rgb));
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.standard-node p {
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  color: rgb(var(--text-muted-rgb));
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   LUXURY FEATURE SPLIT PANEL ARCHITECTURE
+   ========================================================================== */
+.quality-features-panel {
+  background: linear-gradient(135deg, var(--emerald-deep) 0%, #011c16 100%);
+  border-radius: 28px;
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.quality-features-panel::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.quality-features-panel.feature-panel-glow {
+  box-shadow: 0 30px 60px -15px rgba(2, 44, 34, 0.4);
+}
+
+.panel-heading {
+  font-family: sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--white-solid);
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+
+.panel-subtext {
+  font-family: sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.65;
+}
+
+.premium-feature-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 32px;
+}
+
+.premium-feature-list li {
+  font-family: sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  line-height: 1.4;
+}
+
+.premium-feature-list li i {
+  color: var(--emerald-neon);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  background: rgba(16, 185, 129, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   HIGH FIDELITY HOVER CONFIGURATIONS (INTELLIGENT KINETICS)
+   ========================================================================== */
+@media (hover: hover) {
+  /* Gallery Card Hover Elements */
+  .cert-image-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 25px 50px -20px rgba(2, 44, 34, 0.12);
+  }
+
+  .cert-image-card:hover::before {
+    width: 12px;
+    background: linear-gradient(180deg, var(--teal-accent) 0%, var(--emerald-main) 100%);
+  }
+
+  .cert-image-card:hover .cert-stamp {
+    background: var(--emerald-main);
+    border-color: transparent;
+    transform: translateY(-2px) rotate(5deg) scale(1.05);
+    box-shadow: -4px 6px 15px rgba(4, 120, 87, 0.2);
+  }
+
+  .cert-image-card:hover .cert-stamp .stamp-top,
+  .cert-image-card:hover .cert-stamp i {
+    color: var(--white-solid);
+  }
+
+  .cert-image-card:hover .cert-img-frame {
+    background: var(--white-solid);
+    box-shadow: 0 8px 20px rgba(4, 120, 87, 0.05);
+  }
+
+  .cert-image-card:hover .cert-img-element {
+    transform: scale(1.08);
+  }
+
+  /* Matrix Node Hover Elements */
+  .standard-node:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -15px rgba(2, 44, 34, 0.08);
+  }
+
+  .standard-node:hover::after {
+    width: 40%;
+  }
+
+  .standard-node:hover .standard-icon-box {
+    background: linear-gradient(135deg, var(--emerald-main), var(--teal-accent));
+    color: var(--white-solid);
+    transform: scale(1.06) rotate(-3deg);
+  }
+}
+
+/* ==========================================================================
+   ADAPTIVE RESPONSIVE GRID ENGINE (BREAKPOINTS TUNING)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .certifications-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .standards-matrix-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .quality-features-panel {
+    grid-template-columns: 1fr;
+    padding: 48px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .quality-cert-container {
+    padding: 80px 0;
+  }
+
+  .quality-section-header h2 {
+    font-size: 2.25rem;
+  }
+
+  .subsection-title {
+    font-size: 1.6rem;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .certifications-gallery,
+  .standards-matrix-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cert-image-card {
+    padding: 32px 20px 24px 24px;
+  }
+
+  .standard-node {
+    padding: 36px 24px;
+  }
+
+  .quality-features-panel {
+    padding: 36px 24px;
+  }
+
+  .premium-feature-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
     </style>
 </head>
 <body>
 
-   <header class="nav-anchor" id="mainHeader" style="border-left: 3px solid #022F2D; border-right: 3px solid #022F2D; border-top: 3px solid #022F2D;">
+   <header class="nav-anchor" id="mainHeader" style="border-left: 5px solid var(--advitum-primary-dark); border-right: 5px solid var(--advitum-primary-dark); border-top: 5px solid var(--advitum-primary-dark);" >
     <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; min-height: 70px;">
         
         <!-- Logo Wrapper with Proper Height & Scaling -->
-          <div class="brand-wrapper" onclick="window.location.href='/home'" style="cursor: pointer; display: flex; align-items: center; flex-shrink: 0;">
+         <div class="brand-wrapper" onclick="window.location.href='/home'" style="cursor: pointer; display: flex; align-items: center; flex-shrink: 0;">
                  <div class="creative-logo" style="display: flex; align-items: center; height: 100%;">
                <img src="/new_logo.png?v=11" alt="AdVitum Healthcare Logo" class="brand-logo-img" style="height: 50px !important; min-height: 50px !important; width: auto !important; max-height: none !important; display: block !important;">
                     </div>
@@ -1461,7 +1335,7 @@ main {
             </div>
             
             <div class="nav-item">
-                <a href="/product" class="nav-link-item active" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
+                <a href="/product" class="nav-link-item" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
                     Products <i class="fa-solid fa-chevron-down"></i>
                 </a>
                  <ul class="dropdown-card">
@@ -1471,7 +1345,7 @@ main {
             </div>
             
             <div class="nav-item">
-                <a href="/certifications" class="nav-link-item">Certifications</a>
+                <a href="/certifications" class="nav-link-item active">Certifications</a>
             </div>
 
             <div class="nav-item">
@@ -1489,40 +1363,136 @@ main {
     </div>
 </header>
 
-    <script id="data-store" type="application/json">
-    <%- JSON.stringify(items) %>
-    </script>
+    <main>
+        <div class="wrapper">
+            </div>
+    </main>
 
-    <div class="catalog-container">
-        <!-- Category Navbar -->
-        <nav class="cat-nav-container" id="categoryNav">
-            <button class="nav-btn active" data-id="all">All Inventory</button>
-            <% categories.forEach(category => { %>
-                <button class="nav-btn" data-id="<%= category._id %>"><%= category.name %></button>
-            <% }) %>
-        </nav>
+      <section class="quality-cert-container">
+    <div class="wrapper">
 
-        <div class="workspace-layout">
+        <!-- Header Content Architecture with Strategic Token Highlights -->
+        <header class="quality-section-header">
+            <span class="quality-badge animated-pulse">
+                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Quality Assurance
+            </span>
+            <h2>Quality & Certifications</h2>
+            <p class="quality-lead-text"><span class="highlight-token text-brand">AdVitum Healthcare</span> aims to support international healthcare markets through <span class="highlight-token">reliable products</span>, professional quality systems, and trusted manufacturing collaborations.</p>
+        </header>
 
-            <!-- Sidebar Items List -->
-            <aside class="sidebar-list">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search products...">
+        <!-- 4-Column High-Contrast Certifications Gallery Grid -->
+        <div class="certifications-gallery">
+            
+            <div class="cert-image-card highlight-glow-card">
+                <div class="cert-img-frame">
+                    <img src="who.png" alt="GMP Certification Document" class="cert-img-element">
                 </div>
-                <ul id="itemsContainer" class="items-list"></ul>
-            </aside>
-
-            <!-- Display Panel matching Screenshot -->
-            <main class="display-panel" id="displayPanel">
-                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #64748b;">
-                    <h3>Select a product to view details</h3>
+                <div class="cert-card-meta">
+                    <h4>GMP Certified</h4>
+                    <p class="badge-subtext">Good Manufacturing Practices</p>
                 </div>
-            </main>
+            </div>
+
+            <div class="cert-image-card">
+                <div class="cert-img-frame">
+                    <img src="eumdr.png" alt="ISO Certification Document" class="cert-img-element">
+                </div>
+                <div class="cert-card-meta">
+                    <h4>ISO Systems</h4>
+                    <p class="badge-subtext">Quality Management Certified</p>
+                </div>
+            </div>
+
+            <div class="cert-image-card">
+                <div class="cert-img-frame">
+                    <img src="iso2.png" alt="FSSAI Certification Document" class="cert-img-element">
+                </div>
+                <div class="cert-card-meta">
+                    <h4>FSSAI Compliant</h4>
+                    <p class="badge-subtext">Food Safety Standard Authority</p>
+                </div>
+            </div>
+
+            <div class="cert-image-card">
+                <div class="cert-img-frame">
+                    <img src="iso.png" alt="Halal Certification Document" class="cert-img-element">
+                </div>
+                <div class="cert-card-meta">
+                    <h4>HALAL Certified</h4>
+                    <p class="badge-subtext">International Compliance</p>
+                </div>
+            </div>
 
         </div>
-    </div>
 
-       <footer class="footer-architecture">
+        <hr class="quality-divider">
+
+        <!-- Standards Matrix Grid Section with Vibrant Background Accents -->
+        <div class="standards-section">
+            <h3 class="subsection-title">Our Quality Standards</h3>
+            <div class="standards-matrix-grid">
+                
+                <div class="standard-node accent-node">
+                    <div class="standard-icon-box unique-accent"><i class="fa-solid fa-gavel"></i></div>
+                    <h3>GMP Standards</h3>
+                    <p>Manufacturing support aligned with recognized Good Manufacturing Practices.</p>
+                </div>
+
+                <div class="standard-node">
+                    <div class="standard-icon-box"><i class="fa-solid fa-award"></i></div>
+                    <h3>ISO Standards</h3>
+                    <p>Commitment toward internationally recognized quality management systems.</p>
+                </div>
+
+                <div class="standard-node">
+                    <div class="standard-icon-box"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <h3>HACCP Compliance</h3>
+                    <p>Focus on safety-oriented production and handling processes.</p>
+                </div>
+
+                <div class="standard-node">
+                    <div class="standard-icon-box"><i class="fa-solid fa-building-shield"></i></div>
+                    <h3>FSSAI Compliance</h3>
+                    <p>Support for nutraceutical and wellness products aligned with Indian regulatory requirements.</p>
+                </div>
+
+                <div class="standard-node accent-node">
+                    <div class="standard-icon-box unique-accent"><i class="fa-solid fa-certificate"></i></div>
+                    <h3>HALAL Compliance</h3>
+                    <p>Manufacturing support aligned with recognized Halal standards for international nutraceutical markets.</p>
+                </div>
+
+                <div class="standard-node">
+                    <div class="standard-icon-box"><i class="fa-solid fa-boxes-packing"></i></div>
+                    <h3>Export Quality Support</h3>
+                    <p>Professional coordination for export-focused packaging, documentation, and product handling.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- High-Contrast Premium Split Features Panel -->
+        <div class="quality-features-panel feature-panel-glow">
+            <div class="features-text-side">
+                <h3 class="panel-heading">Quality Support Features</h3>
+                <p class="panel-subtext">Our structured workflows provide absolute transparency and cross-border operational compliance.</p>
+            </div>
+            <div class="features-list-side">
+                <ul class="premium-feature-list">
+                    <li><i class="fa-solid fa-circle-check"></i> Quality-focused manufacturing partnerships</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Export-ready packaging solutions</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Professional labeling support</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Product specification coordination</li>
+                    <li><i class="fa-solid fa-circle-check"></i> International business support</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Reliable export coordination</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+      <footer class="footer-architecture">
         <div class="wrapper">
             <div class="footer-matrix-pipeline">
                 <div class="footer-anchor-identity">
@@ -1554,7 +1524,7 @@ main {
 
                 <div class="footer-link-group">
                     <h4>Formulation Arrays</h4>
-                    <ul>
+                   <ul>
                         <li><a href="/product">Advanced Multivitamins</a></li>
                         <li><a href="/product">Standardized Bio-Extracts</a></li>
                         <li><a href="/product">Kinetic Sports Nutrition</a></li>
@@ -1611,179 +1581,8 @@ main {
         </div>
     </footer>
 
-
-    <!-- LOGIC SCRIPT -->
-    <!-- LOGIC SCRIPT -->
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const items = JSON.parse(document.getElementById('data-store').textContent);
-        const itemsContainer = document.getElementById('itemsContainer');
-        const displayPanel = document.getElementById('displayPanel');
-        const searchInput = document.getElementById('searchInput');
-        const navBtns = document.querySelectorAll('.nav-btn');
-
-        let activeCategory = 'all';
-        let selectedItemId = null;
-
-        // Render Sidebar List
-        function updateList() {
-            const filtered = items.filter(item => {
-                const matchCat = (activeCategory === 'all' || (item.category && item.category._id === activeCategory));
-                const matchSearch = item.name.toLowerCase().includes(searchInput.value.toLowerCase());
-                return matchCat && matchSearch;
-            });
-
-            if (filtered.length > 0) {
-                itemsContainer.innerHTML = filtered.map(item => `
-                    <li class="list-item ${selectedItemId === item._id ? 'active' : ''}" onclick="showDetail('${item._id}')">
-                        ${item.name}
-                    </li>
-                `).join('');
-
-                // Auto-select first item if none selected or selected item is filtered out
-                const exists = filtered.some(i => i._id === selectedItemId);
-                if (!selectedItemId || !exists) {
-                    showDetail(filtered[0]._id);
-                }
-            } else {
-                itemsContainer.innerHTML = '<li style="padding:20px; color:#64748b;">No products found.</li>';
-                displayPanel.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; height:100%; color:#64748b;"><h3>No product selected</h3></div>';
-            }
-        }
-
-        // Show Product Details Dynamic Handling
-        window.showDetail = function(id) {
-            selectedItemId = id;
-            const product = items.find(i => i._id === id);
-            if (!product) return;
-
-            // Update Active class in Sidebar
-            document.querySelectorAll('.list-item').forEach(el => el.classList.remove('active'));
-            const currentSelectedLi = Array.from(document.querySelectorAll('.list-item'))
-                .find(el => el.getAttribute('onclick')?.includes(id));
-            if (currentSelectedLi) currentSelectedLi.classList.add('active');
-
-            const catName = product.category ? product.category.name : 'General';
-            
-            // Image handling (Supports up to 3 images from DB array)
-            const fallbackImg = 'https://via.placeholder.com/400x260?text=No+Image';
-            let imageList = [];
-
-            if (Array.isArray(product.images) && product.images.length > 0) {
-                imageList = product.images.filter(img => img && img.trim() !== '');
-            } else if (product.image) {
-                imageList = [product.image];
-            }
-
-            if (imageList.length === 0) {
-                imageList = [fallbackImg];
-            }
-
-            const mainImg = imageList[0];
-
-            // Render 3 Gallery Thumbnails Dynamically
-            const thumbnailsHTML = imageList.map((img, index) => `
-                <div class="thumb-item ${index === 0 ? 'active' : ''}">
-                    <img src="${img}" alt="${product.name} - ${index + 1}" onclick="changeImg('${img}', this)">
-                </div>
-            `).join('');
-
-            displayPanel.innerHTML = `
-                <!-- Top Action Header -->
-                <div class="panel-top-bar">
-                    <div class="breadcrumb-trail">
-                        Pharmaceuticals / ${catName} / <span>${product.name}</span>
-                    </div>
-                    <div class="top-bar-actions">
-                        <button class="btn-share" onclick="copyShareLink()"><i class="fa-solid fa-share-nodes"></i> Share</button>
-                        <button class="btn-enquire" onclick="window.location.href='/contact'"><i class="fa-regular fa-comment-dots"></i> Enquire</button>
-                    </div>
-                </div>
-
-                <!-- Product Grid (Left Content + Right Image) -->
-                <div class="panel-content-grid">
-                    
-                    <!-- Left: Dynamic Details -->
-                    <div class="product-detail-left">
-                        <h2 class="product-title-main">${product.name}</h2>
-                        
-                        ${product.marketName ? `<div class="market-name-tag">Market Name: ${product.marketName}</div>` : ''}
-
-                        <div>
-                            <div class="detail-section-title">Description</div>
-                            <div class="detail-section-body">${product.description || 'No description provided.'}</div>
-                        </div>
-
-                        ${product.dosage ? `
-                        <div>
-                            <div class="detail-section-title">Dosage</div>
-                            <div class="detail-section-body">${product.dosage}</div>
-                        </div>` : ''}
-
-                        ${product.dosageForm ? `
-                        <div>
-                            <div class="detail-section-title">Dosage Form</div>
-                            <div class="detail-section-body">${product.dosageForm}</div>
-                        </div>` : ''}
-
-                        ${product.therapeuticClass ? `
-                        <div>
-                            <div class="detail-section-title">Therapeutic Class</div>
-                            <div class="detail-section-body">${product.therapeuticClass}</div>
-                        </div>` : ''}
-                    </div>
-
-                    <!-- Right: Dynamic 3 Image Gallery -->
-                    <div class="product-detail-right">
-                        <div class="main-image-box">
-                            <img id="mainDisplayImg" src="${mainImg}" alt="${product.name}">
-                        </div>
-
-                        <div class="gallery-thumbnails">
-                            ${thumbnailsHTML}
-                        </div>
-                    </div>
-
-                </div>
-            `;
-        };
-
-        // Thumbnail Click Switch Function
-        window.changeImg = function(src, el) {
-            const mainImg = document.getElementById('mainDisplayImg');
-            if (mainImg) mainImg.src = src;
-            
-            document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
-            if (el && el.parentElement) {
-                el.parentElement.classList.add('active');
-            }
-        };
-
-        // Share Feature Helper
-        window.copyShareLink = function() {
-            navigator.clipboard.writeText(window.location.href);
-            alert('Product link copied to clipboard!');
-        };
-
-        // Event Listeners for Category Navigation
-        navBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                navBtns.forEach(b => b.classList.remove('active'));
-                e.currentTarget.classList.add('active');
-                activeCategory = e.currentTarget.getAttribute('data-id');
-                selectedItemId = null;
-                updateList();
-            });
-        });
-
-        // Search Input Listener
-        searchInput.addEventListener('input', updateList);
-
-        // Initial Dynamic Load
-        updateList();
-    });
-
-      document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
             const mainNavbar = document.querySelector('.nav-anchor');
             const menuToggle = document.querySelector('#menuToggle');
             const navLinkItems = document.querySelectorAll('.nav-link-item');
