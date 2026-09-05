@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdVitum Healthcare | Global Nutraceuticals</title>
-    <link rel="icon" type="image/png" href="/logo.png?v=10">
+    <link rel="icon" type="image/png" href="/tablogo.png?v=10">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1440,70 +1440,78 @@ main {
 }
 
 
+
     </style>
 </head>
 <body>
-
-   <header class="nav-anchor" id="mainHeader">
-        <div class="nav-container">
-            <div class="brand-wrapper" onclick="window.location.href='/home'">
-                <div class="creative-logo">
-                    <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" class="brand-logo-img">
-                </div>
-                <div class="brand-meta">
-                    <h2>AdVitum</h2>
-                    <span>Healthcare</span>
-                </div>
+<header class="nav-anchor" id="mainHeader" style="border-left: 3px solid #022F2D; border-right: 3px solid #022F2D; border-top: 3px solid #022F2D;">
+    <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; min-height: 70px;">
+        
+        <!-- Logo Wrapper with Proper Height & Scaling -->
+          <div class="brand-wrapper" onclick="window.location.href='/home'" style="cursor: pointer; display: flex; align-items: center; flex-shrink: 0;">
+                 <div class="creative-logo" style="display: flex; align-items: center; height: 100%;">
+               <img src="/new_logo.png?v=11" alt="AdVitum Healthcare Logo" class="brand-logo-img" style="height: 50px !important; min-height: 50px !important; width: auto !important; max-height: none !important; display: block !important;">
+                    </div>
+        </div>
+        
+        <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        
+        <nav class="nav-linkset" id="navLinkset">
+            <div class="nav-item">
+                <a href="/home" class="nav-link-item">Home</a>
             </div>
             
-            <button class="mobile-hamburger" id="menuToggle" aria-label="Open Navigation">
-                <i class="fa-solid fa-bars-staggered"></i>
-            </button>
+            <div class="nav-item">
+                <a href="/company" class="nav-link-item" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
+                    Company <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-card">
+                    <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                    <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
             
-            <nav class="nav-linkset" id="navLinkset">
-                <div class="nav-item">
-                    <a href="/home" class="nav-link-item ">Home</a>
-                </div>
-                
-                <div class="nav-item">
-                    <div class="nav-link-item">Company <i class="fa-solid fa-chevron-down"></i></div>
-                    <ul class="dropdown-card">
-                        <li class="dropdown-node"><a href="/company">About Us <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li class="dropdown-node"><a href="/company">Why AdVitum? <i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-                
-                <div class="nav-item">
-                    <div class="nav-link-item">Services <i class="fa-solid fa-chevron-down"></i></div>
-                    <ul class="dropdown-card">
-                        <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-                
-                 <div class="nav-item">
-                    <a href="/product" class="nav-link-item">Product's</a>
-                </div>
-                
-                
-                <div class="nav-item">
-                    <a href="/certifications" class="nav-link-item ">Certifications</a>
-                </div>
+            <div class="nav-item">
+                <a href="/services" class="nav-link-item" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
+                    Services <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-card">
+                    <li class="dropdown-node"><a href="/services">Private Label Setup <i class="fa-solid fa-arrow-right"></i></a></li>
+                    <li class="dropdown-node"><a href="/services">Export Services <i class="fa-solid fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-item">
+                <a href="/product" class="nav-link-item" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; color: inherit;">
+                    Products <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-card">
+                    <li class="dropdown-node"><a href="/product">Pharmaceutical <i class="fa-solid fa-arrow-right"></i></a></li>
+                    <li class="dropdown-node"><a href="/product">Nutraceutical <i class="fa-solid fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-item">
+                <a href="/certifications" class="nav-link-item">Certifications</a>
+            </div>
 
-                <div class="nav-item">
-                    <a href="/division" class="nav-link-item ">Pharma Division</a>
-                </div>
-                
-                <div class="nav-item btn-blog-container">
-                    <a href="/blog" class="btn-action primary">Blog</a>
-                </div>
-                
-                <div class="nav-item">
-                    <a href="/contact" class="nav-link-item" style="color: var(--accent); font-weight: 700;">Contact Us</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+            <div class="nav-item">
+                <a href="/division" class="nav-link-item">Pharma Division</a>
+            </div>
+
+            <div class="nav-item">
+                <a href="/blog" class="nav-link-item active">Blog</a>
+            </div>
+            
+            <div class="nav-item btn-blog-container">
+                <a href="/contact" class="btn-action primary">Contact</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
     <main>
         <div class="wrapper">
             </div>
@@ -1580,18 +1588,21 @@ Optimized: Cleaned invisible space tokens and enhanced for screen readers.
     </div>
 </section>
 
-    <footer class="footer-architecture">
+      <footer class="footer-architecture">
         <div class="wrapper">
             <div class="footer-matrix-pipeline">
                 <div class="footer-anchor-identity">
-                    <h3>AdVitum Healthcare</h3>
-                    <p style="margin-bottom: 12px;">An institutional-grade healthcare export framework operating from India, provisioning bespoke nutraceutical manufacturing and future pharmaceutical products across international domains.</p>
-                    <div class="footer-social-channels">
-                        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="#" aria-label="Global Web"><i class="fa-solid fa-globe"></i></a>
-                    </div>
-                </div>
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="/logo.png?v=10" alt="AdVitum Healthcare Logo" style="height: 38px; width: auto; object-fit: contain;">
+        <h3 style="margin: 0;">AdVitum Healthcare</h3>
+    </div>
+    <p style="margin-bottom: 12px;">An institutional-grade healthcare export framework operating from India, provisioning bespoke nutraceutical manufacturing and future pharmaceutical products across international domains.</p>
+    <div class="footer-social-channels">
+        <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://wa.me/919898265440" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" aria-label="Global Web"><i class="fa-solid fa-globe"></i></a>
+    </div>
+</div>
 
                 <div class="footer-link-group">
                     <h4>Corporate Matrix</h4>
@@ -1603,21 +1614,21 @@ Optimized: Cleaned invisible space tokens and enhanced for screen readers.
                         <li><a href="/exportservices">Export Operations</a></li>
                         <li><a href="/certifications">Global Regulatory Profiles</a></li>
                         <li><a href="/blog">Corporate Insights</a></li>
-                        <li><a href="#inquiry">Initiate Trade Desk</a></li>
+                        <li><a href="/contact">Initiate Trade Desk</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-link-group">
                     <h4>Formulation Arrays</h4>
-                    <ul>
-                        <li><a href="/product#multivitamins">Advanced Multivitamins</a></li>
-                        <li><a href="/product#herbal">Standardized Bio-Extracts</a></li>
-                        <li><a href="/product#sports">Kinetic Sports Nutrition</a></li>
-                        <li><a href="/product#gummies">Pectin Functional Gummies</a></li>
-                        <li><a href="/product#effervescent">Effervescent Technology</a></li>
-                        <li><a href="/product#womens-health">Targeted Women's Health</a></li>
-                        <li><a href="/product#mens-health">Andrological Optimization</a></li>
-                        <li><a href="/product#protein">Isolated Protein Arrays</a></li>
+                  <ul>
+                        <li><a href="/product">Advanced Multivitamins</a></li>
+                        <li><a href="/product">Standardized Bio-Extracts</a></li>
+                        <li><a href="/product">Kinetic Sports Nutrition</a></li>
+                        <li><a href="/product">Pectin Functional Gummies</a></li>
+                        <li><a href="/product">Effervescent Technology</a></li>
+                        <li><a href="/product">Targeted Women's Health</a></li>
+                        <li><a href="/product">Andrological Optimization</a></li>
+                        <li><a href="/product">Isolated Protein Arrays</a></li>
                     </ul>
                 </div>
 
@@ -1657,10 +1668,11 @@ Optimized: Cleaned invisible space tokens and enhanced for screen readers.
             </div>
 
             <div class="footer-signature-row">
-                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
                 <div class="designer-tag-container">
-                    <a href="https://www.linkedin.com/in/haidarali-karadiya-23379728b/" target="_blank">Powered by Haidarali</a>
+                    <a href="https://haidarali-portfolio.onrender.com/" target="_blank">Developed by Haidarali</a>
                 </div>
+                <div>&copy; 2026 AdVitum Healthcare. All Global Distribution Rights Reserved.</div>
+                
             </div>
         </div>
     </footer>
