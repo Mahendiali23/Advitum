@@ -48,4 +48,7 @@ jobs:
               echo "Installing PM2 globally..."
               npm install -g pm2
             fi
+
+            pm2 flush advitum
+            
             pm2 restart all || pm2 start Backend/server.js --name "advitum"
