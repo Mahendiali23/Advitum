@@ -37,6 +37,7 @@ jobs:
             # Check if nginx.conf exists
             if [ -f "nginx.conf" ]; then
               sudo cp nginx.conf /etc/nginx/sites-available/advitum
+              sudo sed -i "s|/var/www/advitum|${{ secrets.HOSTINGER_DEPLOY_PATH }}|g" /etc/nginx/sites-available/advitum
             else
               echo "Error: nginx.conf not found. Listing files in directory:"
               ls -la
