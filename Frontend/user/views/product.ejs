@@ -1666,10 +1666,9 @@ main {
             const catName = product.category ? product.category.name : 'General';
             
             // Image handling (Supports up to 3 images from DB array)
-            const fallbackImg = 'https://via.placeholder.com/400x260?text=No+Image';
+            const fallbackImg = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80';
             let imageList = [];
-
-            if (Array.isArray(product.images) && product.images.length > 0) {
+            if (product.images && Array.isArray(product.images) && product.images.length > 0) {
                 imageList = product.images.filter(img => img && img.trim() !== '');
             } else if (product.image) {
                 imageList = [product.image];
@@ -1684,7 +1683,7 @@ main {
             // Render 3 Gallery Thumbnails Dynamically
             const thumbnailsHTML = imageList.map((img, index) => `
                 <div class="thumb-item ${index === 0 ? 'active' : ''}">
-                    <img src="${img}" alt="${product.name} - ${index + 1}" onclick="changeImg('${img}', this)">
+                    <img src="${img}" alt="${product.name} - ${index + 1}" onclick="changeImg('${img}', this)" onerror="this.src='${fallbackImg}'; this.onerror=null;">
                 </div>
             `).join('');
 
@@ -1736,7 +1735,7 @@ main {
                     <!-- Right: Dynamic 3 Image Gallery -->
                     <div class="product-detail-right">
                         <div class="main-image-box">
-                            <img id="mainDisplayImg" src="${mainImg}" alt="${product.name}">
+                            <img id="mainDisplayImg" src="${mainImg}" alt="${product.name}" onerror="this.src='${fallbackImg}'; this.onerror=null;">
                         </div>
 
                         <div class="gallery-thumbnails">

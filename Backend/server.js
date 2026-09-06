@@ -28,14 +28,16 @@ app.set('views', [
 app.set('view engine', 'ejs');
 
 // STATIC FILES CONFIGURATION
-// 1. Static assets from 'Frontend/public' (CSS, Frontend JS, etc.)
+// 1. Static assets from 'Frontend/public' (CSS, Frontend JS, icons, banners)
 app.use(express.static(path.join(__dirname, '..', 'Frontend', 'public')));
+app.use('/public', express.static(path.join(__dirname, '..', 'Frontend', 'public')));
 
-// 2. Uploaded Images from 'back/public'
+// 2. Uploaded Images from 'Backend/public/uploads'
 const uploadPath = path.join(__dirname, 'public', 'uploads');
+app.use('/uploads', express.static(uploadPath));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Auto-create 'back/public/uploads' folder if it doesn't exist
+// Auto-create 'Backend/public/uploads' folder if it doesn't exist
 if (!fs.existsSync(uploadPath)) {
     fs.mkdirSync(uploadPath, { recursive: true });
 }
